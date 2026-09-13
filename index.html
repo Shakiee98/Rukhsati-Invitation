@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Rukhsati Invitation | Sakiruddin &amp; Runa</title>
 
-  <!-- Typography -->
+  <!-- High-End Editorial Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -17,14 +17,14 @@
       --gold-primary: #bda16b;
       --gold-deep: #8f7542;
       --gold-foil: linear-gradient(135deg, #e4d1aa 0%, #bca169 50%, #9e824c 100%);
-      --pink-soft: #f4c2c2;
+      --pink-soft: #f4b6be;
       --pink-blush: #fde8ea;
-      --lavender-soft: #d8c7e8;
+      --lavender-soft: #d3beea;
       --lavender-mist: #eee6f6;
       --text-dark: #272421;
-      --text-muted: #6e675f;
-      --text-soft: #9c9489;
-      --border-delicate: rgba(189, 161, 107, 0.35);
+      --text-muted: #5e5751;
+      --text-soft: #8f877d;
+      --border-delicate: rgba(189, 161, 107, 0.4);
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-script: 'Alex Brush', cursive;
       --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,43 +37,47 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    html, body {
-      background-color: #1a1716;
+    body {
+      background-color: var(--bg-cream);
+      background-image: 
+        radial-gradient(circle at 10% 10%, rgba(253, 232, 234, 0.65), transparent 40%),
+        radial-gradient(circle at 90% 40%, rgba(238, 230, 246, 0.7), transparent 45%),
+        radial-gradient(circle at 15% 70%, rgba(253, 232, 234, 0.65), transparent 40%),
+        radial-gradient(circle at 85% 95%, rgba(238, 230, 246, 0.7), transparent 45%);
       color: var(--text-dark);
       font-family: var(--font-serif);
       font-weight: 400;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      min-height: 100vh;
+      min-height: 100dvh;
     }
 
     .viewport-wrapper {
       max-width: 440px;
       margin: 0 auto;
       min-height: 100vh;
-      min-height: 100dvh;
-      background: radial-gradient(circle at 10% 10%, rgba(253, 232, 234, 0.55), transparent 45%),
-                  radial-gradient(circle at 90% 85%, rgba(238, 230, 246, 0.6), transparent 50%),
-                  var(--bg-cream);
+      background: transparent;
       position: relative;
-      box-shadow: 0 0 50px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* Paper Texture Overlay */
+    /* Tactile Paper Texture */
     .viewport-wrapper::before {
       content: '';
-      position: absolute;
+      position: fixed;
       inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+      max-width: 440px;
+      margin: 0 auto;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 99;
     }
 
-    /* Stationery Borders */
     .card-border-frame {
       position: absolute;
       inset: 12px;
@@ -85,68 +89,44 @@
     .card-border-inner {
       position: absolute;
       inset: 16px;
-      border: 0.5px solid rgba(189, 161, 107, 0.2);
+      border: 0.5px solid rgba(189, 161, 107, 0.25);
       pointer-events: none;
       z-index: 10;
     }
 
-    /* Floral & Heart Background SVGs */
-    .decor-bg {
-      position: absolute;
-      pointer-events: none;
-      z-index: 1;
+    /* Subtle Natural Animations */
+    @keyframes gentleSway {
+      0% { transform: rotate(-2deg) translateY(0); }
+      100% { transform: rotate(2deg) translateY(-4px); }
     }
 
-    .floral-top-left {
-      top: -10px;
-      left: -10px;
-      width: 170px;
-      height: 170px;
-      opacity: 0.85;
+    @keyframes pulseHeart {
+      0% { transform: scale(0.92); opacity: 0.7; }
+      50% { transform: scale(1.08); opacity: 1; }
+      100% { transform: scale(0.92); opacity: 0.7; }
     }
 
-    .floral-top-right {
-      top: -10px;
-      right: -10px;
-      width: 170px;
-      height: 170px;
-      transform: scaleX(-1);
-      opacity: 0.85;
+    @keyframes floatSoftly {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(3deg); }
+      100% { transform: translateY(0) rotate(0deg); }
     }
 
-    .floral-bottom-left {
-      bottom: -15px;
-      left: -15px;
-      width: 180px;
-      height: 180px;
-      transform: scaleY(-1);
-      opacity: 0.85;
+    .swaying-element {
+      animation: gentleSway 5s ease-in-out infinite alternate;
+      transform-origin: center top;
     }
 
-    .floral-bottom-right {
-      bottom: -15px;
-      right: -15px;
-      width: 180px;
-      height: 180px;
-      transform: scale(-1, -1);
-      opacity: 0.85;
+    .pulsing-element {
+      animation: pulseHeart 3s ease-in-out infinite;
+      transform-origin: center;
     }
 
-    /* Gentle Floating Hearts & Petals */
-    .floating-accent {
-      position: absolute;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.45;
-      animation: floatSubtle 6s ease-in-out infinite alternate;
+    .floating-element {
+      animation: floatSoftly 5.5s ease-in-out infinite;
     }
 
-    @keyframes floatSubtle {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-8px) rotate(4deg); }
-    }
-
-    /* SLIDE 1: COVER */
+    /* COVER SCREEN */
     #coverScreen {
       position: fixed;
       top: 0;
@@ -156,8 +136,8 @@
       max-width: 440px;
       height: 100vh;
       height: 100dvh;
-      background: radial-gradient(circle at 50% 20%, rgba(253, 232, 234, 0.65), transparent 60%),
-                  radial-gradient(circle at 50% 80%, rgba(238, 230, 246, 0.65), transparent 60%),
+      background: radial-gradient(circle at 50% 25%, rgba(253, 232, 234, 0.75), transparent 60%),
+                  radial-gradient(circle at 50% 75%, rgba(238, 230, 246, 0.75), transparent 60%),
                   var(--bg-cream);
       display: flex;
       flex-direction: column;
@@ -178,7 +158,7 @@
       font-family: var(--font-sans);
       font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.28em;
       color: var(--gold-deep);
       margin-bottom: 8px;
       font-weight: 600;
@@ -211,12 +191,6 @@
       max-width: 300px;
     }
 
-    .cover-botanical-wreath {
-      width: 85px;
-      height: 85px;
-      margin: 0 auto 16px;
-    }
-
     .cover-quote {
       font-family: var(--font-serif);
       font-style: italic;
@@ -225,7 +199,6 @@
       line-height: 1.6;
     }
 
-    /* Buttons */
     .btn-pill {
       display: inline-flex;
       align-items: center;
@@ -252,7 +225,7 @@
       transform: scale(0.97);
     }
 
-    /* MAIN INVITATION CONTENT */
+    /* MAIN UNROLLED INVITATION */
     #mainInvitation {
       display: none;
       flex-direction: column;
@@ -267,7 +240,7 @@
 
     .panel {
       position: relative;
-      padding: 70px 28px;
+      padding: 40px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -275,40 +248,19 @@
       z-index: 2;
     }
 
-    .panel-divider {
-      width: 70px;
-      height: 1px;
-      background: var(--border-delicate);
-      margin: 14px auto 0;
-      position: relative;
-    }
-
-    .panel-divider::after {
-      content: '❤';
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -55%);
-      font-size: 8px;
-      color: var(--pink-soft);
-      background: var(--bg-cream);
-      padding: 0 6px;
-    }
-
     .bismillah-calligraphy {
       font-family: var(--font-serif);
-      font-size: 1.65rem;
+      font-size: 1.7rem;
       color: var(--gold-deep);
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .quran-ayah {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 0.96rem;
+      font-size: 0.98rem;
       color: var(--text-muted);
       max-width: 320px;
-      margin-bottom: 28px;
       line-height: 1.55;
     }
 
@@ -328,31 +280,32 @@
       font-size: 1.05rem;
       color: var(--text-muted);
       max-width: 300px;
-      margin-bottom: 24px;
       line-height: 1.6;
     }
 
     .couple-title {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin: 8px 0 16px;
+      align-items: center;
+      gap: 2px;
+      margin: 6px 0;
+      width: 100%;
     }
 
     .groom-name, .bride-name {
       font-family: var(--font-serif);
-      font-size: 1.9rem;
+      font-size: 1.95rem;
       font-weight: 500;
       color: var(--text-dark);
       line-height: 1.25;
+      letter-spacing: 0.02em;
     }
 
     .ampersand {
       font-family: var(--font-script);
-      font-size: 2.2rem;
-      color: #c98a96;
+      font-size: 2.3rem;
+      color: #b36e7d;
       line-height: 0.8;
-      margin: 8px 0;
     }
 
     /* Scratch Card */
@@ -362,10 +315,11 @@
       height: 145px;
       border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(39, 36, 33, 0.08);
+      box-shadow: 0 8px 24px rgba(189, 161, 107, 0.12);
       background-color: var(--bg-ivory);
       border: 1px solid var(--border-delicate);
       touch-action: none;
+      margin: 10px auto 0;
     }
 
     .scratch-secret {
@@ -375,7 +329,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle, #fffaf6 0%, #f6eff8 100%);
+      background: radial-gradient(circle, #fffaf6 0%, #f7eff9 100%);
       padding: 16px;
       z-index: 1;
       user-select: none;
@@ -386,14 +340,14 @@
       font-size: 0.72rem;
       letter-spacing: 0.25em;
       font-weight: 600;
-      color: #ba7685;
+      color: #b36e7d;
       text-transform: uppercase;
       margin-bottom: 4px;
     }
 
     .date-text-primary {
       font-family: var(--font-serif);
-      font-size: 1.65rem;
+      font-size: 1.7rem;
       font-weight: 600;
       letter-spacing: 0.06em;
       color: var(--text-dark);
@@ -420,10 +374,10 @@
     }
 
     .scratch-hint {
-      margin-top: 14px;
+      margin-top: 12px;
       font-family: var(--font-sans);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
+      font-size: 0.66rem;
+      letter-spacing: 0.2em;
       color: var(--text-soft);
       text-transform: uppercase;
     }
@@ -433,11 +387,11 @@
       width: 100%;
       max-width: 320px;
       padding: 26px 20px;
-      background: rgba(255, 255, 255, 0.65);
-      backdrop-filter: blur(4px);
+      background: rgba(255, 255, 255, 0.8);
       border: 1px solid var(--border-delicate);
       border-radius: 8px;
-      margin: 20px 0 28px;
+      margin: 16px 0 24px;
+      box-shadow: 0 4px 20px rgba(189, 161, 107, 0.08);
     }
 
     .event-type-badge {
@@ -466,15 +420,14 @@
       line-height: 1.5;
     }
 
-    /* Personal Greeting & Closing */
     .personal-note-box {
       max-width: 310px;
-      margin-bottom: 30px;
+      margin-bottom: 24px;
     }
 
     .greeting-line {
       font-family: var(--font-serif);
-      font-size: 1.45rem;
+      font-size: 1.5rem;
       color: var(--text-dark);
       margin-bottom: 12px;
       font-weight: 500;
@@ -488,31 +441,31 @@
     }
 
     .closing-panel {
-      padding-bottom: 90px;
+      padding-bottom: 80px;
     }
 
     .closing-tagline {
       font-family: var(--font-script);
-      font-size: 2.4rem;
-      color: #ba7685;
+      font-size: 2.5rem;
+      color: #b36e7d;
       margin-bottom: 4px;
     }
 
     .closing-names {
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       color: var(--text-dark);
       letter-spacing: 0.04em;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
     }
 
     .closing-note {
       font-family: var(--font-sans);
       font-size: 0.7rem;
-      letter-spacing: 0.2em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
       color: var(--text-soft);
-      max-width: 260px;
+      max-width: 270px;
     }
 
     .fade-up {
@@ -530,79 +483,8 @@
 <body>
 
   <div class="viewport-wrapper">
-    <!-- Stationery Border -->
     <div class="card-border-frame"></div>
     <div class="card-border-inner"></div>
-
-    <!-- REUSABLE BOTANICAL FLORAL & BLUSH CORNER ARTWORK -->
-    <svg class="decor-bg floral-top-left" viewBox="0 0 160 160" fill="none">
-      <!-- Lavender & Pink Vines and Leaves -->
-      <path d="M-10,20 Q40,30 65,75 T110,130" stroke="#d8c7e8" stroke-width="1.2" fill="none" opacity="0.7"/>
-      <path d="M20,-10 Q30,40 75,65 T130,110" stroke="#f4c2c2" stroke-width="1.2" fill="none" opacity="0.7"/>
-      <!-- Soft Pastel Flowers -->
-      <g transform="translate(45, 45)">
-        <circle cx="0" cy="-10" r="7" fill="#fde8ea" />
-        <circle cx="10" cy="0" r="7" fill="#eee6f6" />
-        <circle cx="0" cy="10" r="7" fill="#fde8ea" />
-        <circle cx="-10" cy="0" r="7" fill="#eee6f6" />
-        <circle cx="0" cy="0" r="4" fill="#bda16b" />
-      </g>
-      <g transform="translate(90, 85) scale(0.7)">
-        <circle cx="0" cy="-9" r="6" fill="#fde8ea" />
-        <circle cx="9" cy="0" r="6" fill="#d8c7e8" />
-        <circle cx="0" cy="9" r="6" fill="#fde8ea" />
-        <circle cx="-9" cy="0" r="6" fill="#d8c7e8" />
-        <circle cx="0" cy="0" r="3.5" fill="#bda16b" />
-      </g>
-      <!-- Tiny Heart -->
-      <path d="M75,30 C75,25 70,22 66,25 C62,22 57,25 57,30 C57,37 66,43 66,43 C66,43 75,37 75,30 Z" fill="#f4c2c2" opacity="0.6"/>
-    </svg>
-
-    <svg class="decor-bg floral-top-right" viewBox="0 0 160 160" fill="none">
-      <path d="M-10,20 Q40,30 65,75 T110,130" stroke="#d8c7e8" stroke-width="1.2" fill="none" opacity="0.7"/>
-      <path d="M20,-10 Q30,40 75,65 T130,110" stroke="#f4c2c2" stroke-width="1.2" fill="none" opacity="0.7"/>
-      <g transform="translate(45, 45)">
-        <circle cx="0" cy="-10" r="7" fill="#eee6f6" />
-        <circle cx="10" cy="0" r="7" fill="#fde8ea" />
-        <circle cx="0" cy="10" r="7" fill="#eee6f6" />
-        <circle cx="-10" cy="0" r="7" fill="#fde8ea" />
-        <circle cx="0" cy="0" r="4" fill="#bda16b" />
-      </g>
-      <path d="M75,30 C75,25 70,22 66,25 C62,22 57,25 57,30 C57,37 66,43 66,43 C66,43 75,37 75,30 Z" fill="#d8c7e8" opacity="0.6"/>
-    </svg>
-
-    <svg class="decor-bg floral-bottom-left" viewBox="0 0 160 160" fill="none">
-      <path d="M-10,20 Q40,30 65,75 T110,130" stroke="#f4c2c2" stroke-width="1.2" fill="none" opacity="0.7"/>
-      <g transform="translate(55, 55)">
-        <circle cx="0" cy="-10" r="7" fill="#fde8ea" />
-        <circle cx="10" cy="0" r="7" fill="#eee6f6" />
-        <circle cx="0" cy="10" r="7" fill="#fde8ea" />
-        <circle cx="-10" cy="0" r="7" fill="#eee6f6" />
-        <circle cx="0" cy="0" r="4" fill="#bda16b" />
-      </g>
-    </svg>
-
-    <svg class="decor-bg floral-bottom-right" viewBox="0 0 160 160" fill="none">
-      <path d="M-10,20 Q40,30 65,75 T110,130" stroke="#d8c7e8" stroke-width="1.2" fill="none" opacity="0.7"/>
-      <g transform="translate(55, 55)">
-        <circle cx="0" cy="-10" r="7" fill="#eee6f6" />
-        <circle cx="10" cy="0" r="7" fill="#fde8ea" />
-        <circle cx="0" cy="10" r="7" fill="#eee6f6" />
-        <circle cx="-10" cy="0" r="7" fill="#fde8ea" />
-        <circle cx="0" cy="0" r="4" fill="#bda16b" />
-      </g>
-    </svg>
-
-    <!-- Floating Lavender & Pink Hearts in Mid-Ground -->
-    <svg class="floating-accent" style="top: 25%; left: 8%; width: 22px; height: 22px;" viewBox="0 0 24 24" fill="#f4c2c2">
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-    </svg>
-    <svg class="floating-accent" style="top: 48%; right: 7%; width: 18px; height: 18px; animation-delay: 2s;" viewBox="0 0 24 24" fill="#d8c7e8">
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-    </svg>
-    <svg class="floating-accent" style="top: 72%; left: 6%; width: 19px; height: 19px; animation-delay: 4s;" viewBox="0 0 24 24" fill="#fde8ea">
-      <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-    </svg>
 
     <!-- =========================================================
          SCREEN 1: THE COVER
@@ -614,17 +496,15 @@
       </div>
 
       <div class="cover-center">
-        <!-- Floral Wreath with Heart -->
-        <svg class="cover-botanical-wreath" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="40" stroke="#d8c7e8" stroke-width="1.2" stroke-dasharray="4 3"/>
-          <circle cx="50" cy="50" r="35" stroke="#f4c2c2" stroke-width="0.8"/>
-          <!-- Blossoms around wreath -->
-          <circle cx="50" cy="10" r="5" fill="#fde8ea" />
-          <circle cx="90" cy="50" r="5" fill="#eee6f6" />
-          <circle cx="50" cy="90" r="5" fill="#fde8ea" />
-          <circle cx="10" cy="50" r="5" fill="#eee6f6" />
-          <!-- Center Heart -->
-          <path d="M50 58 L44 52 C39 47 36 43 36 39 C36 35 39 32 43 32 C45.5 32 48 33.5 50 35.5 C52 33.5 54.5 32 57 32 C61 32 64 35 64 39 C64 43 61 47 56 52 Z" fill="#bda16b"/>
+        <!-- Botanical Ring with Heart -->
+        <svg style="width: 90px; height: 90px; margin: 0 auto 16px;" class="floating-element" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="42" stroke="#d3beea" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <circle cx="50" cy="50" r="37" stroke="#f4b6be" stroke-width="0.8"/>
+          <circle cx="50" cy="8" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.5"/>
+          <circle cx="92" cy="50" r="6" fill="#eee6f6" stroke="#bda16b" stroke-width="0.5"/>
+          <circle cx="50" cy="92" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.5"/>
+          <circle cx="8" cy="50" r="6" fill="#eae0f5" stroke="#bda16b" stroke-width="0.5"/>
+          <path class="pulsing-element" d="M50 59 L43 52 C37 46 34 42 34 38 C34 34 37 31 41 31 C43.8 31 46.5 32.5 50 35 C53.5 32.5 56.2 31 59 31 C63 31 66 34 66 38 C66 42 63 46 57 52 Z" fill="#b36e7d"/>
         </svg>
         <p class="cover-quote">
           With prayers, gentle blessings, and the auspicious grace of Allah (SWT)...
@@ -645,11 +525,37 @@
 
       <!-- SECTION 2: BISMILLAH & RUKHSATI ANNOUNCEMENT -->
       <section class="panel fade-up">
+        
+        <!-- SIDE MARGIN FLORAL FLOURISHES (Left & Right of Ayah) -->
+        <svg class="swaying-element" style="position: absolute; left: 10px; top: 75px; width: 45px; height: 110px; pointer-events: none; opacity: 0.8;" viewBox="0 0 45 110" fill="none">
+          <path d="M5,10 Q25,45 10,80 T35,105" stroke="#d3beea" stroke-width="1.2"/>
+          <circle cx="20" cy="38" r="5" fill="#fde8ea" stroke="#f4b6be" stroke-width="0.5"/>
+          <circle cx="10" cy="75" r="4" fill="#eee6f6" stroke="#d3beea" stroke-width="0.5"/>
+          <path class="pulsing-element" d="M26,56 C26,54 23,52 21,54 C19,52 16,54 16,56 C16,59 21,62 21,62 C21,62 26,59 26,56 Z" fill="#f4b6be"/>
+        </svg>
+
+        <svg class="swaying-element" style="position: absolute; right: 10px; top: 75px; width: 45px; height: 110px; transform: scaleX(-1); pointer-events: none; opacity: 0.8;" viewBox="0 0 45 110" fill="none">
+          <path d="M5,10 Q25,45 10,80 T35,105" stroke="#f4b6be" stroke-width="1.2"/>
+          <circle cx="20" cy="38" r="5" fill="#eee6f6" stroke="#d3beea" stroke-width="0.5"/>
+          <circle cx="10" cy="75" r="4" fill="#fde8ea" stroke="#f4b6be" stroke-width="0.5"/>
+          <path class="pulsing-element" d="M26,56 C26,54 23,52 21,54 C19,52 16,54 16,56 C16,59 21,62 21,62 C21,62 26,59 26,56 Z" fill="#d3beea"/>
+        </svg>
+
         <div class="bismillah-calligraphy">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
         <p class="quran-ayah">
           “And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.”
           <span class="ayah-ref">— Surah Ar-Rum 30:21</span>
         </p>
+
+        <!-- MARKED ZONE 1: Floral Divider under Quran Ayah -->
+        <svg class="floating-element" style="width: 100%; max-width: 250px; height: 36px; margin: 10px auto;" viewBox="0 0 250 36" fill="none">
+          <path d="M15,18 H95 M155,18 H235" stroke="var(--border-delicate)" stroke-width="0.8"/>
+          <circle cx="125" cy="18" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.8"/>
+          <circle cx="115" cy="18" r="3.5" fill="#eee6f6"/>
+          <circle cx="135" cy="18" r="3.5" fill="#eee6f6"/>
+          <path d="M106,18 Q98,12 92,18 Q98,24 106,18 Z" fill="#d3beea" opacity="0.65"/>
+          <path d="M144,18 Q152,12 158,18 Q152,24 144,18 Z" fill="#f4b6be" opacity="0.65"/>
+        </svg>
 
         <p class="host-intro">
           Mr. Nuruddin Shaikh &amp; Mr. Saidul Shaikh<br />
@@ -658,20 +564,52 @@
           of their beloved children
         </p>
 
+        <!-- MARKED ZONE 2: Wavy Vines & Heart above Groom Name -->
+        <svg class="swaying-element" style="width: 100%; max-width: 220px; height: 32px; margin: 12px auto 6px;" viewBox="0 0 220 32" fill="none">
+          <path d="M30,16 Q75,6 110,16 T190,16" stroke="#d3beea" stroke-width="0.9"/>
+          <circle cx="110" cy="16" r="3.5" fill="#f4b6be"/>
+          <circle cx="70" cy="11" r="2" fill="#bda16b"/>
+          <circle cx="150" cy="11" r="2" fill="#bda16b"/>
+          <path class="pulsing-element" d="M110,4 C110,2 108,1 106,2 C104,1 102,2 102,4 C102,6 106,8 106,8 C106,8 110,6 110,4 Z" fill="#b36e7d"/>
+        </svg>
+
         <div class="couple-title">
           <span class="groom-name">Sakiruddin Nuruddin Shaikh</span>
-          <span class="ampersand">&amp;</span>
+          
+          <!-- MARKED ZONE 3: Flourished Ribbon Flanking '&' -->
+          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px 0;">
+            <svg style="width: 44px; height: 18px;" viewBox="0 0 44 18" fill="none">
+              <path d="M4,10 Q22,2 40,10" stroke="#f4b6be" stroke-width="1.2"/>
+              <circle cx="20" cy="6" r="3" fill="#d3beea"/>
+            </svg>
+            <span class="ampersand">&amp;</span>
+            <svg style="width: 44px; height: 18px; transform: scaleX(-1);" viewBox="0 0 44 18" fill="none">
+              <path d="M4,10 Q22,2 40,10" stroke="#f4b6be" stroke-width="1.2"/>
+              <circle cx="20" cy="6" r="3" fill="#d3beea"/>
+            </svg>
+          </div>
+
           <span class="bride-name">Runa Saidul Shaikh</span>
         </div>
 
-        <div class="panel-divider"></div>
+        <!-- MARKED ZONE 4: Decorative Garland between Couple Names and Scratch Card -->
+        <svg class="swaying-element" style="width: 100%; max-width: 290px; height: 46px; margin-top: 14px;" viewBox="0 0 290 46" fill="none">
+          <path d="M15,23 Q80,7 145,23 T275,23" stroke="#d3beea" stroke-width="1.1"/>
+          <path d="M35,23 Q95,37 145,23 T255,23" stroke="#f4b6be" stroke-width="1.1"/>
+          <g transform="translate(145, 23)">
+            <circle cx="0" cy="0" r="7" fill="#fde8ea" stroke="#bda16b" stroke-width="0.8"/>
+            <circle cx="0" cy="0" r="3" fill="#b36e7d"/>
+          </g>
+          <!-- Pulsing hearts flanking center -->
+          <path class="pulsing-element" d="M95,17 C95,15 92,13 90,15 C88,13 85,15 85,17 C85,20 90,23 90,23 C90,23 95,20 95,17 Z" fill="#f4b6be"/>
+          <path class="pulsing-element" d="M200,17 C200,15 197,13 195,15 C193,13 190,15 190,17 C190,20 195,23 195,23 C195,23 200,20 200,17 Z" fill="#d3beea"/>
+        </svg>
       </section>
 
       <!-- SECTION 3: SCRATCH-TO-REVEAL DATE -->
-      <section class="panel fade-up">
-        <div style="margin-bottom: 24px;">
+      <section class="panel fade-up" style="padding-top: 10px;">
+        <div style="margin-bottom: 12px;">
           <p class="sub-caps">Auspicious Date</p>
-          <div class="panel-divider"></div>
         </div>
 
         <div class="scratch-wrapper" id="scratchCardContainer">
@@ -683,10 +621,20 @@
           <canvas id="scratchCanvas"></canvas>
         </div>
         <p class="scratch-hint" id="scratchPrompt">Scratch golden foil to reveal date</p>
+
+        <!-- MARKED ZONE 5: Pastel Rose Floral Arch under Scratch Card -->
+        <svg class="floating-element" style="width: 100%; max-width: 280px; height: 50px; margin-top: 22px;" viewBox="0 0 280 50" fill="none">
+          <path d="M20,25 C70,39 100,13 140,25 C180,37 210,13 260,25" stroke="#f4b6be" stroke-width="1.2"/>
+          <path d="M40,25 C80,13 110,37 140,25 C170,13 200,37 240,25" stroke="#d3beea" stroke-width="1.2"/>
+          <circle cx="140" cy="25" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.8"/>
+          <circle cx="85" cy="25" r="3.5" fill="#eee6f6"/>
+          <circle cx="195" cy="25" r="3.5" fill="#eee6f6"/>
+          <path class="pulsing-element" d="M140,8 C140,6 138,4 136,6 C134,4 132,6 132,8 C132,10 136,13 136,13 C136,13 140,10 140,8 Z" fill="#b36e7d"/>
+        </svg>
       </section>
 
-      <!-- SECTION 4: VENUE & CEREMONY -->
-      <section class="panel fade-up">
+      <!-- SECTION 4: CEREMONY & LOCATION -->
+      <section class="panel fade-up" style="padding-top: 10px;">
         <p class="sub-caps">Ceremony &amp; Dinner</p>
         
         <div class="venue-card">
@@ -706,11 +654,23 @@
           Open In Google Maps
         </a>
 
-        <div class="panel-divider" style="margin-top: 36px;"></div>
+        <!-- MARKED ZONE 6: Twin Hearts & Blossoms between Map and Message -->
+        <svg class="swaying-element" style="width: 100%; max-width: 270px; height: 50px; margin: 28px auto 14px;" viewBox="0 0 270 50" fill="none">
+          <path d="M15,25 Q65,40 135,25 T255,25" stroke="#d3beea" stroke-width="1.2"/>
+          <g transform="translate(135, 25)">
+            <circle cx="0" cy="-6" r="5" fill="#fde8ea"/>
+            <circle cx="6" cy="0" r="5" fill="#eee6f6"/>
+            <circle cx="0" cy="6" r="5" fill="#fde8ea"/>
+            <circle cx="-6" cy="0" r="5" fill="#eee6f6"/>
+            <circle cx="0" cy="0" r="3" fill="#bda16b"/>
+          </g>
+          <path class="pulsing-element" d="M75,23 C75,21 72,19 70,21 C68,19 65,21 65,23 C65,26 70,29 70,29 C70,29 75,26 75,23 Z" fill="#f4b6be"/>
+          <path class="pulsing-element" d="M200,23 C200,21 197,19 195,21 C193,19 190,21 190,23 C190,26 195,29 195,29 C195,29 200,26 200,23 Z" fill="#f4b6be"/>
+        </svg>
       </section>
 
       <!-- SECTION 5: PERSONAL MESSAGE & RSVP -->
-      <section class="panel fade-up">
+      <section class="panel fade-up" style="padding-top: 5px;">
         <div class="personal-note-box">
           <h3 class="greeting-line" id="personalGreeting">Dear Alfaz,</h3>
           <p class="greeting-body">
@@ -722,14 +682,30 @@
           Confirm Your Presence
         </a>
 
-        <div class="panel-divider" style="margin-top: 36px;"></div>
+        <!-- MARKED ZONE 7: Interlinked Hearts & Rose Garland above Closing -->
+        <svg class="floating-element" style="width: 100%; max-width: 250px; height: 50px; margin-top: 24px;" viewBox="0 0 250 50" fill="none">
+          <path d="M25,25 Q75,10 125,25 T225,25" stroke="#f4b6be" stroke-width="1.1"/>
+          <!-- Two Interlocked Hearts -->
+          <g class="pulsing-element" transform="translate(125, 23)">
+            <path d="M-6,0 C-6,-3 -9,-5 -11,-3 C-13,-5 -16,-3 -16,0 C-16,3 -11,6 -11,6 C-11,6 -6,3 -6,0 Z" fill="#b36e7d"/>
+            <path d="M6,0 C6,-3 3,-5 1,-3 C-1,-5 -4,-3 -4,0 C-4,3 1,6 1,6 C1,6 6,3 6,0 Z" fill="#d3beea"/>
+          </g>
+        </svg>
       </section>
 
       <!-- SECTION 6: CLOSING -->
-      <section class="panel closing-panel fade-up">
+      <section class="panel closing-panel fade-up" style="padding-top: 0;">
         <div class="closing-tagline">With love &amp; prayers,</div>
         <div class="closing-names">Sakiruddin &amp; Runa</div>
         <p class="closing-note">We look forward to celebrating together</p>
+
+        <!-- Final Botanical Emblem -->
+        <svg style="width: 80px; height: 35px; margin-top: 18px;" viewBox="0 0 80 35" fill="none">
+          <path d="M10,25 Q40,5 70,25" stroke="#bda16b" stroke-width="0.8"/>
+          <circle cx="40" cy="15" r="3" fill="#fde8ea" stroke="#b36e7d" stroke-width="0.6"/>
+          <circle cx="25" cy="20" r="1.5" fill="#d3beea"/>
+          <circle cx="55" cy="20" r="1.5" fill="#d3beea"/>
+        </svg>
       </section>
 
     </main>
