@@ -1,0 +1,911 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Wedding Invitation | Sakiruddin &amp; Runa</title>
+
+  <!-- Typography: Editorial Serif, Refined Calligraphy & Clean Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* -------------------------------------------------------------
+       DESIGN TOKENS & RESET
+       ------------------------------------------------------------- */
+    :root {
+      --bg-cream: #fbf9f5;
+      --bg-ivory: #f5f1e8;
+      --gold-primary: #bda16b;
+      --gold-deep: #8f7542;
+      --gold-foil: linear-gradient(135deg, #d8c292 0%, #bca169 50%, #9e824c 100%);
+      --text-dark: #272421;
+      --text-muted: #6e675f;
+      --text-soft: #9c9489;
+      --taupe-accent: #ede7dc;
+      --border-delicate: rgba(189, 161, 107, 0.35);
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Alex Brush', cursive;
+      --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      background-color: #121110; /* Dark backdrop for desktop letterbox framing */
+      color: var(--text-dark);
+      font-family: var(--font-serif);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* -------------------------------------------------------------
+       MOBILE-FIRST STATIONERY CONTAINER (9:16 Editorial Card)
+       ------------------------------------------------------------- */
+    .viewport-wrapper {
+      max-width: 440px;
+      margin: 0 auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+      background-color: var(--bg-cream);
+      position: relative;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Tactile Paper Texture (Procedural SVG Grain Overlay) */
+    .viewport-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    /* -------------------------------------------------------------
+       SVG ORNAMENTATION & BORDERS
+       ------------------------------------------------------------- */
+    .card-border-frame {
+      position: absolute;
+      inset: 12px;
+      border: 1px solid var(--border-delicate);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .card-border-inner {
+      position: absolute;
+      inset: 16px;
+      border: 0.5px solid rgba(189, 161, 107, 0.2);
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .corner-ornament {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      stroke: var(--gold-primary);
+      stroke-width: 1;
+      fill: none;
+      opacity: 0.65;
+      pointer-events: none;
+      z-index: 11;
+    }
+
+    .top-left { top: 8px; left: 8px; }
+    .top-right { top: 8px; right: 8px; transform: rotate(90deg); }
+    .bottom-right { bottom: 8px; right: 8px; transform: rotate(180deg); }
+    .bottom-left { bottom: 8px; left: 8px; transform: rotate(270deg); }
+
+    .rosette-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      opacity: 0.05;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* -------------------------------------------------------------
+       SLIDE 1: THE COVER (LOCKED VIEW)
+       ------------------------------------------------------------- */
+    #coverScreen {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 440px;
+      height: 100vh;
+      height: 100dvh;
+      background-color: var(--bg-cream);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 32px 50px;
+      z-index: 80;
+      transition: transform 1.2s cubic-bezier(0.65, 0, 0.2, 1), opacity 0.9s cubic-bezier(0.65, 0, 0.2, 1);
+    }
+
+    #coverScreen.unlocked {
+      transform: translate(-50%, -100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .cover-top {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .sub-caps {
+      font-family: var(--font-sans);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--gold-deep);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .guest-highlight {
+      font-family: var(--font-serif);
+      font-size: 2.1rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      letter-spacing: 0.02em;
+      min-height: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .guest-highlight::after {
+      content: '';
+      position: absolute;
+      left: 25%;
+      right: 25%;
+      bottom: -6px;
+      height: 0.5px;
+      background: var(--gold-foil);
+    }
+
+    .cover-center {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      max-width: 290px;
+    }
+
+    .cover-botanical {
+      width: 65px;
+      height: 65px;
+      margin: 0 auto 20px;
+      opacity: 0.75;
+    }
+
+    .cover-quote {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .cover-bottom {
+      z-index: 2;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* -------------------------------------------------------------
+       BUTTONS & TACTILE CONTROLS
+       ------------------------------------------------------------- */
+    .btn-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px 36px;
+      background: var(--bg-cream);
+      border: 1px solid var(--gold-primary);
+      border-radius: 9999px;
+      color: var(--text-dark);
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(189, 161, 107, 0.15);
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .btn-pill::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border: 0.5px solid rgba(189, 161, 107, 0.4);
+      border-radius: 9999px;
+      pointer-events: none;
+    }
+
+    .btn-pill:active {
+      transform: scale(0.97);
+      box-shadow: 0 2px 8px rgba(189, 161, 107, 0.1);
+    }
+
+    /* -------------------------------------------------------------
+       MAIN INVITATION SCROLL (PAGES/PANELS)
+       ------------------------------------------------------------- */
+    #mainInvitation {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: relative;
+      z-index: 20;
+    }
+
+    #mainInvitation.visible {
+      display: flex;
+    }
+
+    .panel {
+      position: relative;
+      padding: 70px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .panel-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--border-delicate);
+      margin: 10px auto 0;
+      position: relative;
+    }
+
+    .panel-divider::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      font-size: 6px;
+      color: var(--gold-deep);
+      background: var(--bg-cream);
+      padding: 0 6px;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 2: BISMILLAH & HOSTS
+       ------------------------------------------------------------- */
+    .bismillah-calligraphy {
+      font-family: var(--font-serif);
+      font-size: 1.6rem;
+      letter-spacing: 0.05em;
+      color: var(--gold-deep);
+      margin-bottom: 12px;
+    }
+
+    .quran-ayah {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 320px;
+      margin-bottom: 28px;
+      line-height: 1.5;
+    }
+
+    .ayah-ref {
+      display: block;
+      font-family: var(--font-sans);
+      font-style: normal;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-deep);
+      margin-top: 6px;
+    }
+
+    .host-intro {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 290px;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+
+    .couple-title {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 10px 0 16px;
+    }
+
+    .groom-name, .bride-name {
+      font-family: var(--font-serif);
+      font-size: 1.85rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      letter-spacing: 0.01em;
+      line-height: 1.25;
+    }
+
+    .ampersand {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--gold-deep);
+      line-height: 0.8;
+      margin: 8px 0;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 3: SCRATCH-TO-REVEAL DATE
+       ------------------------------------------------------------- */
+    .scratch-section-heading {
+      margin-bottom: 24px;
+    }
+
+    .scratch-wrapper {
+      position: relative;
+      width: 310px;
+      height: 145px;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(39, 36, 33, 0.07);
+      background-color: var(--bg-ivory);
+      border: 1px solid var(--border-delicate);
+      touch-action: none;
+    }
+
+    /* Concealed underneath content */
+    .scratch-secret {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: radial-gradient(circle, #fffbf2 0%, #f3eee3 100%);
+      padding: 16px;
+      z-index: 1;
+      user-select: none;
+    }
+
+    .date-text-day {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      font-weight: 600;
+      color: var(--gold-deep);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .date-text-primary {
+      font-family: var(--font-serif);
+      font-size: 1.65rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .date-text-time {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+      margin-top: 6px;
+      text-transform: uppercase;
+    }
+
+    /* Touch Canvas Scratch Overlay */
+    #scratchCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      cursor: crosshair;
+      transition: opacity 0.6s ease-out;
+    }
+
+    .scratch-hint {
+      margin-top: 14px;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+      text-transform: uppercase;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 4: WALIMA DETAILS & VENUE
+       ------------------------------------------------------------- */
+    .venue-card {
+      width: 100%;
+      max-width: 320px;
+      padding: 24px 20px;
+      background: rgba(255, 255, 255, 0.45);
+      border: 1px solid var(--border-delicate);
+      border-radius: 4px;
+      margin: 20px 0 28px;
+    }
+
+    .event-type-badge {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      color: var(--gold-deep);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .venue-title {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      color: var(--text-dark);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .venue-address {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 5: PERSONAL MESSAGE & RSVP
+       ------------------------------------------------------------- */
+    .personal-note-box {
+      max-width: 310px;
+      margin-bottom: 30px;
+    }
+
+    .greeting-line {
+      font-family: var(--font-serif);
+      font-size: 1.45rem;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .greeting-body {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 6: FINAL ROMANTIC CLOSING
+       ------------------------------------------------------------- */
+    .closing-panel {
+      padding-bottom: 90px;
+    }
+
+    .closing-tagline {
+      font-family: var(--font-script);
+      font-size: 2.3rem;
+      color: var(--gold-deep);
+      margin-bottom: 4px;
+    }
+
+    .closing-names {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      color: var(--text-dark);
+      letter-spacing: 0.04em;
+      margin-bottom: 12px;
+    }
+
+    .closing-note {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      max-width: 260px;
+    }
+
+    /* -------------------------------------------------------------
+       ELEGANT ENTRY ANIMATIONS
+       ------------------------------------------------------------- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="viewport-wrapper">
+    <!-- Reusable Stationery Foil Frame (Top Layer) -->
+    <div class="card-border-frame"></div>
+    <div class="card-border-inner"></div>
+
+    <!-- Fine Botanical Corner Flourishes -->
+    <svg class="corner-ornament top-left" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.57 5.57 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.68 8.68 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#bda16b" />
+    </svg>
+    <svg class="corner-ornament top-right" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.57 5.57 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.68 8.68 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#bda16b" />
+    </svg>
+    <svg class="corner-ornament bottom-right" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.57 5.57 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.68 8.68 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#bda16b" />
+    </svg>
+    <svg class="corner-ornament bottom-left" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.57 5.57 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.68 8.68 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#bda16b" />
+    </svg>
+
+    <!-- Subdued Islamic Arabesque Watermark -->
+    <svg class="rosette-watermark" viewBox="0 0 200 200">
+      <g stroke="#bda16b" stroke-width="0.75" fill="none">
+        <circle cx="100" cy="100" r="90" />
+        <circle cx="100" cy="100" r="60" />
+        <polygon points="100,10 190,100 100,190 10,100" />
+        <polygon points="36.36,36.36 163.64,36.36 163.64,163.64 36.36,163.64" />
+        <circle cx="100" cy="100" r="30" />
+      </g>
+    </svg>
+
+    <!-- =========================================================
+         SCREEN 1: THE INVITATION COVER (ONLY ACCESS POINT)
+         ========================================================= -->
+    <section id="coverScreen">
+      <div class="cover-top">
+        <p class="sub-caps">A Special Invitation For</p>
+        <h1 class="guest-highlight" id="coverGuestName">Alfaz Malik</h1>
+      </div>
+
+      <div class="cover-center">
+        <!-- Delicate Lineart Floral Icon -->
+        <svg class="cover-botanical" viewBox="0 0 60 60" fill="none" stroke="#bda16b" stroke-width="1">
+          <path d="M30 50 C30 35 15 25 15 15 C25 15 30 25 30 35 C30 25 35 15 45 15 C45 25 30 35 30 50 Z" />
+          <path d="M30 45 Q20 38 18 30" />
+          <path d="M30 40 Q40 33 42 26" />
+          <circle cx="30" cy="12" r="1.5" fill="#bda16b" />
+        </svg>
+        <p class="cover-quote">
+          With joy, gratitude, and seeking the auspicious blessings of Allah (SWT)...
+        </p>
+      </div>
+
+      <div class="cover-bottom">
+        <button id="openInvitationBtn" class="btn-pill" type="button">
+          Open Invitation
+        </button>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         MAIN UNLOCKED INVITATION PANELS
+         ========================================================= -->
+    <main id="mainInvitation">
+
+      <!-- SECTION 2: BISMILLAH & SOLEMN REQUEST -->
+      <section class="panel fade-up">
+        <div class="bismillah-calligraphy">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+        <p class="quran-ayah">
+          “And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.”
+          <span class="ayah-ref">— Surah Ar-Rum 30:21</span>
+        </p>
+
+        <p class="host-intro">
+          Mr. Nuruddin Shaikh &amp; Mr. Saidul Shaikh<br />
+          solicit your kind presence and prayers at the Walima celebration of their beloved children
+        </p>
+
+        <div class="couple-title">
+          <span class="groom-name">Sakiruddin Nuruddin Shaikh</span>
+          <span class="ampersand">&amp;</span>
+          <span class="bride-name">Runa Saidul Shaikh</span>
+        </div>
+
+        <div class="panel-divider"></div>
+      </section>
+
+      <!-- SECTION 3: TACTILE SCRATCH-TO-REVEAL DATE -->
+      <section class="panel fade-up">
+        <div class="scratch-section-heading">
+          <p class="sub-caps">Auspicious Date</p>
+          <div class="panel-divider"></div>
+        </div>
+
+        <div class="scratch-wrapper" id="scratchCardContainer">
+          <!-- Underlying Hidden Content -->
+          <div class="scratch-secret">
+            <span class="date-text-day">Monday</span>
+            <span class="date-text-primary">19 OCTOBER 2026</span>
+            <span class="date-text-time">8:00 PM Onwards</span>
+          </div>
+          <!-- Scratch Surface -->
+          <canvas id="scratchCanvas"></canvas>
+        </div>
+        <p class="scratch-hint" id="scratchPrompt">Scratch golden foil to reveal date</p>
+      </section>
+
+      <!-- SECTION 4: WALIMA CEREMONY & LOCATION -->
+      <section class="panel fade-up">
+        <p class="sub-caps">Reception &amp; Dinner</p>
+        
+        <div class="venue-card">
+          <span class="event-type-badge">Walima Ceremony</span>
+          <div style="margin-bottom: 12px; font-size: 0.95rem; color: var(--gold-deep); font-weight: 500;">
+            Monday, 19 October 2026 &bull; 8:00 PM onwards
+          </div>
+          <h2 class="venue-title">Alhamdo Park</h2>
+          <p class="venue-address">
+            C-3 Alhamdo Park Society,<br />
+            Jaspur Road, Padra,<br />
+            Vadodara, Gujarat
+          </p>
+        </div>
+
+        <a href="https://maps.google.com/?q=Alhamdo+Park+Jaspur+Road+Padra+Vadodara" target="_blank" rel="noopener noreferrer" class="btn-pill">
+          Open In Google Maps
+        </a>
+
+        <div class="panel-divider" style="margin-top: 36px;"></div>
+      </section>
+
+      <!-- SECTION 5: PERSONAL MESSAGE & RSVP -->
+      <section class="panel fade-up">
+        <div class="personal-note-box">
+          <h3 class="greeting-line" id="personalGreeting">Dear Alfaz,</h3>
+          <p class="greeting-body">
+            Your warmth, companionship, and prayers have always enriched our lives. Your gracious presence would honor us as our families unite on this joyous occasion.
+          </p>
+        </div>
+
+        <a id="rsvpButton" href="#" target="_blank" rel="noopener noreferrer" class="btn-pill">
+          Confirm Your Presence
+        </a>
+
+        <div class="panel-divider" style="margin-top: 36px;"></div>
+      </section>
+
+      <!-- SECTION 6: MINIMAL ROMANTIC CLOSING -->
+      <section class="panel closing-panel fade-up">
+        <div class="closing-tagline">With love,</div>
+        <div class="closing-names">Sakiruddin &amp; Runa</div>
+        <p class="closing-note">We look forward to celebrating together</p>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    /* -------------------------------------------------------------
+       GUEST PERSONALIZATION ENGINE
+       Supports URL param "?guest=Guest+Name".
+       Defaults cleanly to "Alfaz Malik".
+       ------------------------------------------------------------- */
+    const urlParams = new URLSearchParams(window.location.search);
+    const rawGuestParam = urlParams.get('guest');
+    const guestName = rawGuestParam ? rawGuestParam.trim() : "Alfaz Malik";
+
+    // Format friendly first name for personal message:
+    // e.g., "Alfaz Malik" -> "Alfaz", "Sabir Hossain Lashkar & Family" -> "Sabir & Family"
+    let shortGuestName = guestName;
+    if (guestName.includes('& Family')) {
+      shortGuestName = guestName.split(' ')[0] + ' & Family';
+    } else if (guestName.split(' ').length > 1) {
+      shortGuestName = guestName.split(' ')[0];
+    }
+
+    document.getElementById('coverGuestName').textContent = guestName;
+    document.getElementById('personalGreeting').textContent = `Dear ${shortGuestName},`;
+
+    // WhatsApp RSVP configuration
+    const rsvpPhone = "916353857881";
+    const rsvpMessage = encodeURIComponent(`Assalamu Alaikum,\n\nI am delighted to accept the invitation for the Walima of Sakiruddin & Runa on 19th October 2026.\n\nWarm regards,\n${guestName}`);
+    document.getElementById('rsvpButton').href = `https://wa.me/${rsvpPhone}?text=${rsvpMessage}`;
+
+    /* -------------------------------------------------------------
+       INTERACTION: OPEN INVITATION UNLOCK
+       Strictly enforces that panels cannot be scrolled/seen prior.
+       ------------------------------------------------------------- */
+    const openBtn = document.getElementById('openInvitationBtn');
+    const coverScreen = document.getElementById('coverScreen');
+    const mainInvitation = document.getElementById('mainInvitation');
+
+    openBtn.addEventListener('click', () => {
+      // 1. Reveal main content in DOM
+      mainInvitation.classList.add('visible');
+
+      // 2. Animate cover transition
+      coverScreen.classList.add('unlocked');
+
+      // 3. Trigger initial scroll position smoothly & initialize components
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        initScratchCard();
+        initScrollObservers();
+      }, 300);
+    });
+
+    /* -------------------------------------------------------------
+       TOUCH SCRATCH CARD (HTML5 Canvas)
+       Conceals date until >=30% has been cleared, then gracefully fades.
+       ------------------------------------------------------------- */
+    function initScratchCard() {
+      const container = document.getElementById('scratchCardContainer');
+      const canvas = document.getElementById('scratchCanvas');
+      const hint = document.getElementById('scratchPrompt');
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+
+      const width = container.offsetWidth;
+      const height = container.offsetHeight;
+
+      // Handle retina displays
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      ctx.scale(dpr, dpr);
+
+      // Draw Luxury Champagne Gold Foil Cover
+      function renderFoilSurface() {
+        const grad = ctx.createLinearGradient(0, 0, width, height);
+        grad.addColorStop(0, '#ebd9b4');
+        grad.addColorStop(0.3, '#d4bc8b');
+        grad.addColorStop(0.7, '#ba9f67');
+        grad.addColorStop(1, '#a68a52');
+        ctx.fillStyle = grad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Subtle decorative border on foil
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+        ctx.lineWidth = 1;
+        ctx.strokeRect(8, 8, width - 16, height - 16);
+
+        // Center typography on scratch layer
+        ctx.font = '500 11px "Montserrat", sans-serif';
+        ctx.fillStyle = '#4a3d24';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.letterSpacing = '3px';
+        ctx.fillText('SCRATCH TO REVEAL', width / 2, height / 2);
+      }
+
+      renderFoilSurface();
+
+      let isDrawing = false;
+      let revealed = false;
+      let erasedPixelsCount = 0;
+
+      function getPosition(e) {
+        const rect = canvas.getBoundingClientRect();
+        let clientX, clientY;
+        if (e.touches && e.touches.length > 0) {
+          clientX = e.touches[0].clientX;
+          clientY = e.touches[0].clientY;
+        } else {
+          clientX = e.clientX;
+          clientY = e.clientY;
+        }
+        return {
+          x: clientX - rect.left,
+          y: clientY - rect.top
+        };
+      }
+
+      function scratch(e) {
+        if (!isDrawing || revealed) return;
+        e.preventDefault();
+
+        const { x, y } = getPosition(e);
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.beginPath();
+        ctx.arc(x, y, 22, 0, Math.PI * 2, false);
+        ctx.fill();
+
+        checkPercentageScratched();
+      }
+
+      function checkPercentageScratched() {
+        if (revealed) return;
+
+        // Sample every 16th pixel for high-performance touch response
+        const sampleGap = 16;
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imgData.data;
+        let transparentPixels = 0;
+        let totalSamples = 0;
+
+        for (let i = 3; i < data.length; i += 4 * sampleGap) {
+          totalSamples++;
+          if (data[i] === 0) {
+            transparentPixels++;
+          }
+        }
+
+        const scratchedPercentage = (transparentPixels / totalSamples) * 100;
+
+        // Reveal threshold set at 30%
+        if (scratchedPercentage >= 30) {
+          revealed = true;
+          canvas.style.opacity = '0';
+          canvas.style.pointerEvents = 'none';
+          hint.textContent = "Date Unlocked";
+          hint.style.color = "var(--gold-deep)";
+          hint.style.letterSpacing = "0.25em";
+        }
+      }
+
+      // Touch & Mouse Listeners
+      canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+      window.addEventListener('mouseup', () => { isDrawing = false; });
+      canvas.addEventListener('mousemove', scratch);
+
+      canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: false });
+      window.addEventListener('touchend', () => { isDrawing = false; });
+      canvas.addEventListener('touchmove', scratch, { passive: false });
+    }
+
+    /* -------------------------------------------------------------
+       SCROLL OBSERVER FOR DELICATE REVEAL ANIMATION
+       ------------------------------------------------------------- */
+    function initScrollObservers() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      document.querySelectorAll('.fade-up').forEach(el => {
+        observer.observe(el);
+      });
+    }
+  </script>
+</body>
+</html>
