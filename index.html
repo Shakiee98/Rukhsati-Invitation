@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Rukhsati Invitation | Sakiruddin &amp; Runa</title>
+  <title>Walima Invitation | Sakiruddin &amp; Runa</title>
 
-  <!-- High-End Editorial Typography -->
+  <!-- High-End Editorial Serif, Refined Calligraphy & Modern Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <style>
+    /* -------------------------------------------------------------
+       DESIGN SYSTEM & COLOR TOKENS (Luxury Editorial Stationery)
+       ------------------------------------------------------------- */
     :root {
-      --bg-cream: #fdfaf7;
-      --bg-ivory: #faf4ed;
-      --gold-primary: #bda16b;
-      --gold-deep: #8f7542;
-      --gold-foil: linear-gradient(135deg, #e4d1aa 0%, #bca169 50%, #9e824c 100%);
-      --pink-soft: #f4b6be;
-      --pink-blush: #fde8ea;
-      --lavender-soft: #d3beea;
-      --lavender-mist: #eee6f6;
-      --text-dark: #272421;
-      --text-muted: #5e5751;
-      --text-soft: #8f877d;
-      --border-delicate: rgba(189, 161, 107, 0.4);
+      --bg-cream: #fbf9f4;
+      --bg-ivory: #f4eee3;
+      --bg-warm-taupe: #eae2d5;
+      --gold-primary: #c2a66e;
+      --gold-deep: #8f7442;
+      --gold-foil: linear-gradient(135deg, #e8d5af 0%, #caa971 50%, #9e7f47 100%);
+      --text-dark: #292522;
+      --text-muted: #69625a;
+      --text-soft: #9c9489;
+      --border-delicate: rgba(194, 166, 110, 0.4);
       --font-serif: 'Cormorant Garamond', Georgia, serif;
       --font-script: 'Alex Brush', cursive;
       --font-sans: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,47 +37,46 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    body {
-      background-color: var(--bg-cream);
-      background-image: 
-        radial-gradient(circle at 10% 10%, rgba(253, 232, 234, 0.65), transparent 40%),
-        radial-gradient(circle at 90% 40%, rgba(238, 230, 246, 0.7), transparent 45%),
-        radial-gradient(circle at 15% 70%, rgba(253, 232, 234, 0.65), transparent 40%),
-        radial-gradient(circle at 85% 95%, rgba(238, 230, 246, 0.7), transparent 45%);
+    html, body {
+      background-color: #171514;
       color: var(--text-dark);
       font-family: var(--font-serif);
       font-weight: 400;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
-      min-height: 100vh;
-      min-height: 100dvh;
     }
 
+    /* -------------------------------------------------------------
+       SMARTPHONE FRAME (9:16 Editorial Card)
+       ------------------------------------------------------------- */
     .viewport-wrapper {
       max-width: 440px;
       margin: 0 auto;
       min-height: 100vh;
-      background: transparent;
+      min-height: 100dvh;
+      background: radial-gradient(circle at 50% 15%, #ffffff 0%, #fbf9f4 50%, #f5efe4 100%);
       position: relative;
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.06);
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.35);
       overflow: hidden;
       display: flex;
       flex-direction: column;
     }
 
-    /* Tactile Paper Texture */
+    /* Tactile Paper Texture (Procedural Noise Grain) */
     .viewport-wrapper::before {
       content: '';
       position: fixed;
       inset: 0;
       max-width: 440px;
       margin: 0 auto;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.035'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 99;
     }
 
+    /* Fine Stationary Borders */
     .card-border-frame {
       position: absolute;
       inset: 12px;
@@ -89,44 +88,58 @@
     .card-border-inner {
       position: absolute;
       inset: 16px;
-      border: 0.5px solid rgba(189, 161, 107, 0.25);
+      border: 0.5px solid rgba(194, 166, 110, 0.22);
       pointer-events: none;
       z-index: 10;
     }
 
-    /* Subtle Natural Animations */
-    @keyframes gentleSway {
-      0% { transform: rotate(-2deg) translateY(0); }
-      100% { transform: rotate(2deg) translateY(-4px); }
+    /* Corner Flourishes */
+    .corner-flourish {
+      position: absolute;
+      width: 32px;
+      height: 32px;
+      stroke: var(--gold-primary);
+      stroke-width: 1;
+      fill: none;
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 11;
+    }
+    .top-left { top: 9px; left: 9px; }
+    .top-right { top: 9px; right: 9px; transform: rotate(90deg); }
+    .bottom-right { bottom: 9px; right: 9px; transform: rotate(180deg); }
+    .bottom-left { bottom: 9px; left: 9px; transform: rotate(270deg); }
+
+    /* Islamic Octagonal Rosette Motif (Low Opacity) */
+    .islamic-watermark {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      opacity: 0.045;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    @keyframes pulseHeart {
-      0% { transform: scale(0.92); opacity: 0.7; }
-      50% { transform: scale(1.08); opacity: 1; }
-      100% { transform: scale(0.92); opacity: 0.7; }
+    /* Floating Botanical Flowers */
+    .floating-flora {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.55;
+      animation: driftSlow 7s ease-in-out infinite alternate;
     }
 
-    @keyframes floatSoftly {
-      0% { transform: translateY(0) rotate(0deg); }
-      50% { transform: translateY(-6px) rotate(3deg); }
-      100% { transform: translateY(0) rotate(0deg); }
+    @keyframes driftSlow {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-10px) rotate(4deg); }
     }
 
-    .swaying-element {
-      animation: gentleSway 5s ease-in-out infinite alternate;
-      transform-origin: center top;
-    }
-
-    .pulsing-element {
-      animation: pulseHeart 3s ease-in-out infinite;
-      transform-origin: center;
-    }
-
-    .floating-element {
-      animation: floatSoftly 5.5s ease-in-out infinite;
-    }
-
-    /* COVER SCREEN */
+    /* -------------------------------------------------------------
+       COVER SCREEN (Slide 1: Exclusively Visible Initially)
+       ------------------------------------------------------------- */
     #coverScreen {
       position: fixed;
       top: 0;
@@ -136,14 +149,12 @@
       max-width: 440px;
       height: 100vh;
       height: 100dvh;
-      background: radial-gradient(circle at 50% 25%, rgba(253, 232, 234, 0.75), transparent 60%),
-                  radial-gradient(circle at 50% 75%, rgba(238, 230, 246, 0.75), transparent 60%),
-                  var(--bg-cream);
+      background: radial-gradient(circle at 50% 30%, #ffffff 0%, #faf5eb 60%, #f0e6d6 100%);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      padding: 60px 32px 50px;
+      padding: 65px 32px 55px;
       z-index: 80;
       transition: transform 1.2s cubic-bezier(0.65, 0, 0.2, 1), opacity 0.9s cubic-bezier(0.65, 0, 0.2, 1);
     }
@@ -161,12 +172,12 @@
       letter-spacing: 0.28em;
       color: var(--gold-deep);
       margin-bottom: 8px;
-      font-weight: 600;
+      font-weight: 500;
     }
 
     .guest-highlight {
       font-family: var(--font-serif);
-      font-size: 2.1rem;
+      font-size: 2.15rem;
       font-weight: 500;
       color: var(--text-dark);
       letter-spacing: 0.02em;
@@ -180,15 +191,22 @@
       left: 20%;
       right: 20%;
       bottom: -6px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--pink-soft), var(--lavender-soft), transparent);
+      height: 0.5px;
+      background: var(--gold-primary);
     }
 
     .cover-center {
       text-align: center;
       position: relative;
       z-index: 2;
-      max-width: 300px;
+      max-width: 290px;
+    }
+
+    .cover-motif {
+      width: 68px;
+      height: 68px;
+      margin: 0 auto 18px;
+      opacity: 0.8;
     }
 
     .cover-quote {
@@ -199,12 +217,13 @@
       line-height: 1.6;
     }
 
+    /* Elegant Pill Button */
     .btn-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 15px 36px;
-      background: linear-gradient(135deg, #ffffff 0%, #fdf8f5 100%);
+      padding: 15px 38px;
+      background: linear-gradient(135deg, #ffffff 0%, #fdfbf7 100%);
       border: 1px solid var(--gold-primary);
       border-radius: 9999px;
       color: var(--text-dark);
@@ -215,17 +234,29 @@
       text-transform: uppercase;
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 4px 18px rgba(189, 161, 107, 0.18);
+      box-shadow: 0 4px 20px rgba(194, 166, 110, 0.16);
       position: relative;
-      transition: all 0.3s ease;
+      overflow: hidden;
+      transition: all 0.35s ease;
       z-index: 2;
+    }
+
+    .btn-pill::before {
+      content: '';
+      position: absolute;
+      inset: 2px;
+      border: 0.5px solid rgba(194, 166, 110, 0.4);
+      border-radius: 9999px;
+      pointer-events: none;
     }
 
     .btn-pill:active {
       transform: scale(0.97);
     }
 
-    /* MAIN UNROLLED INVITATION */
+    /* -------------------------------------------------------------
+       MAIN UNLOCKED INVITATION PANELS
+       ------------------------------------------------------------- */
     #mainInvitation {
       display: none;
       flex-direction: column;
@@ -240,7 +271,7 @@
 
     .panel {
       position: relative;
-      padding: 40px 24px;
+      padding: 55px 28px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -248,11 +279,33 @@
       z-index: 2;
     }
 
+    .panel-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--border-delicate);
+      margin: 14px auto 0;
+      position: relative;
+    }
+
+    .panel-divider::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -55%);
+      font-size: 6px;
+      color: var(--gold-deep);
+      background: var(--bg-cream);
+      padding: 0 6px;
+    }
+
+    /* Bismillah & Ayah */
     .bismillah-calligraphy {
       font-family: var(--font-serif);
       font-size: 1.7rem;
       color: var(--gold-deep);
       margin-bottom: 12px;
+      letter-spacing: 0.04em;
     }
 
     .quran-ayah {
@@ -280,6 +333,7 @@
       font-size: 1.05rem;
       color: var(--text-muted);
       max-width: 300px;
+      margin: 24px 0 14px;
       line-height: 1.6;
     }
 
@@ -287,39 +341,42 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2px;
-      margin: 6px 0;
+      gap: 4px;
+      margin: 8px 0 16px;
       width: 100%;
     }
 
     .groom-name, .bride-name {
       font-family: var(--font-serif);
-      font-size: 1.95rem;
+      font-size: 1.9rem;
       font-weight: 500;
       color: var(--text-dark);
-      line-height: 1.25;
       letter-spacing: 0.02em;
+      line-height: 1.25;
     }
 
     .ampersand {
       font-family: var(--font-script);
       font-size: 2.3rem;
-      color: #b36e7d;
+      color: var(--gold-deep);
       line-height: 0.8;
+      margin: 6px 0;
     }
 
-    /* Scratch Card */
+    /* -------------------------------------------------------------
+       SCRATCH-TO-REVEAL CARD
+       ------------------------------------------------------------- */
     .scratch-wrapper {
       position: relative;
       width: 310px;
       height: 145px;
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(189, 161, 107, 0.12);
+      box-shadow: 0 8px 24px rgba(41, 37, 34, 0.08);
       background-color: var(--bg-ivory);
       border: 1px solid var(--border-delicate);
       touch-action: none;
-      margin: 10px auto 0;
+      margin: 12px auto 0;
     }
 
     .scratch-secret {
@@ -329,7 +386,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background: radial-gradient(circle, #fffaf6 0%, #f7eff9 100%);
+      background: radial-gradient(circle, #ffffff 0%, #f5efe4 100%);
       padding: 16px;
       z-index: 1;
       user-select: none;
@@ -337,10 +394,10 @@
 
     .date-text-day {
       font-family: var(--font-sans);
-      font-size: 0.72rem;
+      font-size: 0.74rem;
       letter-spacing: 0.25em;
       font-weight: 600;
-      color: #b36e7d;
+      color: var(--gold-deep);
       text-transform: uppercase;
       margin-bottom: 4px;
     }
@@ -370,7 +427,7 @@
       height: 100%;
       z-index: 2;
       cursor: crosshair;
-      transition: opacity 0.6s ease-out;
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .scratch-hint {
@@ -382,23 +439,25 @@
       text-transform: uppercase;
     }
 
-    /* Venue Card */
+    /* -------------------------------------------------------------
+       WALIMA VENUE DETAILS
+       ------------------------------------------------------------- */
     .venue-card {
       width: 100%;
       max-width: 320px;
       padding: 26px 20px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.65);
       border: 1px solid var(--border-delicate);
-      border-radius: 8px;
-      margin: 16px 0 24px;
-      box-shadow: 0 4px 20px rgba(189, 161, 107, 0.08);
+      border-radius: 6px;
+      margin: 18px 0 24px;
+      box-shadow: 0 4px 18px rgba(194, 166, 110, 0.06);
     }
 
     .event-type-badge {
       font-family: var(--font-sans);
       font-size: 0.76rem;
       letter-spacing: 0.35em;
-      color: #a46272;
+      color: var(--gold-deep);
       font-weight: 600;
       text-transform: uppercase;
       margin-bottom: 12px;
@@ -407,7 +466,7 @@
 
     .venue-title {
       font-family: var(--font-serif);
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       color: var(--text-dark);
       margin-bottom: 8px;
       font-weight: 500;
@@ -415,14 +474,15 @@
 
     .venue-address {
       font-family: var(--font-serif);
-      font-size: 1rem;
+      font-size: 1.02rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
 
+    /* Personal Note */
     .personal-note-box {
       max-width: 310px;
-      margin-bottom: 24px;
+      margin-bottom: 26px;
     }
 
     .greeting-line {
@@ -440,14 +500,15 @@
       line-height: 1.6;
     }
 
+    /* Closing */
     .closing-panel {
-      padding-bottom: 80px;
+      padding-bottom: 90px;
     }
 
     .closing-tagline {
       font-family: var(--font-script);
       font-size: 2.5rem;
-      color: #b36e7d;
+      color: var(--gold-deep);
       margin-bottom: 4px;
     }
 
@@ -456,7 +517,7 @@
       font-size: 1.6rem;
       color: var(--text-dark);
       letter-spacing: 0.04em;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .closing-note {
@@ -468,26 +529,71 @@
       max-width: 270px;
     }
 
+    /* Slow Premium Animations */
     .fade-up {
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(18px) scale(0.99);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .fade-up.visible {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   </style>
 </head>
 <body>
 
   <div class="viewport-wrapper">
+    <!-- Fine Outer Stationary Borders -->
     <div class="card-border-frame"></div>
     <div class="card-border-inner"></div>
 
+    <!-- Corner Engravings -->
+    <svg class="corner-flourish top-left" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.5 5.5 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.5 8.5 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#c2a66e" />
+    </svg>
+    <svg class="corner-flourish top-right" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.5 5.5 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.5 8.5 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#c2a66e" />
+    </svg>
+    <svg class="corner-flourish bottom-right" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.5 5.5 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.5 8.5 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#c2a66e" />
+    </svg>
+    <svg class="corner-flourish bottom-left" viewBox="0 0 40 40">
+      <path d="M2 38 V 10 C 2 5.5 5.5 2 10 2 H 38" />
+      <path d="M6 38 V 12 C 6 8.5 8.5 6 12 6 H 38" />
+      <circle cx="10" cy="10" r="1.5" fill="#c2a66e" />
+    </svg>
+
+    <!-- Restrained Islamic Rosette Watermark -->
+    <svg class="islamic-watermark" viewBox="0 0 200 200">
+      <g stroke="#c2a66e" stroke-width="0.8" fill="none">
+        <circle cx="100" cy="100" r="92" />
+        <circle cx="100" cy="100" r="62" />
+        <polygon points="100,8 192,100 100,192 8,100" />
+        <polygon points="35,35 165,35 165,165 35,165" />
+        <circle cx="100" cy="100" r="32" />
+      </g>
+    </svg>
+
+    <!-- Subtle Floating Botanical Elements in Outer Margins -->
+    <svg class="floating-flora" style="top: 22%; left: 14px; width: 36px; height: 36px;" viewBox="0 0 40 40" fill="none">
+      <path d="M20 5 C20 15 10 20 5 20 C15 20 20 30 20 35 C20 25 30 20 35 20 C25 20 20 10 20 5 Z" fill="#eae2d5" stroke="#c2a66e" stroke-width="0.6"/>
+      <circle cx="20" cy="20" r="2" fill="#c2a66e"/>
+    </svg>
+    <svg class="floating-flora" style="top: 55%; right: 14px; width: 32px; height: 32px; animation-delay: 2.5s;" viewBox="0 0 40 40" fill="none">
+      <path d="M20 5 C20 15 10 20 5 20 C15 20 20 30 20 35 C20 25 30 20 35 20 C25 20 20 10 20 5 Z" fill="#eae2d5" stroke="#c2a66e" stroke-width="0.6"/>
+      <circle cx="20" cy="20" r="2" fill="#c2a66e"/>
+    </svg>
+
     <!-- =========================================================
-         SCREEN 1: THE COVER
+         SCREEN 1: THE COVER (ONLY Visible Slide Initially)
          ========================================================= -->
     <section id="coverScreen">
       <div style="text-align: center; z-index: 2;">
@@ -496,18 +602,15 @@
       </div>
 
       <div class="cover-center">
-        <!-- Botanical Ring with Heart -->
-        <svg style="width: 90px; height: 90px; margin: 0 auto 16px;" class="floating-element" viewBox="0 0 100 100" fill="none">
-          <circle cx="50" cy="50" r="42" stroke="#d3beea" stroke-width="1.2" stroke-dasharray="3 3"/>
-          <circle cx="50" cy="50" r="37" stroke="#f4b6be" stroke-width="0.8"/>
-          <circle cx="50" cy="8" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.5"/>
-          <circle cx="92" cy="50" r="6" fill="#eee6f6" stroke="#bda16b" stroke-width="0.5"/>
-          <circle cx="50" cy="92" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.5"/>
-          <circle cx="8" cy="50" r="6" fill="#eae0f5" stroke="#bda16b" stroke-width="0.5"/>
-          <path class="pulsing-element" d="M50 59 L43 52 C37 46 34 42 34 38 C34 34 37 31 41 31 C43.8 31 46.5 32.5 50 35 C53.5 32.5 56.2 31 59 31 C63 31 66 34 66 38 C66 42 63 46 57 52 Z" fill="#b36e7d"/>
+        <!-- Refined Floral Botanical Motif -->
+        <svg class="cover-motif" viewBox="0 0 60 60" fill="none" stroke="#c2a66e" stroke-width="0.9">
+          <path d="M30 52 C30 36 14 26 14 16 C24 16 30 26 30 36 C30 26 36 16 46 16 C46 26 30 36 30 52 Z" fill="rgba(244, 238, 227, 0.6)"/>
+          <path d="M30 46 Q20 38 18 30" />
+          <path d="M30 42 Q40 34 42 26" />
+          <circle cx="30" cy="13" r="1.5" fill="#c2a66e" />
         </svg>
         <p class="cover-quote">
-          With prayers, gentle blessings, and the auspicious grace of Allah (SWT)...
+          With joy, gratitude, and seeking the auspicious blessings of Allah (SWT)...
         </p>
       </div>
 
@@ -519,127 +622,59 @@
     </section>
 
     <!-- =========================================================
-         MAIN UNLOCKED INVITATION PANELS
+         MAIN UNLOCKED INVITATION (Pages/Panels)
          ========================================================= -->
     <main id="mainInvitation">
 
-      <!-- SECTION 2: BISMILLAH & RUKHSATI ANNOUNCEMENT -->
+      <!-- SECTION 2: BISMILLAH & HOST REQUEST -->
       <section class="panel fade-up">
-        
-        <!-- SIDE MARGIN FLORAL FLOURISHES (Left & Right of Ayah) -->
-        <svg class="swaying-element" style="position: absolute; left: 10px; top: 75px; width: 45px; height: 110px; pointer-events: none; opacity: 0.8;" viewBox="0 0 45 110" fill="none">
-          <path d="M5,10 Q25,45 10,80 T35,105" stroke="#d3beea" stroke-width="1.2"/>
-          <circle cx="20" cy="38" r="5" fill="#fde8ea" stroke="#f4b6be" stroke-width="0.5"/>
-          <circle cx="10" cy="75" r="4" fill="#eee6f6" stroke="#d3beea" stroke-width="0.5"/>
-          <path class="pulsing-element" d="M26,56 C26,54 23,52 21,54 C19,52 16,54 16,56 C16,59 21,62 21,62 C21,62 26,59 26,56 Z" fill="#f4b6be"/>
-        </svg>
-
-        <svg class="swaying-element" style="position: absolute; right: 10px; top: 75px; width: 45px; height: 110px; transform: scaleX(-1); pointer-events: none; opacity: 0.8;" viewBox="0 0 45 110" fill="none">
-          <path d="M5,10 Q25,45 10,80 T35,105" stroke="#f4b6be" stroke-width="1.2"/>
-          <circle cx="20" cy="38" r="5" fill="#eee6f6" stroke="#d3beea" stroke-width="0.5"/>
-          <circle cx="10" cy="75" r="4" fill="#fde8ea" stroke="#f4b6be" stroke-width="0.5"/>
-          <path class="pulsing-element" d="M26,56 C26,54 23,52 21,54 C19,52 16,54 16,56 C16,59 21,62 21,62 C21,62 26,59 26,56 Z" fill="#d3beea"/>
-        </svg>
-
         <div class="bismillah-calligraphy">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
         <p class="quran-ayah">
           “And of His signs is that He created for you from yourselves mates that you may find tranquility in them; and He placed between you affection and mercy.”
           <span class="ayah-ref">— Surah Ar-Rum 30:21</span>
         </p>
 
-        <!-- MARKED ZONE 1: Floral Divider under Quran Ayah -->
-        <svg class="floating-element" style="width: 100%; max-width: 250px; height: 36px; margin: 10px auto;" viewBox="0 0 250 36" fill="none">
-          <path d="M15,18 H95 M155,18 H235" stroke="var(--border-delicate)" stroke-width="0.8"/>
-          <circle cx="125" cy="18" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.8"/>
-          <circle cx="115" cy="18" r="3.5" fill="#eee6f6"/>
-          <circle cx="135" cy="18" r="3.5" fill="#eee6f6"/>
-          <path d="M106,18 Q98,12 92,18 Q98,24 106,18 Z" fill="#d3beea" opacity="0.65"/>
-          <path d="M144,18 Q152,12 158,18 Q152,24 144,18 Z" fill="#f4b6be" opacity="0.65"/>
-        </svg>
-
         <p class="host-intro">
-          Mr. Nuruddin Shaikh &amp; Mr. Saidul Shaikh<br />
-          cordially request the honor of your presence and warm prayers to grace the auspicious
-          <strong style="color: #a46272; font-weight: 600; display: block; margin-top: 4px;">Rukhsati Ceremony</strong>
-          of their beloved children
+          Nuruddin Shaikh &amp; Saidul Shaikh<br />
+          request your presence at the Walima ceremony of
         </p>
-
-        <!-- MARKED ZONE 2: Wavy Vines & Heart above Groom Name -->
-        <svg class="swaying-element" style="width: 100%; max-width: 220px; height: 32px; margin: 12px auto 6px;" viewBox="0 0 220 32" fill="none">
-          <path d="M30,16 Q75,6 110,16 T190,16" stroke="#d3beea" stroke-width="0.9"/>
-          <circle cx="110" cy="16" r="3.5" fill="#f4b6be"/>
-          <circle cx="70" cy="11" r="2" fill="#bda16b"/>
-          <circle cx="150" cy="11" r="2" fill="#bda16b"/>
-          <path class="pulsing-element" d="M110,4 C110,2 108,1 106,2 C104,1 102,2 102,4 C102,6 106,8 106,8 C106,8 110,6 110,4 Z" fill="#b36e7d"/>
-        </svg>
 
         <div class="couple-title">
           <span class="groom-name">Sakiruddin Nuruddin Shaikh</span>
-          
-          <!-- MARKED ZONE 3: Flourished Ribbon Flanking '&' -->
-          <div style="display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px 0;">
-            <svg style="width: 44px; height: 18px;" viewBox="0 0 44 18" fill="none">
-              <path d="M4,10 Q22,2 40,10" stroke="#f4b6be" stroke-width="1.2"/>
-              <circle cx="20" cy="6" r="3" fill="#d3beea"/>
-            </svg>
-            <span class="ampersand">&amp;</span>
-            <svg style="width: 44px; height: 18px; transform: scaleX(-1);" viewBox="0 0 44 18" fill="none">
-              <path d="M4,10 Q22,2 40,10" stroke="#f4b6be" stroke-width="1.2"/>
-              <circle cx="20" cy="6" r="3" fill="#d3beea"/>
-            </svg>
-          </div>
-
+          <span class="ampersand">&amp;</span>
           <span class="bride-name">Runa Saidul Shaikh</span>
         </div>
 
-        <!-- MARKED ZONE 4: Decorative Garland between Couple Names and Scratch Card -->
-        <svg class="swaying-element" style="width: 100%; max-width: 290px; height: 46px; margin-top: 14px;" viewBox="0 0 290 46" fill="none">
-          <path d="M15,23 Q80,7 145,23 T275,23" stroke="#d3beea" stroke-width="1.1"/>
-          <path d="M35,23 Q95,37 145,23 T255,23" stroke="#f4b6be" stroke-width="1.1"/>
-          <g transform="translate(145, 23)">
-            <circle cx="0" cy="0" r="7" fill="#fde8ea" stroke="#bda16b" stroke-width="0.8"/>
-            <circle cx="0" cy="0" r="3" fill="#b36e7d"/>
-          </g>
-          <!-- Pulsing hearts flanking center -->
-          <path class="pulsing-element" d="M95,17 C95,15 92,13 90,15 C88,13 85,15 85,17 C85,20 90,23 90,23 C90,23 95,20 95,17 Z" fill="#f4b6be"/>
-          <path class="pulsing-element" d="M200,17 C200,15 197,13 195,15 C193,13 190,15 190,17 C190,20 195,23 195,23 C195,23 200,20 200,17 Z" fill="#d3beea"/>
-        </svg>
+        <div class="panel-divider"></div>
       </section>
 
-      <!-- SECTION 3: SCRATCH-TO-REVEAL DATE -->
-      <section class="panel fade-up" style="padding-top: 10px;">
+      <!-- SECTION 3: TACTILE SCRATCH-TO-REVEAL DATE -->
+      <section class="panel fade-up">
         <div style="margin-bottom: 12px;">
           <p class="sub-caps">Auspicious Date</p>
+          <div class="panel-divider"></div>
         </div>
 
         <div class="scratch-wrapper" id="scratchCardContainer">
+          <!-- Concealed Underneath Content -->
           <div class="scratch-secret">
             <span class="date-text-day">Monday</span>
             <span class="date-text-primary">19 OCTOBER 2026</span>
             <span class="date-text-time">8:00 PM Onwards</span>
           </div>
+          <!-- Scratch Surface -->
           <canvas id="scratchCanvas"></canvas>
         </div>
         <p class="scratch-hint" id="scratchPrompt">Scratch golden foil to reveal date</p>
-
-        <!-- MARKED ZONE 5: Pastel Rose Floral Arch under Scratch Card -->
-        <svg class="floating-element" style="width: 100%; max-width: 280px; height: 50px; margin-top: 22px;" viewBox="0 0 280 50" fill="none">
-          <path d="M20,25 C70,39 100,13 140,25 C180,37 210,13 260,25" stroke="#f4b6be" stroke-width="1.2"/>
-          <path d="M40,25 C80,13 110,37 140,25 C170,13 200,37 240,25" stroke="#d3beea" stroke-width="1.2"/>
-          <circle cx="140" cy="25" r="6" fill="#fde8ea" stroke="#bda16b" stroke-width="0.8"/>
-          <circle cx="85" cy="25" r="3.5" fill="#eee6f6"/>
-          <circle cx="195" cy="25" r="3.5" fill="#eee6f6"/>
-          <path class="pulsing-element" d="M140,8 C140,6 138,4 136,6 C134,4 132,6 132,8 C132,10 136,13 136,13 C136,13 140,10 140,8 Z" fill="#b36e7d"/>
-        </svg>
       </section>
 
-      <!-- SECTION 4: CEREMONY & LOCATION -->
-      <section class="panel fade-up" style="padding-top: 10px;">
-        <p class="sub-caps">Ceremony &amp; Dinner</p>
+      <!-- SECTION 4: WALIMA DETAILS & VENUE -->
+      <section class="panel fade-up">
+        <p class="sub-caps">Reception &amp; Dinner</p>
         
         <div class="venue-card">
-          <span class="event-type-badge">Rukhsati Ceremony</span>
-          <div style="margin-bottom: 12px; font-size: 0.95rem; color: #a46272; font-weight: 500;">
+          <span class="event-type-badge">Walima</span>
+          <div style="margin-bottom: 12px; font-size: 0.95rem; color: var(--gold-deep); font-weight: 500;">
             Monday, 19 October 2026 &bull; 8:00 PM onwards
           </div>
           <h2 class="venue-title">Alhamdo Park</h2>
@@ -654,27 +689,15 @@
           Open In Google Maps
         </a>
 
-        <!-- MARKED ZONE 6: Twin Hearts & Blossoms between Map and Message -->
-        <svg class="swaying-element" style="width: 100%; max-width: 270px; height: 50px; margin: 28px auto 14px;" viewBox="0 0 270 50" fill="none">
-          <path d="M15,25 Q65,40 135,25 T255,25" stroke="#d3beea" stroke-width="1.2"/>
-          <g transform="translate(135, 25)">
-            <circle cx="0" cy="-6" r="5" fill="#fde8ea"/>
-            <circle cx="6" cy="0" r="5" fill="#eee6f6"/>
-            <circle cx="0" cy="6" r="5" fill="#fde8ea"/>
-            <circle cx="-6" cy="0" r="5" fill="#eee6f6"/>
-            <circle cx="0" cy="0" r="3" fill="#bda16b"/>
-          </g>
-          <path class="pulsing-element" d="M75,23 C75,21 72,19 70,21 C68,19 65,21 65,23 C65,26 70,29 70,29 C70,29 75,26 75,23 Z" fill="#f4b6be"/>
-          <path class="pulsing-element" d="M200,23 C200,21 197,19 195,21 C193,19 190,21 190,23 C190,26 195,29 195,29 C195,29 200,26 200,23 Z" fill="#f4b6be"/>
-        </svg>
+        <div class="panel-divider" style="margin-top: 36px;"></div>
       </section>
 
       <!-- SECTION 5: PERSONAL MESSAGE & RSVP -->
-      <section class="panel fade-up" style="padding-top: 5px;">
+      <section class="panel fade-up">
         <div class="personal-note-box">
           <h3 class="greeting-line" id="personalGreeting">Dear Alfaz,</h3>
           <p class="greeting-body">
-            As Runa steps into a blessed new beginning, your heartfelt presence, love, and prayers will mean the world to our families.
+            Your warmth, companionship, and prayers have always held a meaningful place in our lives. Your gracious presence would make our celebration truly complete.
           </p>
         </div>
 
@@ -682,40 +705,29 @@
           Confirm Your Presence
         </a>
 
-        <!-- MARKED ZONE 7: Interlinked Hearts & Rose Garland above Closing -->
-        <svg class="floating-element" style="width: 100%; max-width: 250px; height: 50px; margin-top: 24px;" viewBox="0 0 250 50" fill="none">
-          <path d="M25,25 Q75,10 125,25 T225,25" stroke="#f4b6be" stroke-width="1.1"/>
-          <!-- Two Interlocked Hearts -->
-          <g class="pulsing-element" transform="translate(125, 23)">
-            <path d="M-6,0 C-6,-3 -9,-5 -11,-3 C-13,-5 -16,-3 -16,0 C-16,3 -11,6 -11,6 C-11,6 -6,3 -6,0 Z" fill="#b36e7d"/>
-            <path d="M6,0 C6,-3 3,-5 1,-3 C-1,-5 -4,-3 -4,0 C-4,3 1,6 1,6 C1,6 6,3 6,0 Z" fill="#d3beea"/>
-          </g>
-        </svg>
+        <div class="panel-divider" style="margin-top: 36px;"></div>
       </section>
 
-      <!-- SECTION 6: CLOSING -->
-      <section class="panel closing-panel fade-up" style="padding-top: 0;">
-        <div class="closing-tagline">With love &amp; prayers,</div>
+      <!-- SECTION 6: MINIMAL ROMANTIC CLOSING -->
+      <section class="panel closing-panel fade-up">
+        <div class="closing-tagline">With love,</div>
         <div class="closing-names">Sakiruddin &amp; Runa</div>
-        <p class="closing-note">We look forward to celebrating together</p>
-
-        <!-- Final Botanical Emblem -->
-        <svg style="width: 80px; height: 35px; margin-top: 18px;" viewBox="0 0 80 35" fill="none">
-          <path d="M10,25 Q40,5 70,25" stroke="#bda16b" stroke-width="0.8"/>
-          <circle cx="40" cy="15" r="3" fill="#fde8ea" stroke="#b36e7d" stroke-width="0.6"/>
-          <circle cx="25" cy="20" r="1.5" fill="#d3beea"/>
-          <circle cx="55" cy="20" r="1.5" fill="#d3beea"/>
-        </svg>
+        <p class="closing-note">We look forward to celebrating with you.</p>
       </section>
 
     </main>
   </div>
 
   <script>
+    /* -------------------------------------------------------------
+       GUEST PERSONALIZATION ENGINE
+       Supports ?guest=Guest+Name in the URL
+       ------------------------------------------------------------- */
     const urlParams = new URLSearchParams(window.location.search);
     const rawGuestParam = urlParams.get('guest');
     const guestName = rawGuestParam ? rawGuestParam.trim() : "Alfaz Malik";
 
+    // Format friendly first name for personal message
     let shortGuestName = guestName;
     if (guestName.includes('& Family')) {
       shortGuestName = guestName.split(' ')[0] + ' & Family';
@@ -726,10 +738,14 @@
     document.getElementById('coverGuestName').textContent = guestName;
     document.getElementById('personalGreeting').textContent = `Dear ${shortGuestName},`;
 
+    // WhatsApp Direct RSVP
     const rsvpPhone = "916353857881";
-    const rsvpMessage = encodeURIComponent(`Assalamu Alaikum,\n\nI am delighted to accept the invitation for the Rukhsati celebration of Sakiruddin & Runa on 19th October 2026.\n\nWarm regards,\n${guestName}`);
+    const rsvpMessage = encodeURIComponent(`Assalamu Alaikum,\n\nI am delighted to accept the invitation for the Walima of Sakiruddin & Runa on 19th October 2026.\n\nWarm regards,\n${guestName}`);
     document.getElementById('rsvpButton').href = `https://wa.me/${rsvpPhone}?text=${rsvpMessage}`;
 
+    /* -------------------------------------------------------------
+       CRITICAL INTERACTION: UNLOCK INVITATION
+       ------------------------------------------------------------- */
     const openBtn = document.getElementById('openInvitationBtn');
     const coverScreen = document.getElementById('coverScreen');
     const mainInvitation = document.getElementById('mainInvitation');
@@ -744,6 +760,9 @@
       }, 300);
     });
 
+    /* -------------------------------------------------------------
+       REAL TOUCH SCRATCH CARD (Canvas with 30% Threshold)
+       ------------------------------------------------------------- */
     function initScratchCard() {
       const container = document.getElementById('scratchCardContainer');
       const canvas = document.getElementById('scratchCanvas');
@@ -758,21 +777,24 @@
       canvas.height = height * dpr;
       ctx.scale(dpr, dpr);
 
+      // Render tactile gold foil texture
       function renderFoilSurface() {
         const grad = ctx.createLinearGradient(0, 0, width, height);
-        grad.addColorStop(0, '#edd6bb');
-        grad.addColorStop(0.3, '#d8bca0');
-        grad.addColorStop(0.7, '#c99a8b');
-        grad.addColorStop(1, '#b57c7c');
+        grad.addColorStop(0, '#ebd8b2');
+        grad.addColorStop(0.3, '#d6be8c');
+        grad.addColorStop(0.7, '#bda069');
+        grad.addColorStop(1, '#a38650');
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, width, height);
 
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.45)';
+        // Thin inner engraved foil frame
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
         ctx.lineWidth = 1;
         ctx.strokeRect(8, 8, width - 16, height - 16);
 
+        // Scratch call to action
         ctx.font = '500 11px "Montserrat", sans-serif';
-        ctx.fillStyle = '#4a2f24';
+        ctx.fillStyle = '#3d321c';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText('SCRATCH TO REVEAL', width / 2, height / 2);
@@ -820,15 +842,20 @@
           if (data[i] === 0) transparentPixels++;
         }
 
-        if ((transparentPixels / totalSamples) * 100 >= 30) {
+        const percentage = (transparentPixels / totalSamples) * 100;
+
+        // Minimum 30% erased threshold
+        if (percentage >= 30) {
           revealed = true;
           canvas.style.opacity = '0';
           canvas.style.pointerEvents = 'none';
           hint.textContent = "Date Unlocked";
-          hint.style.color = "#a46272";
+          hint.style.color = "var(--gold-deep)";
+          hint.style.letterSpacing = "0.25em";
         }
       }
 
+      // Desktop & Touch Listeners
       canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
       window.addEventListener('mouseup', () => { isDrawing = false; });
       canvas.addEventListener('mousemove', scratch);
@@ -838,6 +865,9 @@
       canvas.addEventListener('touchmove', scratch, { passive: false });
     }
 
+    /* -------------------------------------------------------------
+       SCROLL OBSERVER
+       ------------------------------------------------------------- */
     function initScrollObservers() {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
