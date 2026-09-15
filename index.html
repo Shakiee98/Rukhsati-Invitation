@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sakiruddin & Runa — Rukhsati Invitation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Amiri:ital@0;1&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --pastel-pink: #EECBC4;
+      --lavender: #B48A9D;
+      --gold: #D4AF37;
+      --burgundy: #722F37;
+      --burgundy-dark: #4d1c23;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background: #ece7de;
+      color: var(--burgundy);
+      overflow-x: hidden;
+      display: flex;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .mobile-frame {
+      width: 100%;
+      max-width: 480px;
+      position: relative;
+      background: var(--cream);
+      box-shadow: 0 16px 50px rgba(114, 47, 55, 0.18);
+      overflow: hidden;
+      border-left: 1px solid rgba(212, 175, 55, 0.3);
+      border-right: 1px solid rgba(212, 175, 55, 0.3);
+    }
+
+    /* Falling Hearts Canvas */
+    #hearts-canvas {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      height: 100%;
+      pointer-events: none;
+      z-index: 15;
+    }
+
+    /* Audio Toggle Button */
+    .audio-btn {
+      position: fixed;
+      top: 18px;
+      right: calc(50% - 225px);
+      z-index: 50;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(250, 247, 242, 0.92);
+      border: 1.5px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(114, 47, 55, 0.15);
+      font-size: 16px;
+    }
+
+    /* Realistic 3D Envelope Opening */
+    .envelope-screen {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      height: 100%;
+      background: radial-gradient(circle at center, #f4eee3 0%, #e2d7c5 100%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+      transition: opacity 1.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.3s;
+    }
+    .envelope-screen.opened {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    .envelope-wrapper {
+      position: relative;
+      width: 320px;
+      height: 220px;
+      background: #ebdcc9;
+      border-radius: 8px;
+      box-shadow: 0 24px 45px rgba(114, 47, 55, 0.35), 0 4px 10px rgba(0,0,0,0.1);
+      transform-style: preserve-3d;
+      border: 1px solid rgba(212, 175, 55, 0.6);
+    }
+    .envelope-pocket {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      z-index: 3;
+      pointer-events: none;
+    }
+    .envelope-pocket::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 120px 0 0 160px;
+      border-color: transparent transparent transparent #dfccb6;
+      filter: drop-shadow(2px 0 4px rgba(0,0,0,0.06));
+    }
+    .envelope-pocket::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 120px 160px 0 0;
+      border-color: transparent #dfccb6 transparent transparent;
+      filter: drop-shadow(-2px 0 4px rgba(0,0,0,0.06));
+    }
+    .envelope-bottom-triangle {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 160px 115px 160px;
+      border-color: transparent transparent #e4d2bd transparent;
+      z-index: 4;
+      pointer-events: none;
+    }
+    .envelope-gold-border {
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.7);
+      border-radius: 6px;
+      z-index: 5;
+      pointer-events: none;
+    }
+    .envelope-flap {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 130px 160px 0 160px;
+      border-color: #f1e2ce transparent transparent transparent;
+      transform-origin: top center;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), z-index 0.2s 0.4s;
+      z-index: 6;
+      filter: drop-shadow(0 4px 6px rgba(0,0,0,0.12));
+      cursor: pointer;
+    }
+    .envelope-wrapper.open .envelope-flap {
+      transform: rotateX(180deg);
+      z-index: 1;
+    }
+    .envelope-letter {
+      position: absolute;
+      top: 10px;
+      left: 20px;
+      width: 280px;
+      height: 195px;
+      background: var(--cream);
+      border: 1px solid var(--gold);
+      border-radius: 6px;
+      z-index: 2;
+      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    }
+    .envelope-wrapper.open .envelope-letter {
+      transform: translateY(-90px);
+    }
+    .wax-seal {
+      position: absolute;
+      top: 85px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #9e3b46, var(--burgundy) 70%, var(--burgundy-dark));
+      box-shadow: 0 10px 24px rgba(114, 47, 55, 0.45), inset 0 2px 5px rgba(255, 255, 255, 0.4);
+      border: 2px solid #5a1c22;
+      z-index: 8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: #faf7f2;
+      text-align: center;
+      animation: sealPulse 2.4s infinite ease-in-out;
+      transition: transform 0.3s ease, opacity 0.4s ease;
+    }
+    .wax-seal::after {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px dashed rgba(212, 175, 55, 0.7);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .wax-seal span.seal-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    .wax-seal span.seal-ar {
+      font-family: 'Amiri', serif;
+      font-size: 17px;
+      line-height: 1;
+      color: var(--gold);
+      margin: 1px 0;
+    }
+    @keyframes sealPulse {
+      0%, 100% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.06); }
+    }
+    .envelope-hint {
+      margin-top: 50px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: var(--burgundy);
+      text-transform: uppercase;
+      font-weight: 600;
+      animation: floatFade 2s infinite ease-in-out alternate;
+    }
+    @keyframes floatFade {
+      0% { opacity: 0.5; transform: translateY(0); }
+      100% { opacity: 1; transform: translateY(-4px); }
+    }
+
+    /* Main Invitation Page */
+    .hero {
+      position: relative;
+      padding: 40px 24px 22px 24px;
+      text-align: center;
+      background: linear-gradient(180deg, rgba(238, 203, 196, 0.35) 0%, var(--cream) 100%);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .guest-pill {
+      display: inline-block;
+      padding: 6px 20px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--pastel-pink);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1px;
+      color: var(--lavender);
+      margin-bottom: 14px;
+      box-shadow: 0 2px 8px rgba(114, 47, 55, 0.05);
+    }
+    .guest-pill span { font-weight: 700; color: var(--burgundy); }
+    .bismillah {
+      font-family: 'Amiri', serif;
+      font-size: 26px;
+      color: var(--burgundy);
+      margin-bottom: 10px;
+      direction: rtl;
+    }
+    .subheading {
+      font-size: 12px;
+      letter-spacing: 2px;
+      font-family: 'Montserrat', sans-serif;
+      color: var(--lavender);
+      text-transform: uppercase;
+      line-height: 1.6;
+    }
+    .rukhsati-badge {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--burgundy);
+      margin: 10px 0 18px 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+    .rukhsati-badge::before, .rukhsati-badge::after {
+      content: "";
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .groom-name, .bride-name {
+      font-family: 'Alex Brush', cursive;
+      font-size: 52px;
+      color: var(--burgundy);
+      line-height: 1.1;
+    }
+    .parent-label {
+      font-size: 15px;
+      font-style: italic;
+      color: var(--lavender);
+      font-weight: 600;
+      margin-top: -2px;
+    }
+    .ampersand {
+      font-family: 'Alex Brush', cursive;
+      font-size: 32px;
+      color: var(--gold);
+      margin: 4px 0;
+    }
+
+    /* Embedded Video Frame */
+    .animation-card {
+      margin: 20px auto 10px auto;
+      width: 100%;
+      max-width: 360px;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+      box-shadow: 0 8px 30px rgba(114, 47, 55, 0.12);
+      background: #faf2ea;
+    }
+    .couple-video {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      border-radius: 18px;
+    }
+
+    /* Cards */
+    .card {
+      margin: 20px 16px;
+      padding: 26px 20px;
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1.5px solid rgba(212, 175, 55, 0.45);
+      box-shadow: 0 6px 24px rgba(114, 47, 55, 0.05);
+      text-align: center;
+      position: relative;
+    }
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 4px;
+      border: 1px dashed rgba(180, 138, 157, 0.35);
+      border-radius: 12px;
+      pointer-events: none;
+    }
+    .card-heading {
+      font-family: 'Alex Brush', cursive;
+      font-size: 36px;
+      color: var(--burgundy);
+      margin-bottom: 6px;
+    }
+
+    /* Scratch Card */
+    .scratch-wrapper {
+      position: relative;
+      width: 270px;
+      height: 160px;
+      margin: 18px auto 8px auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(114, 47, 55, 0.1);
+      border: 1px solid var(--gold);
+    }
+    .revealed-content {
+      position: absolute;
+      inset: 0;
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    .revealed-content h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      color: var(--lavender);
+      font-weight: 700;
+    }
+    .revealed-content .date-txt {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--burgundy);
+      margin: 4px 0;
+    }
+    .revealed-content .time-txt {
+      font-size: 14px;
+      color: var(--lavender);
+      font-weight: 600;
+    }
+    #scratch-canvas {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      touch-action: none;
+      cursor: pointer;
+    }
+
+    /* Countdown */
+    .countdown-grid {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .count-box {
+      width: 65px;
+      padding: 10px 0;
+      background: #faf2ee;
+      border-radius: 8px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+    }
+    .count-box .num {
+      display: block;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--burgundy);
+    }
+    .count-box .lbl {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 8px;
+      letter-spacing: 1.5px;
+      color: var(--lavender);
+      font-weight: 600;
+    }
+
+    /* Venue & Map Button */
+    .venue-address {
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--burgundy);
+      margin-bottom: 16px;
+    }
+    .map-btn {
+      display: inline-block;
+      padding: 12px 28px;
+      background: linear-gradient(135deg, var(--burgundy) 0%, var(--burgundy-dark) 100%);
+      color: var(--cream);
+      text-decoration: none;
+      border-radius: 25px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      letter-spacing: 1.8px;
+      font-weight: 600;
+      border: 1px solid var(--gold);
+      box-shadow: 0 4px 15px rgba(114, 47, 55, 0.25);
+    }
+
+    .dua-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 20px;
+      color: var(--burgundy);
+      line-height: 1.8;
+      direction: rtl;
+    }
+    .dua-translation {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--lavender);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-frame">
+    <div class="audio-btn" id="audioToggle">🎵</div>
+    <audio id="bgMusic" loop src="https://actions.google.com/sounds/v1/ambiences/wind_chimes.ogg"></audio>
+
+    <canvas id="hearts-canvas"></canvas>
+
+    <!-- REALISTIC 3D ENVELOPE -->
+    <div class="envelope-screen" id="envelopeScreen">
+      <div class="envelope-wrapper" id="envelopeWrapper">
+        <div class="envelope-gold-border"></div>
+        <div class="envelope-letter">
+          <span style="font-family: 'Amiri', serif; font-size: 20px; color: var(--burgundy);">بِسْمِ اللَّهِ</span>
+          <span style="font-family: 'Alex Brush', cursive; font-size: 24px; color: var(--gold); margin: 4px 0;">Rukhsati Invitation</span>
+          <span style="font-family: 'Montserrat', sans-serif; font-size: 11px; font-weight: 600; color: var(--burgundy); letter-spacing: 1px;">Sakiruddin & Runa</span>
+        </div>
+        <div class="envelope-pocket"></div>
+        <div class="envelope-bottom-triangle"></div>
+        <div class="envelope-flap" id="envelopeFlap"></div>
+        <div class="wax-seal" id="openSealBtn">
+          <span class="seal-sub">TAP TO</span>
+          <span class="seal-ar">رُخْصَتِي</span>
+          <span class="seal-sub">OPEN</span>
+        </div>
+      </div>
+      <div class="envelope-hint">✨ Break The Seal To Open ✨</div>
+    </div>
+
+    <!-- MAIN PAGE -->
+    <div class="hero">
+      <div class="guest-pill">HONORED GUEST: <span id="guest-name">Valued Family & Friends</span></div>
+      <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+      <p class="subheading">The families of Shaikh request the honor of your presence at</p>
+      <div class="rukhsati-badge">THE RUKHSATI CEREMONY</div>
+
+      <div class="groom-name">Sakiruddin</div>
+      <div class="parent-label">Son of Mr. Nuruddin Shaikh</div>
+
+      <div class="ampersand">&</div>
+
+      <div class="bride-name">Runa</div>
+      <div class="parent-label">Daughter of Mr. Saidul Shaikh</div>
+
+      <!-- VIDEO FRAME -->
+      <div class="animation-card">
+        <video class="couple-video" id="coupleVideo" autoplay muted loop playsinline poster="couple_poster.jpg">
+          <source src="couple.mp4" type="video/mp4">
+          <img src="couple.gif" alt="Muslim Couple Animation" style="width:100%; display:block;" />
+        </video>
+      </div>
+
+      <div style="margin-top: 14px; font-size: 11px; letter-spacing: 3px; color: var(--lavender); font-weight: 600;">SCROLL TO REVEAL ↓</div>
+    </div>
+
+    <!-- SCRATCH CARD -->
+    <div class="card">
+      <h3 class="card-heading">Scratch to Reveal</h3>
+      <p style="font-size: 14px; color: var(--lavender); font-weight: 600;">Scratch the golden seal below to reveal the official date</p>
+      <div class="scratch-wrapper">
+        <div class="revealed-content">
+          <h4>RUKHSATI CEREMONY</h4>
+          <div class="date-txt">October 19, 2026</div>
+          <div class="time-txt">Monday • 8:00 PM Onwards</div>
+        </div>
+        <canvas id="scratch-canvas" width="270" height="160"></canvas>
+      </div>
+    </div>
+
+    <!-- COUNTDOWN TIMER -->
+    <div class="card">
+      <h3 class="card-heading">Counting Down to Forever</h3>
+      <div class="countdown-grid">
+        <div class="count-box"><span class="num" id="d">00</span><span class="lbl">DAYS</span></div>
+        <div class="count-box"><span class="num" id="h">00</span><span class="lbl">HOURS</span></div>
+        <div class="count-box"><span class="num" id="m">00</span><span class="lbl">MINUTES</span></div>
+        <div class="count-box"><span class="num" id="s">00</span><span class="lbl">SECONDS</span></div>
+      </div>
+    </div>
+
+    <!-- VENUE CARD -->
+    <div class="card">
+      <h3 class="card-heading">The Venue</h3>
+      <p class="venue-address">
+        <strong style="font-size: 19px; color: var(--burgundy);">Alhamdo Park</strong><br />
+        Jaspur Rd, Padra, Gujarat
+      </p>
+      <a href="https://maps.google.com/?q=22.246782,73.080925" target="_blank" class="map-btn">VIEW ON GOOGLE MAPS</a>
+    </div>
+
+    <!-- BLESSINGS CARD -->
+    <div class="card" style="margin-bottom: 40px;">
+      <h3 class="card-heading">Prayers & Blessings</h3>
+      <div class="dua-arabic">بَارَكَ اللَّهُ لَكَ وَبَارَكَ عَلَيْكَ وَجَمَعَ بَيْنَكُمَا فِي خَيْرٍ</div>
+      <p class="dua-translation">"May Allah bless you and shower His blessings upon you and bring you together in goodness."</p>
+      <p style="margin-top: 14px; font-family: 'Alex Brush', cursive; font-size: 30px; color: var(--burgundy);">Sakiruddin & Runa</p>
+    </div>
+  </div>
+
+  <script>
+    // 1. Dynamic Guest Name by URL Query (?guest=Name)
+    const urlParams = new URLSearchParams(window.location.search);
+    const guest = urlParams.get('guest');
+    if (guest) {
+      document.getElementById('guest-name').innerText = decodeURIComponent(guest);
+    }
+
+    // 2. Realistic 3D Envelope Opening Interaction
+    const envelopeScreen = document.getElementById('envelopeScreen');
+    const envelopeWrapper = document.getElementById('envelopeWrapper');
+    const seal = document.getElementById('openSealBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    const audioToggle = document.getElementById('audioToggle');
+    const coupleVideo = document.getElementById('coupleVideo');
+
+    seal.addEventListener('click', () => {
+      seal.style.opacity = '0';
+      seal.style.pointerEvents = 'none';
+      envelopeWrapper.classList.add('open');
+      bgMusic.play().catch(() => {});
+      if (coupleVideo) { coupleVideo.play().catch(() => {}); }
+
+      setTimeout(() => {
+        envelopeScreen.classList.add('opened');
+      }, 1100);
+    });
+
+    audioToggle.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        audioToggle.innerText = '🎵';
+      } else {
+        bgMusic.pause();
+        audioToggle.innerText = '🔇';
+      }
+    });
+
+    // 3. Metallic Gold Scratch Card
+    const scratchCanvas = document.getElementById('scratch-canvas');
+    const ctx = scratchCanvas.getContext('2d');
+    
+    const goldGrad = ctx.createLinearGradient(0, 0, 270, 160);
+    goldGrad.addColorStop(0, '#BF953F');
+    goldGrad.addColorStop(0.3, '#FCF6BA');
+    goldGrad.addColorStop(0.6, '#B38728');
+    goldGrad.addColorStop(0.8, '#FBF5B7');
+    goldGrad.addColorStop(1, '#AA771C');
+    ctx.fillStyle = goldGrad;
+    ctx.fillRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+    
+    ctx.font = '700 11px Montserrat, sans-serif';
+    ctx.fillStyle = '#722F37';
+    ctx.textAlign = 'center';
+    ctx.fillText('✨ TAP & SCRATCH GOLD SEAL ✨', scratchCanvas.width / 2, scratchCanvas.height / 2 + 4);
+
+    let isScratching = false;
+    function scratch(e) {
+      if (!isScratching) return;
+      const rect = scratchCanvas.getBoundingClientRect();
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+      const x = clientX - rect.left;
+      const y = clientY - rect.top;
+
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, 20, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    scratchCanvas.addEventListener('mousedown', () => isScratching = true);
+    scratchCanvas.addEventListener('mouseup', () => isScratching = false);
+    scratchCanvas.addEventListener('mousemove', scratch);
+    scratchCanvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); });
+    scratchCanvas.addEventListener('touchend', () => isScratching = false);
+    scratchCanvas.addEventListener('touchmove', scratch);
+
+    // 4. Live Countdown (October 19, 2026, 8:00 PM IST)
+    const targetDate = new Date('2026-10-19T20:00:00+05:30').getTime();
+    setInterval(() => {
+      const now = new Date().getTime();
+      const diff = Math.max(0, targetDate - now);
+      document.getElementById('d').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById('h').innerText = String(Math.floor((diff / (1000 * 60 * 60)) % 24)).padStart(2, '0');
+      document.getElementById('m').innerText = String(Math.floor((diff / 1000 / 60) % 60)).padStart(2, '0');
+      document.getElementById('s').innerText = String(Math.floor((diff / 1000) % 60)).padStart(2, '0');
+    }, 1000);
+
+    // 5. Floating Falling Hearts
+    const hCanvas = document.getElementById('hearts-canvas');
+    const hCtx = hCanvas.getContext('2d');
+    function resizeCanvas() {
+      hCanvas.width = hCanvas.parentElement.clientWidth;
+      hCanvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const heartColors = [
+      'rgba(238, 203, 196, 0.75)',
+      'rgba(180, 138, 157, 0.65)',
+      'rgba(212, 175, 55, 0.65)',
+      'rgba(114, 47, 55, 0.35)'
+    ];
+
+    function drawHeart(ctx, x, y, size, color, angle) {
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.beginPath();
+      const topCurveHeight = size * 0.3;
+      ctx.moveTo(0, topCurveHeight);
+      ctx.bezierCurveTo(-size / 2, -size / 2, -size, topCurveHeight, 0, size);
+      ctx.bezierCurveTo(size, topCurveHeight, size / 2, -size / 2, 0, topCurveHeight);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    const hearts = Array.from({ length: 26 }, () => ({
+      x: Math.random() * 450,
+      y: Math.random() * window.innerHeight,
+      size: 9 + Math.random() * 9,
+      speedY: 0.7 + Math.random() * 1.2,
+      speedX: -0.4 + Math.random() * 0.8,
+      color: heartColors[Math.floor(Math.random() * heartColors.length)],
+      angle: (Math.random() - 0.5) * 0.6,
+      angularSpeed: (Math.random() - 0.5) * 0.02
+    }));
+
+    function animateHearts() {
+      hCtx.clearRect(0, 0, hCanvas.width, hCanvas.height);
+      hearts.forEach(h => {
+        h.y += h.speedY;
+        h.x += h.speedX;
+        h.angle += h.angularSpeed;
+
+        if (h.y > hCanvas.height + 20) {
+          h.y = -20;
+          h.x = Math.random() * hCanvas.width;
+        }
+        drawHeart(hCtx, h.x, h.y, h.size, h.color, h.angle);
+      });
+      requestAnimationFrame(animateHearts);
+    }
+    animateHearts();
+  </script>
+</body>
+</html>
