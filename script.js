@@ -62,23 +62,23 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Heart-Shaped Scratch Canvas
+// Heart-Shaped Scratch Canvas with Clean Sized Text
 const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
 
 function drawScratchLayer() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  grad.addColorStop(0, '#9bb7ca');
+  grad.addColorStop(0, '#9ab4c4');
   grad.addColorStop(0.5, '#dbe7ee');
-  grad.addColorStop(1, '#6d92aa');
+  grad.addColorStop(1, '#7093a8');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = '#182c3e';
-  ctx.font = '600 11px Montserrat';
+  ctx.fillStyle = '#112338';
+  ctx.font = '600 10px Montserrat';
   ctx.textAlign = 'center';
-  ctx.fillText('SCRATCH ME', canvas.width / 2, canvas.height / 2 + 4);
+  ctx.fillText('SCRATCH HERE', canvas.width / 2, canvas.height / 2 + 4);
 }
 drawScratchLayer();
 
@@ -104,7 +104,7 @@ function erase(e) {
   ctx.fill();
   scratchedCount++;
 
-  if (scratchedCount > 40) {
+  if (scratchedCount > 35) {
     canvas.style.opacity = '0';
     setTimeout(() => { canvas.style.display = 'none'; }, 300);
   }
