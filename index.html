@@ -20,37 +20,39 @@
   </video>
 
   <main>
-    <!-- SCREEN 1: Ornate Royal Midnight Envelope -->
+    <!-- SCREEN 1: Royal Midnight-Blue Envelope with Gold Filigree -->
     <section class="envelope-screen" id="envelopeScreen">
-      <div class="envelope-card-wrap" id="sealButton" role="button" tabindex="0">
+      <div class="envelope-container" id="sealButton" role="button" tabindex="0">
         
-        <!-- Base Royal Envelope Artwork -->
-        <img src="assets/IMG_9402.png" alt="Royal Wedding Envelope" class="envelope-art-bg">
-        
-        <!-- Content Layer Centered Over Flap & Body -->
-        <div class="envelope-front-content">
-          <div class="arabic-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-          <p class="envelope-type-title">RUKHSATI INVITATION</p>
+        <div class="envelope-graphic-card">
+          <!-- Your Real PNG Envelope Image -->
+          <img src="assets/IMG_9402.png" alt="Royal Wedding Envelope" class="royal-envelope-bg">
           
-          <div class="guest-envelope-pill">
-            <small>EXCLUSIVELY PREPARED FOR</small>
-            <strong id="guestFront">Our Cherished Guest</strong>
-          </div>
+          <!-- Overlaid Typography on Top of Envelope -->
+          <div class="envelope-text-overlay">
+            <div class="arabic-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <p class="envelope-category">RUKHSATI INVITATION</p>
+            
+            <div class="envelope-guest-badge">
+              <small>EXCLUSIVELY PREPARED FOR</small>
+              <strong id="guestFront">Our Cherished Guest</strong>
+            </div>
 
-          <!-- Wax Seal Anchored on Flap Tip -->
-          <div class="seal-hotspot">
-            <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+            <!-- Wax Seal Anchored Right at the Flap Tip -->
+            <div class="seal-slot">
+              <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+            </div>
           </div>
         </div>
 
-        <p class="tap-hint">TAP ENVELOPE TO UNVEIL</p>
+        <p class="tap-hint">TAP THE WAX SEAL TO UNVEIL</p>
       </div>
     </section>
 
-    <!-- SCREEN 2: Seamless Floating Invitation (Courtyard Dancers In Full View) -->
+    <!-- SCREEN 2: Seamless Floating Invitation (Clear View of Courtyard Dancers) -->
     <div id="invitationContent" class="invitation-flow locked">
       
-      <!-- Top Names & Sacred Ayah Floating Section -->
+      <!-- Top Names & Ayah Floating Section -->
       <section class="floating-section">
         <div class="gold-knot">✦ &nbsp; ❦ &nbsp; ✦</div>
         <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
@@ -78,19 +80,19 @@
           <div class="thin-rule"></div>
         </div>
 
-        <!-- 3D Heart Scratch Emblem Section -->
+        <!-- 3D Metallic Heart Scratch Card Using IMG_9403.png -->
         <div class="heart-container">
-          <div class="heart-emblem-wrap">
-            <!-- 3D Metallic Heart Rim & Base Artwork -->
-            <img src="assets/IMH_9403.png" alt="Heart Emblem" class="heart-base-art">
+          <div class="heart-frame-box">
+            <!-- Metallic 3D Heart Frame Base -->
+            <img src="assets/IMG_9403.png" alt="Royal Heart Emblem" class="heart-border-img">
             
-            <!-- Revealed Ceremony Date Underneath -->
+            <!-- Revealed Ceremony Date Layer -->
             <div class="heart-revealed-date">
               <span class="date-label">Ceremony Date:</span>
               <strong class="date-val">19 October 2026</strong>
             </div>
-
-            <!-- Scratchable Foil Mask Layer -->
+            
+            <!-- Interactive Scratch Canvas -->
             <canvas id="scratchCanvas" width="280" height="260"></canvas>
           </div>
         </div>
