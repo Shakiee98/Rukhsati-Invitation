@@ -1,8 +1,9 @@
 :root {
-  --royal-navy: #182c3e;
-  --powder-blue: #7fa4bd;
+  --royal-navy: #112338;
+  --powder-blue: #6c91a8;
   --gold-accent: #bfa15f;
-  --text-dim: #3f5569;
+  --gold-sheen: #d8c289;
+  --text-dim: #32475b;
 }
 
 * {
@@ -32,7 +33,7 @@ body {
   box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
 }
 
-/* Background Looping Video - Fixed, High Clarity, No Blurring */
+/* Background Looping Video: Kept completely crisp with zero blurring */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -47,73 +48,100 @@ body {
 }
 
 /* ========================================================
-   SCREEN 1: AUTHENTIC ROYAL ENVELOPE (Flap & Realistic Seam)
+   SCREEN 1: AUTHENTIC ROYAL STATIONERY ENVELOPE
    ======================================================== */
 .envelope-screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px;
+  padding: 20px;
   position: relative;
   z-index: 30;
-  background: rgba(220, 233, 240, 0.45);
+  background: rgba(220, 233, 240, 0.35);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .envelope-body {
   width: 100%;
   position: relative;
-  background: #fbfdff;
-  border-radius: 8px;
-  box-shadow: 0 20px 45px rgba(24, 44, 62, 0.28), 0 4px 12px rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(155, 183, 202, 0.45);
+  background: #fafbfd;
+  border-radius: 12px;
+  border: 1px solid rgba(191, 161, 95, 0.5);
+  box-shadow: 0 25px 50px rgba(17, 35, 56, 0.35), 0 0 0 6px rgba(255, 255, 255, 0.6) inset;
   overflow: hidden;
 }
 
-/* Triangular Envelope Flap */
+/* Diagonal envelope pocket creases */
+.envelope-crease {
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 65%;
+  pointer-events: none;
+  z-index: 2;
+}
+.left-crease {
+  left: 0;
+  border-right: 1px solid rgba(155, 183, 202, 0.25);
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(225,235,242,0.3) 100%);
+}
+.right-crease {
+  right: 0;
+  border-left: 1px solid rgba(155, 183, 202, 0.25);
+  background: linear-gradient(-135deg, rgba(255,255,255,0.05) 0%, rgba(225,235,242,0.3) 100%);
+}
+
+/* Top Triangular Flap with Luxury Gold Inset */
 .envelope-flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 95px;
-  background: linear-gradient(180deg, #edf5f9 0%, #e2edf3 100%);
+  height: 120px;
+  background: linear-gradient(180deg, #f3f7fa 0%, #e2edf3 100%);
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  box-shadow: 0 4px 12px rgba(24, 44, 62, 0.15);
-  border-bottom: 1px solid rgba(155, 183, 202, 0.35);
-  z-index: 2;
+  box-shadow: 0 8px 20px rgba(17, 35, 56, 0.18);
+  border-bottom: 1.5px solid rgba(191, 161, 95, 0.45);
+  z-index: 3;
   pointer-events: none;
 }
 
 .envelope-inner {
-  padding: 100px 18px 36px; /* Clearance under flap */
+  padding: 110px 18px 36px;
   text-align: center;
   position: relative;
-  z-index: 3;
+  z-index: 4;
+}
+
+.gold-arch-crest {
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  color: var(--gold-accent);
+  margin-bottom: 4px;
 }
 
 .bismillah-line {
   font-family: serif;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--royal-navy);
   margin-bottom: 6px;
 }
 
 .royal-title {
   font-size: 0.72rem;
-  letter-spacing: 3px;
+  letter-spacing: 3.5px;
   color: var(--powder-blue);
   font-weight: 600;
 }
 
 .guest-banner {
-  margin: 18px 0;
-  padding: 10px;
+  margin: 18px 0 10px;
+  padding: 12px 10px;
   background: rgba(155, 183, 202, 0.14);
   border-radius: 6px;
-  border-left: 2px solid var(--powder-blue);
-  border-right: 2px solid var(--powder-blue);
+  border-left: 2px solid var(--gold-accent);
+  border-right: 2px solid var(--gold-accent);
 }
 .guest-banner small {
   display: block;
@@ -124,156 +152,159 @@ body {
 }
 .guest-banner strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   color: var(--royal-navy);
 }
 
-/* Wax Seal Interaction */
+/* Prominent, Realistic Wax Seal */
 .seal-trigger {
-  width: 120px;
-  height: 120px;
-  margin: 16px auto 10px;
+  width: 160px;
+  height: 160px;
+  margin: 10px auto 4px;
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: sealHover 2.5s infinite ease-in-out;
+  animation: sealHover 2.6s infinite ease-in-out;
 }
 
 .seal-graphic {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(24, 44, 62, 0.28));
+  filter: drop-shadow(0 8px 18px rgba(17, 35, 56, 0.32));
 }
 
 @keyframes sealHover {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(155, 183, 202, 0.45)); }
-  50% { transform: scale(1.06); filter: drop-shadow(0 8px 20px rgba(155, 183, 202, 0.8)); }
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 6px 14px rgba(155, 183, 202, 0.5)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 12px 26px rgba(191, 161, 95, 0.75)); }
 }
 
 .tap-hint {
-  font-size: 0.7rem;
-  letter-spacing: 2px;
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
   color: var(--royal-navy);
   font-weight: 600;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 
 /* ========================================================
-   SCREEN 2: CRYSTAL CLEAR DANCERS VIEW & CONTENT
+   SCREEN 2: ELEGANT, CLEAR CARDS (Dancers 100% Visible)
    ======================================================== */
 .invitation-flow {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 24px 14px 220px; /* Large bottom padding to showcase bottom dancers */
+  gap: 22px;
+  padding: 24px 14px 220px;
 }
 .invitation-flow.locked {
   display: none;
 }
 
-/* Clean, Non-Blurry Floating Card (Preserves Video Sharpness Behind It) */
+/* Ultra-light translucent glass to keep video sharp */
 .glass-sheet {
-  background: rgba(255, 255, 255, 0.42); /* Light translucent tint */
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 14px;
-  padding: 24px 16px;
+  padding: 26px 16px;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(24, 44, 62, 0.08);
+  box-shadow: 0 10px 32px rgba(17, 35, 56, 0.08);
 }
 
 .crest-mark {
-  color: var(--powder-blue);
+  color: var(--gold-accent);
   font-size: 1.1rem;
 }
 
 .salute-text {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--text-dim);
 }
 .salute-text strong {
   color: var(--royal-navy);
 }
 
+/* Highlighted Typography with Crisp Glow */
 .main-event-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.7rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--royal-navy);
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   margin: 6px 0;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.8);
 }
 
 .names-calligraphy {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.5rem;
+  font-size: 3.6rem;
   color: var(--royal-navy);
   line-height: 1.05;
   margin: 10px 0 14px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95), 0 0 16px rgba(255, 255, 255, 0.9);
 }
 .names-calligraphy .amp {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.6rem;
   font-style: italic;
-  color: var(--powder-blue);
+  color: var(--gold-accent);
   display: block;
   margin: -6px 0;
+  text-shadow: none;
 }
 
 .family-lineage {
-  font-size: 0.82rem;
-  line-height: 1.5;
+  font-size: 0.84rem;
+  lineage-height: 1.5;
   color: var(--text-dim);
 }
 .family-lineage strong {
   color: var(--royal-navy);
+  font-weight: 600;
 }
 .knot {
-  color: var(--powder-blue);
-  font-size: 0.7rem;
+  color: var(--gold-accent);
+  font-size: 0.75rem;
   margin: 4px 0;
 }
 
 .short-ayah {
   margin: 14px 0;
   padding: 8px 4px;
-  border-top: 1px solid rgba(155, 183, 202, 0.4);
-  border-bottom: 1px solid rgba(155, 183, 202, 0.4);
+  border-top: 1px solid rgba(191, 161, 95, 0.45);
+  border-bottom: 1px solid rgba(191, 161, 95, 0.45);
 }
 .short-ayah blockquote {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.18rem;
+  font-size: 1.2rem;
   color: var(--royal-navy);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 .short-ayah cite {
   display: block;
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
   margin-top: 4px;
 }
 
 /* ========================================================
-   HEART-SHAPED SCRATCH CARD
+   CLEAN HEART-SHAPED SCRATCH CARD
    ======================================================== */
 .heart-scratch-wrapper {
   display: flex;
   justify-content: center;
-  margin: 16px 0;
+  margin: 18px 0;
 }
 
 .heart-scratch-box {
   position: relative;
-  width: 220px;
-  height: 200px;
-  /* SVG Clip-path creating an organic heart shape */
-  clip-path: path("M 110,190 C 10,120 0,60 40,20 C 75,-15 110,25 110,25 C 110,25 145,-15 180,20 C 220,60 210,120 110,190 Z");
-  filter: drop-shadow(0 6px 16px rgba(24, 44, 62, 0.16));
+  width: 200px;
+  height: 185px;
+  clip-path: path("M 100,175 C 10,110 0,55 35,20 C 70,-15 100,22 100,22 C 100,22 130,-15 165,20 C 200,55 190,110 100,175 Z");
+  filter: drop-shadow(0 6px 16px rgba(17, 35, 56, 0.2));
 }
 
 .heart-scratch-box canvas {
@@ -291,24 +322,21 @@ body {
   align-items: center;
   justify-content: center;
   background: #ffffff;
-  padding: 0 20px;
+  padding: 0 10px;
   text-align: center;
 }
 .heart-scratch-box .scratch-reveal small {
-  font-size: 0.62rem;
-  letter-spacing: 1px;
-  color: var(--text-dim);
+  font-size: 0.64rem;
+  letter-spacing: 2px;
+  color: var(--gold-accent);
+  font-weight: 600;
+  text-transform: uppercase;
 }
 .heart-scratch-box .scratch-reveal strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   color: var(--royal-navy);
-  margin: 2px 0;
-}
-.heart-scratch-box .scratch-reveal span {
-  font-size: 0.7rem;
-  color: var(--powder-blue);
-  font-weight: 600;
+  margin-top: 4px;
 }
 
 /* Countdown */
@@ -319,7 +347,7 @@ body {
   margin-top: 14px;
 }
 .time-cell {
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.65);
   border: 1px solid rgba(155, 183, 202, 0.45);
   border-radius: 6px;
   padding: 8px 2px;
@@ -327,7 +355,7 @@ body {
 .time-cell b {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-size: 1.28rem;
   color: var(--royal-navy);
 }
 .time-cell span {
@@ -349,16 +377,16 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.65);
   padding: 10px 14px;
   border-radius: 6px;
   margin-bottom: 8px;
   text-align: left;
-  border: 1px solid rgba(155, 183, 202, 0.3);
+  border: 1px solid rgba(155, 183, 202, 0.35);
 }
 .detail-cell .icon {
   font-size: 1.2rem;
-  color: var(--powder-blue);
+  color: var(--gold-accent);
 }
 .detail-cell small {
   display: block;
@@ -367,7 +395,7 @@ body {
   color: var(--text-dim);
 }
 .detail-cell strong {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   color: var(--royal-navy);
 }
 .detail-cell span {
@@ -396,10 +424,10 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(24, 44, 62, 0.2);
+  box-shadow: 0 4px 12px rgba(17, 35, 56, 0.25);
 }
 .navy-btn.outline {
-  background: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.55);
   border: 1px solid var(--royal-navy);
   color: var(--royal-navy);
   box-shadow: none;
@@ -411,17 +439,17 @@ body {
 .compliments-block {
   margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(155, 183, 202, 0.35);
+  border-top: 1px solid rgba(191, 161, 95, 0.35);
 }
 .compliments-block h3 {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--royal-navy);
   margin-bottom: 6px;
 }
 .compliment-list {
   font-size: 0.78rem;
-  line-height: 1.6;
+  lineage-height: 1.6;
   color: var(--text-dim);
 }
 
