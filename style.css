@@ -1,0 +1,421 @@
+:root {
+  --powder-mist: #e6f0f5;
+  --royal-navy: #1e354a;
+  --navy-dark: #122230;
+  --powder-blue: #9bb7ca;
+  --gold-accent: #bfa15f;
+  --gold-gradient: linear-gradient(135deg, #dfc685 0%, #bfa15f 50%, #876c32 100%);
+  --sheet-bg: rgba(255, 255, 255, 0.90);
+  --text-dim: #546b7f;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background: #cfdde6;
+  color: var(--royal-navy);
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.mobile-wrapper {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--powder-mist);
+  box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
+}
+
+/* Background Palace Video */
+.courtyard-video {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 430px;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* SCREEN 1: Sealed Letter Cover */
+.envelope-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  position: relative;
+  z-index: 30;
+  background: rgba(230, 240, 245, 0.55);
+  backdrop-filter: blur(8px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.letter-card {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(155, 183, 202, 0.5);
+  border-radius: 12px;
+  padding: 40px 18px 30px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(30, 53, 74, 0.16);
+  position: relative;
+}
+.letter-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px dashed rgba(155, 183, 202, 0.45);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+.bismillah-line {
+  font-family: serif;
+  font-size: 1.25rem;
+  color: var(--royal-navy);
+  margin-bottom: 8px;
+}
+
+.royal-title {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: var(--text-dim);
+}
+
+.guest-banner {
+  margin: 18px 0;
+  padding: 10px;
+  background: rgba(155, 183, 202, 0.12);
+  border-radius: 6px;
+  border-left: 2px solid var(--powder-blue);
+  border-right: 2px solid var(--powder-blue);
+}
+.guest-banner small {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.guest-banner strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--royal-navy);
+}
+
+/* Wax Seal Interaction */
+.seal-trigger {
+  width: 110px;
+  height: 110px;
+  margin: 18px auto 12px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: sealHover 2.5s infinite ease-in-out;
+}
+
+.seal-graphic {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 14px rgba(30, 53, 74, 0.22));
+}
+
+@keyframes sealHover {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(155, 183, 202, 0.45)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 8px 18px rgba(155, 183, 202, 0.75)); }
+}
+
+.tap-hint {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: var(--royal-navy);
+  font-weight: 600;
+  margin-top: 10px;
+}
+.sub-date {
+  display: block;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* SCREEN 2: Content Flow Over Palace */
+.invitation-flow {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 14px 40px;
+}
+.invitation-flow.locked {
+  display: none;
+}
+
+.glass-sheet {
+  background: var(--sheet-bg);
+  border: 1px solid rgba(155, 183, 202, 0.4);
+  border-radius: 12px;
+  padding: 26px 18px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(18, 34, 48, 0.12);
+  backdrop-filter: blur(8px);
+}
+
+.crest-mark {
+  color: var(--powder-blue);
+  font-size: 1.1rem;
+}
+
+.salute-text {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.salute-text strong {
+  color: var(--royal-navy);
+}
+
+.main-event-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--royal-navy);
+  letter-spacing: 1px;
+  margin: 6px 0;
+}
+
+.names-calligraphy {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.2rem;
+  color: var(--royal-navy);
+  line-height: 1.1;
+  margin: 10px 0;
+}
+.names-calligraphy .amp {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--powder-blue);
+  display: block;
+  margin: -6px 0;
+}
+
+.family-lineage {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  color: var(--text-dim);
+}
+.family-lineage strong {
+  color: var(--royal-navy);
+}
+.knot {
+  color: var(--powder-blue);
+  font-size: 0.7rem;
+  margin: 4px 0;
+}
+
+.short-ayah {
+  margin: 14px 0;
+  padding: 8px 4px;
+  border-top: 1px solid rgba(155, 183, 202, 0.35);
+  border-bottom: 1px solid rgba(155, 183, 202, 0.35);
+}
+.short-ayah blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--royal-navy);
+}
+.short-ayah cite {
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  margin-top: 4px;
+}
+
+/* Scratch Box */
+.scratch-box {
+  position: relative;
+  width: 280px;
+  height: 120px;
+  margin: 14px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(155, 183, 202, 0.5);
+}
+.scratch-box canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  touch-action: none;
+}
+.scratch-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #fbfbf9;
+}
+.scratch-reveal small {
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+.scratch-reveal strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  color: var(--royal-navy);
+}
+.scratch-reveal span {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  margin-top: 2px;
+}
+
+/* Countdown */
+.countdown-bar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 12px;
+}
+.time-cell {
+  background: rgba(230, 240, 245, 0.65);
+  border: 1px solid rgba(155, 183, 202, 0.35);
+  border-radius: 6px;
+  padding: 8px 2px;
+}
+.time-cell b {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.25rem;
+  color: var(--royal-navy);
+}
+.time-cell span {
+  font-size: 0.58rem;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+
+/* Venue Block */
+.sub-heading {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  color: var(--royal-navy);
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.detail-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(230, 240, 245, 0.55);
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  text-align: left;
+}
+.detail-cell .icon {
+  font-size: 1.2rem;
+  color: var(--powder-blue);
+}
+.detail-cell small {
+  display: block;
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  color: var(--text-dim);
+}
+.detail-cell strong {
+  font-size: 0.88rem;
+  color: var(--royal-navy);
+}
+.detail-cell span {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.button-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.navy-btn {
+  display: inline-block;
+  width: 100%;
+  padding: 12px;
+  background: var(--royal-navy);
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(30, 53, 74, 0.2);
+}
+.navy-btn.outline {
+  background: transparent;
+  border: 1px solid var(--royal-navy);
+  color: var(--royal-navy);
+  box-shadow: none;
+}
+.navy-btn.share {
+  margin-bottom: 12px;
+}
+
+.compliments-block {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(155, 183, 202, 0.35);
+}
+.compliments-block h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--royal-navy);
+  margin-bottom: 6px;
+}
+.compliment-list {
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+.footer-block {
+  margin-top: 16px;
+}
+.arabic-closing {
+  font-family: serif;
+  font-size: 0.95rem;
+  color: var(--royal-navy);
+  margin-bottom: 8px;
+}
+.personal-footer {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+.personal-footer strong {
+  color: var(--royal-navy);
+}
