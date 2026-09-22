@@ -23,7 +23,7 @@ const invitationContent = document.getElementById('invitationContent');
 
 function openInvitation() {
   envelopeScreen.style.opacity = '0';
-  envelopeScreen.style.transform = 'scale(1.05)';
+  envelopeScreen.style.transform = 'scale(1.06)';
 
   setTimeout(() => {
     envelopeScreen.style.display = 'none';
@@ -62,25 +62,44 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Heart-Shaped Scratch Canvas with Clean Sized Text
+// Scratch Card Inner Region Mapping
 const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
 
-function drawScratchLayer() {
+function initHeartCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  grad.addColorStop(0, '#9ab4c4');
-  grad.addColorStop(0.5, '#dbe7ee');
-  grad.addColorStop(1, '#7093a8');
-  ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  // Define inner heart path to cover the center enamel only
+  ctx.save();
+  ctx.beginPath();
+  // Mathematical heart curve tailored to fit inside the rim of IMG_9403.png
+  const cx = 140;
+  const cy = 125;
+  ctx.moveTo(cx, cy + 65);
+  ctx.bezierCurveTo(cx - 75, cy + 20, cx - 80, cy - 35, cx - 40, cy - 55);
+  ctx.bezierCurveTo(cx - 15, cy - 65, cx, cy - 40, cx, cy - 30);
+  ctx.bezierCurveTo(cx, cy - 40, cx + 15, cy - 65, cx + 40, cy - 55);
+  ctx.bezierCurveTo(cx + 80, cy - 35, cx + 75, cy + 20, cx, cy + 65);
+  ctx.closePath();
+  ctx.clip();
 
-  ctx.fillStyle = '#112338';
-  ctx.font = '600 10px Montserrat';
+  // Draw Powder-Blue Brushed Metallic Foil Fill
+  const grad = ctx.createLinearGradient(60, 60, 220, 200);
+  grad.addColorStop(0, '#8eb0c4');
+  grad.addColorStop(0.3, '#d8e7ef');
+  grad.addColorStop(0.6, '#a4c2d3');
+  grad.addColorStop(1, '#7a9eb3');
+  ctx.fillStyle = grad;
+  ctx.fill();
+
+  // Center Foil Label
+  ctx.fillStyle = '#13273a';
+  ctx.font = '600 11px Montserrat';
   ctx.textAlign = 'center';
-  ctx.fillText('SCRATCH HERE', canvas.width / 2, canvas.height / 2 + 4);
+  ctx.fillText('SCRATCH TO REVEAL', cx, cy + 4);
+  ctx.restore();
 }
-drawScratchLayer();
+initHeartCanvas();
 
 let scratching = false;
 let scratchedCount = 0;
@@ -99,14 +118,16 @@ function erase(e) {
   if (!scratching) return;
   const pt = getPoint(e);
   ctx.globalCompositeOperation = 'destination-out';
+  
   ctx.beginPath();
-  ctx.arc(pt.x, pt.y, 16, 0, Math.PI * 2);
+  ctx.arc(pt.x, pt.y, 22, 0, Math.PI * 2);
   ctx.fill();
   scratchedCount++;
 
-  if (scratchedCount > 35) {
+  if (scratchedCount > 38) {
     canvas.style.opacity = '0';
-    setTimeout(() => { canvas.style.display = 'none'; }, 300);
+    canvas.style.transition = 'opacity 0.4s ease';
+    setTimeout(() => { canvas.style.display = 'none'; }, 400);
   }
 }
 
