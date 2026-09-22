@@ -62,23 +62,23 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Scratch Card Reveal
+// Heart-Shaped Scratch Canvas
 const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
 
 function drawScratchLayer() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  grad.addColorStop(0, '#a9c4d4');
-  grad.addColorStop(0.5, '#e4eef4');
-  grad.addColorStop(1, '#89a8bd');
+  grad.addColorStop(0, '#9bb7ca');
+  grad.addColorStop(0.5, '#dbe7ee');
+  grad.addColorStop(1, '#6d92aa');
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = '#1e354a';
-  ctx.font = '600 12px Montserrat';
+  ctx.fillStyle = '#182c3e';
+  ctx.font = '600 11px Montserrat';
   ctx.textAlign = 'center';
-  ctx.fillText('SCRATCH TO REVEAL CEREMONY', canvas.width / 2, canvas.height / 2 + 4);
+  ctx.fillText('SCRATCH ME', canvas.width / 2, canvas.height / 2 + 4);
 }
 drawScratchLayer();
 
@@ -104,7 +104,7 @@ function erase(e) {
   ctx.fill();
   scratchedCount++;
 
-  if (scratchedCount > 55) {
+  if (scratchedCount > 40) {
     canvas.style.opacity = '0';
     setTimeout(() => { canvas.style.display = 'none'; }, 300);
   }
