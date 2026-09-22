@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#dbe7ee" />
+  <title>Sakiruddin & Runa — Rukhsati Ceremony</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="mobile-wrapper">
+  <!-- Looping Watercolor Palace Video -->
+  <video class="courtyard-video" autoplay loop muted playsinline>
+    <source src="assets/dancers.mp4" type="video/mp4">
+  </video>
+
+  <main>
+    <!-- SCREEN 1: Royal Letter with Powder-Blue Wax Seal -->
+    <section class="envelope-screen" id="envelopeScreen">
+      <div class="letter-card">
+        <div class="bismillah-line">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+        <p class="royal-title">A RUKHSATI INVITATION</p>
+        
+        <div class="guest-banner">
+          <small>Exclusively Prepared For</small>
+          <strong id="guestFront">Our Cherished Guest</strong>
+        </div>
+
+        <!-- Interactive Wax Seal Image -->
+        <div class="seal-trigger" id="sealButton" role="button" tabindex="0">
+          <img src="assets/seal.png" alt="S & R Wax Seal" class="seal-graphic">
+        </div>
+        
+        <p class="tap-hint">TAP THE SEAL TO UNVEIL</p>
+        <span class="sub-date">Monday, 19 October 2026</span>
+      </div>
+    </section>
+
+    <!-- SCREEN 2: Invitation Content Layered Over Palace -->
+    <div id="invitationContent" class="invitation-flow locked">
+      
+      <!-- Card 1: Sacred Union & Live Countdown -->
+      <section class="glass-sheet">
+        <div class="crest-mark">❦</div>
+        <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
+        <h1 class="main-event-name">Rukhsati Ceremony</h1>
+
+        <div class="names-calligraphy">
+          <span>Sakiruddin</span>
+          <i class="amp">&</i>
+          <span>Runa</span>
+        </div>
+
+        <div class="family-lineage">
+          <strong>Sakiruddin Shaikh</strong><br><small>Son of Nuruddin Shaikh</small>
+          <div class="knot">✦</div>
+          <strong>Runa Shaikh</strong><br><small>Daughter of Saidul Shaikh</small>
+        </div>
+
+        <!-- Short Quranic Blessing -->
+        <div class="short-ayah">
+          <blockquote>“And We created you in pairs.”</blockquote>
+          <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
+        </div>
+
+        <!-- Scratch Card -->
+        <div class="scratch-box">
+          <canvas id="scratchCanvas" width="280" height="120"></canvas>
+          <div class="scratch-reveal">
+            <small>Celebrating Together</small>
+            <strong>You & Your Family</strong>
+            <span>Monday, 19 October 2026 • 8:00 PM</span>
+          </div>
+        </div>
+
+        <!-- Live Countdown -->
+        <div class="countdown-bar">
+          <div class="time-cell"><b id="cdDays">00</b><span>DAYS</span></div>
+          <div class="time-cell"><b id="cdHours">00</b><span>HOURS</span></div>
+          <div class="time-cell"><b id="cdMinutes">00</b><span>MINS</span></div>
+          <div class="time-cell"><b id="cdSeconds">00</b><span>SECS</span></div>
+        </div>
+      </section>
+
+      <!-- Card 2: Date, Location & Compliments -->
+      <section class="glass-sheet">
+        <div class="crest-mark">❦</div>
+        <h2 class="sub-heading">Ceremony & Venue</h2>
+
+        <div class="detail-cell">
+          <div class="icon">🗓</div>
+          <div class="info">
+            <small>DATE & TIME</small>
+            <strong>Monday, 19 October 2026</strong>
+            <span>8:00 PM Onwards</span>
+          </div>
+        </div>
+
+        <div class="detail-cell">
+          <div class="icon">📍</div>
+          <div class="info">
+            <small>VENUE</small>
+            <strong>C-3, Alhamdo Park Society</strong>
+            <span>Jaspur Road, Padra</span>
+          </div>
+        </div>
+
+        <div class="button-stack">
+          <a class="navy-btn" href="https://maps.google.com/?q=22.246782,73.080925" target="_blank" rel="noopener">
+            View on Google Maps
+          </a>
+          <button class="navy-btn outline" id="calendarBtn">
+            Add to Calendar (.ics)
+          </button>
+        </div>
+
+        <div class="compliments-block">
+          <h3>With Best Compliments</h3>
+          <p class="compliment-list">
+            Nawaz Selection • Maulana Yahya (Shaikh Sahab) • Shabina Lashkar • Ashiana Munshi • Kutubuddin Shaikh • Shamsuddin Shaikh
+          </p>
+        </div>
+
+        <div class="footer-block">
+          <button class="navy-btn share" id="shareBtn">Share Invitation</button>
+          <p class="arabic-closing">جزاكم الله خيرًا لحضوركم ومشاركتكم فرحتنا</p>
+          <small class="personal-footer">Honored Guest: <strong id="guestFooter">Our Cherished Guest</strong></small>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
