@@ -1,12 +1,7 @@
 :root {
-  --powder-mist: #e6f0f5;
   --royal-navy: #182c3e;
-  --navy-dark: #0f1c28;
   --powder-blue: #7fa4bd;
   --gold-accent: #bfa15f;
-  /* Translucent frosted glass so dancers show through cleanly */
-  --sheet-bg: rgba(255, 255, 255, 0.45);
-  --sheet-border: rgba(255, 255, 255, 0.65);
   --text-dim: #3f5569;
 }
 
@@ -33,11 +28,11 @@ body {
   min-height: 100vh;
   position: relative;
   overflow: hidden;
-  background: var(--powder-mist);
+  background: #e6f0f5;
   box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
 }
 
-/* Background Looping Video - Fixed & Sharp */
+/* Background Looping Video - Fixed, High Clarity, No Blurring */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -51,7 +46,9 @@ body {
   pointer-events: none;
 }
 
-/* SCREEN 1: Sealed Letter Cover */
+/* ========================================================
+   SCREEN 1: AUTHENTIC ROYAL ENVELOPE (Flap & Realistic Seam)
+   ======================================================== */
 .envelope-screen {
   min-height: 100vh;
   display: flex;
@@ -60,48 +57,60 @@ body {
   padding: 24px;
   position: relative;
   z-index: 30;
-  background: rgba(230, 240, 245, 0.5);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  background: rgba(220, 233, 240, 0.45);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.letter-card {
+.envelope-body {
   width: 100%;
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(155, 183, 202, 0.5);
-  border-radius: 12px;
-  padding: 40px 18px 30px;
-  text-align: center;
-  box-shadow: 0 15px 35px rgba(30, 53, 74, 0.16);
   position: relative;
-}
-.letter-card::before {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border: 1px dashed rgba(155, 183, 202, 0.45);
+  background: #fbfdff;
   border-radius: 8px;
+  box-shadow: 0 20px 45px rgba(24, 44, 62, 0.28), 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(155, 183, 202, 0.45);
+  overflow: hidden;
+}
+
+/* Triangular Envelope Flap */
+.envelope-flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 95px;
+  background: linear-gradient(180deg, #edf5f9 0%, #e2edf3 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  box-shadow: 0 4px 12px rgba(24, 44, 62, 0.15);
+  border-bottom: 1px solid rgba(155, 183, 202, 0.35);
+  z-index: 2;
   pointer-events: none;
+}
+
+.envelope-inner {
+  padding: 100px 18px 36px; /* Clearance under flap */
+  text-align: center;
+  position: relative;
+  z-index: 3;
 }
 
 .bismillah-line {
   font-family: serif;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: var(--royal-navy);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 
 .royal-title {
   font-size: 0.72rem;
   letter-spacing: 3px;
-  color: var(--text-dim);
+  color: var(--powder-blue);
+  font-weight: 600;
 }
 
 .guest-banner {
   margin: 18px 0;
   padding: 10px;
-  background: rgba(155, 183, 202, 0.15);
+  background: rgba(155, 183, 202, 0.14);
   border-radius: 6px;
   border-left: 2px solid var(--powder-blue);
   border-right: 2px solid var(--powder-blue);
@@ -115,15 +124,15 @@ body {
 }
 .guest-banner strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.35rem;
   color: var(--royal-navy);
 }
 
 /* Wax Seal Interaction */
 .seal-trigger {
-  width: 110px;
-  height: 110px;
-  margin: 18px auto 12px;
+  width: 120px;
+  height: 120px;
+  margin: 16px auto 10px;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -135,12 +144,12 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(30, 53, 74, 0.22));
+  filter: drop-shadow(0 6px 14px rgba(24, 44, 62, 0.28));
 }
 
 @keyframes sealHover {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(155, 183, 202, 0.45)); }
-  50% { transform: scale(1.05); filter: drop-shadow(0 8px 18px rgba(155, 183, 202, 0.75)); }
+  50% { transform: scale(1.06); filter: drop-shadow(0 8px 20px rgba(155, 183, 202, 0.8)); }
 }
 
 .tap-hint {
@@ -150,36 +159,30 @@ body {
   font-weight: 600;
   margin-top: 10px;
 }
-.sub-date {
-  display: block;
-  font-size: 0.68rem;
-  color: var(--text-dim);
-  margin-top: 4px;
-}
 
-/* SCREEN 2: Content Floated Elegantly Over Palace */
+/* ========================================================
+   SCREEN 2: CRYSTAL CLEAR DANCERS VIEW & CONTENT
+   ======================================================== */
 .invitation-flow {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 30px 14px 180px; /* Large bottom clearance to showcase bottom dancers */
+  padding: 24px 14px 220px; /* Large bottom padding to showcase bottom dancers */
 }
 .invitation-flow.locked {
   display: none;
 }
 
-/* Frosted Semi-Transparent Glass Sheet */
+/* Clean, Non-Blurry Floating Card (Preserves Video Sharpness Behind It) */
 .glass-sheet {
-  background: var(--sheet-bg);
-  border: 1px solid var(--sheet-border);
+  background: rgba(255, 255, 255, 0.42); /* Light translucent tint */
+  border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 14px;
   padding: 24px 16px;
   text-align: center;
-  box-shadow: 0 8px 30px rgba(18, 34, 48, 0.08);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  box-shadow: 0 8px 30px rgba(24, 44, 62, 0.08);
 }
 
 .crest-mark {
@@ -202,16 +205,16 @@ body {
   color: var(--royal-navy);
   letter-spacing: 1px;
   margin: 6px 0;
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
 .names-calligraphy {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.4rem;
+  font-size: 3.5rem;
   color: var(--royal-navy);
   line-height: 1.05;
-  margin: 12px 0 16px;
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
+  margin: 10px 0 14px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
 }
 .names-calligraphy .amp {
   font-family: 'Cormorant Garamond', serif;
@@ -255,46 +258,57 @@ body {
   margin-top: 4px;
 }
 
-/* Scratch Box */
-.scratch-box {
-  position: relative;
-  width: 280px;
-  height: 110px;
-  margin: 14px auto;
-  border-radius: 8px;
-  overflow: hidden;
-  border: 1px solid rgba(155, 183, 202, 0.5);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+/* ========================================================
+   HEART-SHAPED SCRATCH CARD
+   ======================================================== */
+.heart-scratch-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
 }
-.scratch-box canvas {
+
+.heart-scratch-box {
+  position: relative;
+  width: 220px;
+  height: 200px;
+  /* SVG Clip-path creating an organic heart shape */
+  clip-path: path("M 110,190 C 10,120 0,60 40,20 C 75,-15 110,25 110,25 C 110,25 145,-15 180,20 C 220,60 210,120 110,190 Z");
+  filter: drop-shadow(0 6px 16px rgba(24, 44, 62, 0.16));
+}
+
+.heart-scratch-box canvas {
   position: absolute;
   inset: 0;
   z-index: 2;
   touch-action: none;
 }
-.scratch-reveal {
+
+.heart-scratch-box .scratch-reveal {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(255, 255, 255, 0.85);
+  background: #ffffff;
+  padding: 0 20px;
+  text-align: center;
 }
-.scratch-reveal small {
-  font-size: 0.65rem;
+.heart-scratch-box .scratch-reveal small {
+  font-size: 0.62rem;
   letter-spacing: 1px;
   color: var(--text-dim);
 }
-.scratch-reveal strong {
+.heart-scratch-box .scratch-reveal strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   color: var(--royal-navy);
+  margin: 2px 0;
 }
-.scratch-reveal span {
+.heart-scratch-box .scratch-reveal span {
   font-size: 0.7rem;
-  color: var(--text-dim);
-  margin-top: 2px;
+  color: var(--powder-blue);
+  font-weight: 600;
 }
 
 /* Countdown */
@@ -302,10 +316,10 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 .time-cell {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid rgba(155, 183, 202, 0.45);
   border-radius: 6px;
   padding: 8px 2px;
@@ -335,7 +349,7 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.6);
   padding: 10px 14px;
   border-radius: 6px;
   margin-bottom: 8px;
@@ -382,10 +396,10 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(30, 53, 74, 0.2);
+  box-shadow: 0 4px 12px rgba(24, 44, 62, 0.2);
 }
 .navy-btn.outline {
-  background: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.45);
   border: 1px solid var(--royal-navy);
   color: var(--royal-navy);
   box-shadow: none;
