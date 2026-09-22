@@ -8,7 +8,7 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,36 +20,41 @@
   </video>
 
   <main>
-    <!-- SCREEN 1: Authentic Royal Envelope with Triangular Flap -->
+    <!-- SCREEN 1: Ornate Royal Midnight Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
-      <div class="envelope-body">
-        <div class="envelope-flap"></div>
-        <div class="envelope-inner">
-          <div class="bismillah-line">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-          <p class="royal-title">ROYAL INVITATION</p>
+      <div class="envelope-card-wrap" id="sealButton" role="button" tabindex="0">
+        
+        <!-- Base Royal Envelope Artwork -->
+        <img src="assets/IMG_9402.png" alt="Royal Wedding Envelope" class="envelope-art-bg">
+        
+        <!-- Content Layer Centered Over Flap & Body -->
+        <div class="envelope-front-content">
+          <div class="arabic-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+          <p class="envelope-type-title">RUKHSATI INVITATION</p>
           
-          <div class="guest-banner">
-            <small>Exclusively Prepared For</small>
+          <div class="guest-envelope-pill">
+            <small>EXCLUSIVELY PREPARED FOR</small>
             <strong id="guestFront">Our Cherished Guest</strong>
           </div>
 
-          <!-- Interactive Wax Seal Image Resting on Flap Seam -->
-          <div class="seal-trigger" id="sealButton" role="button" tabindex="0">
+          <!-- Wax Seal Anchored on Flap Tip -->
+          <div class="seal-hotspot">
             <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
           </div>
-          
-          <p class="tap-hint">TAP WAX SEAL TO OPEN</p>
         </div>
+
+        <p class="tap-hint">TAP ENVELOPE TO UNVEIL</p>
       </div>
     </section>
 
-    <!-- SCREEN 2: Content Floating Over Crystal-Clear Palace Video -->
+    <!-- SCREEN 2: Seamless Floating Invitation (Courtyard Dancers In Full View) -->
     <div id="invitationContent" class="invitation-flow locked">
       
-      <!-- Card 1: Names, Ayah, Heart Scratch, Countdown -->
-      <section class="glass-sheet">
-        <div class="crest-mark">❦</div>
+      <!-- Top Names & Sacred Ayah Floating Section -->
+      <section class="floating-section">
+        <div class="gold-knot">✦ &nbsp; ❦ &nbsp; ✦</div>
         <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
+        
         <h1 class="main-event-name">Rukhsati Ceremony</h1>
 
         <div class="names-calligraphy">
@@ -59,30 +64,38 @@
         </div>
 
         <div class="family-lineage">
-          <strong>Sakiruddin Shaikh</strong><br><small>Son of Nuruddin Shaikh</small>
+          <strong class="person-title">Sakiruddin Shaikh</strong>
+          <span class="parent-line">Son of Nuruddin Shaikh</span>
           <div class="knot">✦</div>
-          <strong>Runa Shaikh</strong><br><small>Daughter of Saidul Shaikh</small>
+          <strong class="person-title">Runa Shaikh</strong>
+          <span class="parent-line">Daughter of Saidul Shaikh</span>
         </div>
 
-        <!-- Short Quranic Blessing -->
-        <div class="short-ayah">
+        <div class="ayah-container">
+          <div class="thin-rule"></div>
           <blockquote>“And We created you in pairs.”</blockquote>
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
+          <div class="thin-rule"></div>
         </div>
 
-        <!-- Heart-Shaped Scratch Reveal Container -->
-        <div class="heart-scratch-wrapper">
-          <div class="heart-scratch-box">
-            <canvas id="scratchCanvas" width="220" height="200"></canvas>
-            <div class="scratch-reveal">
-              <small>CELEBRATING WITH</small>
-              <strong>You & Your Family</strong>
-              <span>19 October 2026</span>
+        <!-- 3D Heart Scratch Emblem Section -->
+        <div class="heart-container">
+          <div class="heart-emblem-wrap">
+            <!-- 3D Metallic Heart Rim & Base Artwork -->
+            <img src="assets/IMH_9403.png" alt="Heart Emblem" class="heart-base-art">
+            
+            <!-- Revealed Ceremony Date Underneath -->
+            <div class="heart-revealed-date">
+              <span class="date-label">Ceremony Date:</span>
+              <strong class="date-val">19 October 2026</strong>
             </div>
+
+            <!-- Scratchable Foil Mask Layer -->
+            <canvas id="scratchCanvas" width="280" height="260"></canvas>
           </div>
         </div>
 
-        <!-- Live Countdown -->
+        <!-- Live Countdown Pill Bar -->
         <div class="countdown-bar">
           <div class="time-cell"><b id="cdDays">00</b><span>DAYS</span></div>
           <div class="time-cell"><b id="cdHours">00</b><span>HOURS</span></div>
@@ -91,9 +104,9 @@
         </div>
       </section>
 
-      <!-- Card 2: Date, Location & Compliments -->
-      <section class="glass-sheet">
-        <div class="crest-mark">❦</div>
+      <!-- Venue & Action Glass Card -->
+      <section class="venue-glass-card">
+        <div class="gold-knot">❦</div>
         <h2 class="sub-heading">Ceremony & Venue</h2>
 
         <div class="detail-cell">
