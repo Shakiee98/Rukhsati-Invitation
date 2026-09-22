@@ -1,12 +1,13 @@
 :root {
   --powder-mist: #e6f0f5;
-  --royal-navy: #1e354a;
-  --navy-dark: #122230;
-  --powder-blue: #9bb7ca;
+  --royal-navy: #182c3e;
+  --navy-dark: #0f1c28;
+  --powder-blue: #7fa4bd;
   --gold-accent: #bfa15f;
-  --gold-gradient: linear-gradient(135deg, #dfc685 0%, #bfa15f 50%, #876c32 100%);
-  --sheet-bg: rgba(255, 255, 255, 0.90);
-  --text-dim: #546b7f;
+  /* Translucent frosted glass so dancers show through cleanly */
+  --sheet-bg: rgba(255, 255, 255, 0.45);
+  --sheet-border: rgba(255, 255, 255, 0.65);
+  --text-dim: #3f5569;
 }
 
 * {
@@ -36,7 +37,7 @@ body {
   box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
 }
 
-/* Background Palace Video */
+/* Background Looping Video - Fixed & Sharp */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -59,14 +60,15 @@ body {
   padding: 24px;
   position: relative;
   z-index: 30;
-  background: rgba(230, 240, 245, 0.55);
-  backdrop-filter: blur(8px);
+  background: rgba(230, 240, 245, 0.5);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .letter-card {
   width: 100%;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(155, 183, 202, 0.5);
   border-radius: 12px;
   padding: 40px 18px 30px;
@@ -99,7 +101,7 @@ body {
 .guest-banner {
   margin: 18px 0;
   padding: 10px;
-  background: rgba(155, 183, 202, 0.12);
+  background: rgba(155, 183, 202, 0.15);
   border-radius: 6px;
   border-left: 2px solid var(--powder-blue);
   border-right: 2px solid var(--powder-blue);
@@ -155,27 +157,29 @@ body {
   margin-top: 4px;
 }
 
-/* SCREEN 2: Content Flow Over Palace */
+/* SCREEN 2: Content Floated Elegantly Over Palace */
 .invitation-flow {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px 14px 40px;
+  gap: 20px;
+  padding: 30px 14px 180px; /* Large bottom clearance to showcase bottom dancers */
 }
 .invitation-flow.locked {
   display: none;
 }
 
+/* Frosted Semi-Transparent Glass Sheet */
 .glass-sheet {
   background: var(--sheet-bg);
-  border: 1px solid rgba(155, 183, 202, 0.4);
-  border-radius: 12px;
-  padding: 26px 18px;
+  border: 1px solid var(--sheet-border);
+  border-radius: 14px;
+  padding: 24px 16px;
   text-align: center;
-  box-shadow: 0 10px 30px rgba(18, 34, 48, 0.12);
-  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 30px rgba(18, 34, 48, 0.08);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
 .crest-mark {
@@ -193,19 +197,21 @@ body {
 
 .main-event-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 600;
   color: var(--royal-navy);
   letter-spacing: 1px;
   margin: 6px 0;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .names-calligraphy {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.2rem;
+  font-size: 3.4rem;
   color: var(--royal-navy);
-  line-height: 1.1;
-  margin: 10px 0;
+  line-height: 1.05;
+  margin: 12px 0 16px;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.9);
 }
 .names-calligraphy .amp {
   font-family: 'Cormorant Garamond', serif;
@@ -233,13 +239,13 @@ body {
 .short-ayah {
   margin: 14px 0;
   padding: 8px 4px;
-  border-top: 1px solid rgba(155, 183, 202, 0.35);
-  border-bottom: 1px solid rgba(155, 183, 202, 0.35);
+  border-top: 1px solid rgba(155, 183, 202, 0.4);
+  border-bottom: 1px solid rgba(155, 183, 202, 0.4);
 }
 .short-ayah blockquote {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: 1.18rem;
   color: var(--royal-navy);
 }
 .short-ayah cite {
@@ -253,11 +259,12 @@ body {
 .scratch-box {
   position: relative;
   width: 280px;
-  height: 120px;
+  height: 110px;
   margin: 14px auto;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(155, 183, 202, 0.5);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 .scratch-box canvas {
   position: absolute;
@@ -272,7 +279,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: #fbfbf9;
+  background: rgba(255, 255, 255, 0.85);
 }
 .scratch-reveal small {
   font-size: 0.65rem;
@@ -281,11 +288,11 @@ body {
 }
 .scratch-reveal strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--royal-navy);
 }
 .scratch-reveal span {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   color: var(--text-dim);
   margin-top: 2px;
 }
@@ -298,8 +305,8 @@ body {
   margin-top: 12px;
 }
 .time-cell {
-  background: rgba(230, 240, 245, 0.65);
-  border: 1px solid rgba(155, 183, 202, 0.35);
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(155, 183, 202, 0.45);
   border-radius: 6px;
   padding: 8px 2px;
 }
@@ -328,11 +335,12 @@ body {
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(230, 240, 245, 0.55);
+  background: rgba(255, 255, 255, 0.55);
   padding: 10px 14px;
   border-radius: 6px;
   margin-bottom: 8px;
   text-align: left;
+  border: 1px solid rgba(155, 183, 202, 0.3);
 }
 .detail-cell .icon {
   font-size: 1.2rem;
@@ -377,7 +385,7 @@ body {
   box-shadow: 0 4px 12px rgba(30, 53, 74, 0.2);
 }
 .navy-btn.outline {
-  background: transparent;
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--royal-navy);
   color: var(--royal-navy);
   box-shadow: none;
