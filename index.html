@@ -20,31 +20,33 @@
   </video>
 
   <main>
-    <!-- SCREEN 1: Royal Letter with Powder-Blue Wax Seal -->
+    <!-- SCREEN 1: Authentic Royal Envelope with Triangular Flap -->
     <section class="envelope-screen" id="envelopeScreen">
-      <div class="letter-card">
-        <div class="bismillah-line">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-        <p class="royal-title">A RUKHSATI INVITATION</p>
-        
-        <div class="guest-banner">
-          <small>Exclusively Prepared For</small>
-          <strong id="guestFront">Our Cherished Guest</strong>
-        </div>
+      <div class="envelope-body">
+        <div class="envelope-flap"></div>
+        <div class="envelope-inner">
+          <div class="bismillah-line">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+          <p class="royal-title">ROYAL INVITATION</p>
+          
+          <div class="guest-banner">
+            <small>Exclusively Prepared For</small>
+            <strong id="guestFront">Our Cherished Guest</strong>
+          </div>
 
-        <!-- Interactive Wax Seal Image -->
-        <div class="seal-trigger" id="sealButton" role="button" tabindex="0">
-          <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+          <!-- Interactive Wax Seal Image Resting on Flap Seam -->
+          <div class="seal-trigger" id="sealButton" role="button" tabindex="0">
+            <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+          </div>
+          
+          <p class="tap-hint">TAP WAX SEAL TO OPEN</p>
         </div>
-        
-        <p class="tap-hint">TAP THE SEAL TO UNVEIL</p>
-        <span class="sub-date">Monday, 19 October 2026</span>
       </div>
     </section>
 
-    <!-- SCREEN 2: Invitation Content Layered Over Palace -->
+    <!-- SCREEN 2: Content Floating Over Crystal-Clear Palace Video -->
     <div id="invitationContent" class="invitation-flow locked">
       
-      <!-- Card 1: Sacred Union & Live Countdown -->
+      <!-- Card 1: Names, Ayah, Heart Scratch, Countdown -->
       <section class="glass-sheet">
         <div class="crest-mark">❦</div>
         <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
@@ -68,13 +70,15 @@
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Scratch Card -->
-        <div class="scratch-box">
-          <canvas id="scratchCanvas" width="280" height="120"></canvas>
-          <div class="scratch-reveal">
-            <small>Celebrating Together</small>
-            <strong>You & Your Family</strong>
-            <span>Monday, 19 October 2026 • 8:00 PM</span>
+        <!-- Heart-Shaped Scratch Reveal Container -->
+        <div class="heart-scratch-wrapper">
+          <div class="heart-scratch-box">
+            <canvas id="scratchCanvas" width="220" height="200"></canvas>
+            <div class="scratch-reveal">
+              <small>CELEBRATING WITH</small>
+              <strong>You & Your Family</strong>
+              <span>19 October 2026</span>
+            </div>
           </div>
         </div>
 
