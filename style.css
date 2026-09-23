@@ -35,7 +35,6 @@ body {
   box-shadow: 0 10px 40px rgba(16, 34, 53, 0.3);
 }
 
-/* Background Palace Video */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -49,18 +48,19 @@ body {
   pointer-events: none;
 }
 
-/* Particle Effects Canvas */
+/* Master Particle Canvas: Top Layer */
 #fxCanvas {
   position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 40;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
   pointer-events: none;
 }
 
 /* ========================================================
-   SCREEN 1: ROYAL STATIONERY ENVELOPE
+   SCREEN 1: ROYAL ENVELOPE STATIONERY
    ======================================================== */
 .envelope-screen {
   min-height: 100vh;
@@ -77,7 +77,6 @@ body {
 .envelope-scene {
   width: 100%;
   max-width: 375px;
-  perspective: 1000px;
 }
 
 .envelope-card-wrapper {
@@ -91,10 +90,8 @@ body {
     0 0 0 1px rgba(198, 160, 82, 0.5);
   overflow: hidden;
   padding: 10px;
-  transform-style: preserve-3d;
 }
 
-/* Double Inset Gold Filigree Borders */
 .envelope-card-wrapper::before {
   content: "";
   position: absolute;
@@ -114,23 +111,6 @@ body {
   z-index: 5;
 }
 
-/* Dynamic Foil Shimmer */
-.foil-glimmer-layer {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(115deg, transparent 20%, rgba(255, 235, 170, 0.3) 40%, transparent 60%);
-  transform: translateX(-100%);
-  animation: foilShimmer 5s infinite;
-  pointer-events: none;
-  z-index: 7;
-}
-
-@keyframes foilShimmer {
-  0% { transform: translateX(-150%); }
-  35%, 100% { transform: translateX(150%); }
-}
-
-/* Corner Filigrees */
 .corner-filigree {
   position: absolute;
   font-size: 1rem;
@@ -144,7 +124,6 @@ body {
 .bottom-left { bottom: 12px; left: 14px; transform: scaleY(-1); }
 .bottom-right { bottom: 12px; right: 14px; transform: scale(-1); }
 
-/* Realistic 3D Flap Shading */
 .envelope-top-flap {
   position: absolute;
   top: 0;
@@ -168,19 +147,24 @@ body {
 .envelope-body-inner {
   position: relative;
   z-index: 4;
-  padding: 90px 16px 36px;
+  padding: 85px 16px 36px;
   text-align: center;
 }
 
-/* Prominent Royal Gold Bismillah */
+.gold-bismillah-container {
+  width: 100%;
+  max-width: 260px;
+  margin: 0 auto;
+  overflow: visible;
+}
 .gold-bismillah-large {
+  display: block;
   font-family: 'Amiri', serif;
-  font-size: 2.5rem;
+  font-size: 2.1rem;
   font-weight: 700;
   color: var(--gold-accent);
-  line-height: 1.1;
-  text-shadow: 0 2px 8px rgba(198, 160, 82, 0.45);
-  margin-bottom: 2px;
+  line-height: 1.2;
+  text-shadow: 0 2px 8px rgba(198, 160, 82, 0.35);
 }
 
 .envelope-tag {
@@ -189,7 +173,7 @@ body {
   letter-spacing: 3.5px;
   font-weight: 600;
   color: var(--powder-blue);
-  margin: 6px 0 16px;
+  margin: 4px 0 16px;
 }
 
 .guest-emboss-box {
@@ -199,7 +183,7 @@ body {
   border-right: 3px solid var(--gold-accent);
   border-radius: 6px;
   padding: 10px 14px;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
 }
 .guest-emboss-box small {
   display: block;
@@ -213,7 +197,6 @@ body {
   color: var(--royal-navy);
 }
 
-/* Seal & Pulsing Pointer */
 .seal-interactive-zone {
   display: inline-flex;
   flex-direction: column;
@@ -260,8 +243,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 8px 18px rgba(16, 34, 53, 0.35));
-  transition: transform 0.4s ease, filter 0.4s ease;
+  filter: drop-shadow(0 10px 22px rgba(16, 34, 53, 0.4));
+  transition: transform 0.4s ease;
 }
 
 @keyframes sealPulse {
@@ -270,7 +253,7 @@ body {
 }
 
 /* ========================================================
-   SCREEN 2: FLOATING TRANSLUCENT INVITATION
+   SCREEN 2: FLOATING INVITATION
    ======================================================== */
 .invitation-flow {
   position: relative;
@@ -376,9 +359,7 @@ body {
   margin-top: 4px;
 }
 
-/* ========================================================
-   HEART SCRATCH CARD (Retina Aligned)
-   ======================================================== */
+/* Heart Scratch Box */
 .heart-scratch-wrapper {
   display: flex;
   justify-content: center;
@@ -401,7 +382,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 18px 12px;
+  padding: 30px 18px 12px;
   text-align: center;
 }
 .reveal-tag {
@@ -415,7 +396,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.45rem;
   color: var(--royal-navy);
-  margin: 3px 0;
+  margin: 4px 0;
 }
 .reveal-time {
   font-size: 0.72rem;
