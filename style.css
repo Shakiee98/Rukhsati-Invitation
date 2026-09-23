@@ -48,7 +48,7 @@ body {
   pointer-events: none;
 }
 
-/* Master Particle Canvas: Top Layer */
+/* Master Particle Canvas: Anchored Above UI */
 #fxCanvas {
   position: fixed;
   top: 0;
@@ -151,20 +151,20 @@ body {
   text-align: center;
 }
 
+/* Sized & Contained Bismillah */
 .gold-bismillah-container {
   width: 100%;
-  max-width: 260px;
+  max-width: 220px;
   margin: 0 auto;
-  overflow: visible;
 }
-.gold-bismillah-large {
+.gold-bismillah-text {
   display: block;
   font-family: 'Amiri', serif;
-  font-size: 2.1rem;
+  font-size: 1.55rem;
   font-weight: 700;
   color: var(--gold-accent);
-  line-height: 1.2;
-  text-shadow: 0 2px 8px rgba(198, 160, 82, 0.35);
+  line-height: 1.25;
+  text-shadow: 0 1px 4px rgba(198, 160, 82, 0.35);
 }
 
 .envelope-tag {
@@ -173,7 +173,7 @@ body {
   letter-spacing: 3.5px;
   font-weight: 600;
   color: var(--powder-blue);
-  margin: 4px 0 16px;
+  margin: 6px 0 16px;
 }
 
 .guest-emboss-box {
@@ -359,12 +359,35 @@ body {
   margin-top: 4px;
 }
 
-/* Heart Scratch Box */
+/* ========================================================
+   DECORATED HEART SCRATCH CARD
+   ======================================================== */
 .heart-scratch-wrapper {
   display: flex;
   justify-content: center;
-  margin: 16px 0;
+  margin: 18px 0 14px;
 }
+
+.heart-frame-ornament {
+  position: relative;
+  width: 260px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Arabesque Accents Resting on Top Curves */
+.heart-accent {
+  position: absolute;
+  font-size: 1rem;
+  color: var(--gold-accent);
+  z-index: 5;
+  pointer-events: none;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.15));
+}
+.left-accent { top: 2px; left: 42px; transform: rotate(-25deg); }
+.right-accent { top: 2px; right: 42px; transform: rotate(25deg) scaleX(-1); }
 
 .heart-scratch-box {
   position: relative;
@@ -372,19 +395,33 @@ body {
   height: 230px;
   clip-path: path("M 125,215 C 10,140 0,70 42,26 C 84,-15 125,26 125,26 C 125,26 166,-15 208,26 C 250,70 240,140 125,215 Z");
   filter: drop-shadow(0 12px 24px rgba(16, 34, 53, 0.28));
+  box-shadow: 0 0 0 3px rgba(198, 160, 82, 0.6) inset;
 }
 
+/* State B: Revealed Plate */
 .scratch-reveal {
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at center, #ffffff 0%, #eaf1f6 100%);
+  background: radial-gradient(circle at center, #ffffff 0%, #f6f8fa 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 14px 10px;
+}
+
+.reveal-inner-border {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 30px 18px 12px;
   text-align: center;
+  border: 1px dashed rgba(198, 160, 82, 0.5);
+  border-radius: 50%;
+  padding: 10px;
 }
+
 .reveal-tag {
   font-size: 0.65rem;
   letter-spacing: 2px;
@@ -396,7 +433,7 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.45rem;
   color: var(--royal-navy);
-  margin: 4px 0;
+  margin: 3px 0;
 }
 .reveal-time {
   font-size: 0.72rem;
@@ -409,7 +446,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 2;
+  z-index: 3;
   touch-action: none;
 }
 
