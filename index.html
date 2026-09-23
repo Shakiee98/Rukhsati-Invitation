@@ -14,7 +14,7 @@
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Looping Background Courtyard Video -->
+  <!-- Courtyard Palace Video -->
   <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
@@ -23,22 +23,31 @@
   <canvas id="fxCanvas"></canvas>
 
   <main>
-    <!-- SCREEN 1: Stationery Envelope -->
+    <!-- SCREEN 1: Embellished Stationery Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
       <div class="envelope-scene">
         
         <div class="envelope-card-wrapper" id="envelopeCard">
+          <!-- Multi-Layer Royal Filigrees -->
           <div class="corner-filigree top-left">❦</div>
           <div class="corner-filigree top-right">❦</div>
           <div class="corner-filigree bottom-left">❦</div>
           <div class="corner-filigree bottom-right">❦</div>
 
+          <!-- Realistic Diagonal Crease Folds -->
+          <div class="envelope-side-fold fold-left"></div>
+          <div class="envelope-side-fold fold-right"></div>
+
           <div class="envelope-top-flap">
             <div class="flap-bevel"></div>
+            <div class="flap-gold-trim"></div>
           </div>
 
           <div class="envelope-body-inner">
-            <!-- Contained Bismillah -->
+            <!-- Royal Arch Header -->
+            <div class="gold-top-crest">✦ &nbsp; ❦ &nbsp; ✦</div>
+
+            <!-- Optically Balanced Bismillah (Shifted to Left) -->
             <div class="gold-bismillah-container">
               <span class="gold-bismillah-text">﷽</span>
             </div>
@@ -59,6 +68,7 @@
                 </svg>
               </div>
 
+              <!-- Enlarged Prominent Wax Seal -->
               <div class="seal-ring">
                 <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-image" id="sealImg">
               </div>
@@ -72,7 +82,7 @@
     <!-- SCREEN 2: Floating Royal Invitation -->
     <div id="invitationContent" class="invitation-flow locked">
       
-      <!-- Card 1: Names, Ayah, Heart Scratch, Countdown -->
+      <!-- Card 1: Sacred Union & Countdown -->
       <section class="glass-sheet">
         <div class="crest-mark">❦</div>
         <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
@@ -97,15 +107,14 @@
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Decorated Dual-State Heart Container -->
+        <!-- Perfectly Centered Heart Scratch Box -->
         <div class="heart-scratch-wrapper">
           <div class="heart-frame-ornament" id="heartContainer">
-            <!-- Corner Filigree Accents on Heart Curves -->
             <span class="heart-accent left-accent">❦</span>
             <span class="heart-accent right-accent">❦</span>
 
             <div class="heart-scratch-box" id="heartScratchBox">
-              <!-- State B: Revealed Plate -->
+              <!-- Revealed Plate with Contoured Dashed Border -->
               <div class="scratch-reveal">
                 <div class="reveal-inner-border">
                   <span class="reveal-tag">✦ CEREMONY DATE ✦</span>
@@ -114,7 +123,7 @@
                 </div>
               </div>
 
-              <!-- State A: Brushed Metallic Scratch Canvas -->
+              <!-- Scratch Canvas -->
               <canvas id="scratchCanvas"></canvas>
             </div>
           </div>
