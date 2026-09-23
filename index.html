@@ -3,39 +3,48 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#122538" />
+  <meta name="theme-color" content="#102235" />
   <title>Sakiruddin & Runa — Rukhsati Ceremony</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Looping Background Video -->
+  <!-- Looping Background Video with Full iOS Autoplay Support -->
   <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
 
+  <!-- Physical Particle Canvas for Gold Burst Physics -->
+  <canvas id="fxCanvas"></canvas>
+
   <main>
-    <!-- SCREEN 1: Authentic Royal Stationery Envelope -->
+    <!-- SCREEN 1: 3D Royal Stationery Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
       <div class="envelope-scene">
         
         <div class="envelope-card-wrapper" id="envelopeCard">
+          <!-- Dynamic Gold Shimmer Layer -->
+          <div class="foil-glimmer-layer"></div>
+
+          <!-- Ornate Gold Filigree Corner Accents -->
           <div class="corner-filigree top-left">❦</div>
           <div class="corner-filigree top-right">❦</div>
           <div class="corner-filigree bottom-left">❦</div>
           <div class="corner-filigree bottom-right">❦</div>
 
+          <!-- Top Folded Flap Effect -->
           <div class="envelope-top-flap">
             <div class="flap-bevel"></div>
           </div>
 
+          <!-- Envelope Content -->
           <div class="envelope-body-inner">
-            <!-- Large Gold Calligraphy Crest -->
+            <!-- Illuminated Calligraphic Bismillah -->
             <div class="gold-bismillah-large">﷽</div>
             <p class="envelope-tag">RUKHSATI INVITATION</p>
 
@@ -49,12 +58,12 @@
               <div class="guide-arrow-wrapper">
                 <span class="guide-label">TAP TO UNVEIL</span>
                 <svg class="gold-guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                  <path d="M12 4v14m0 0l-5-5m5 5l5-5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M12 4v14m0 0l-5-5m5 5l5-5" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </div>
 
               <div class="seal-ring">
-                <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-image">
+                <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-image" id="sealImg">
               </div>
             </div>
           </div>
@@ -63,7 +72,7 @@
       </div>
     </section>
 
-    <!-- SCREEN 2: Floating Royal Invitation -->
+    <!-- SCREEN 2: Seamless Floating Royal Invitation -->
     <div id="invitationContent" class="invitation-flow locked">
       
       <!-- Card 1: Names, Ayah, Heart Scratch, Countdown -->
@@ -91,15 +100,17 @@
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Heart Scratch Box -->
+        <!-- Retina Heart Scratch Box -->
         <div class="heart-scratch-wrapper">
-          <div class="heart-scratch-box">
+          <div class="heart-scratch-box" id="heartScratchBox">
+            <!-- Underneath Revealed Date Core -->
             <div class="scratch-reveal">
               <span class="reveal-tag">CEREMONY DATE</span>
               <strong class="reveal-date">19 October 2026</strong>
               <small class="reveal-time">8:00 PM Onwards</small>
             </div>
-            <canvas id="scratchCanvas" width="240" height="220"></canvas>
+            <!-- Canvas Scratch Layer -->
+            <canvas id="scratchCanvas"></canvas>
           </div>
         </div>
 
@@ -112,7 +123,7 @@
         </div>
       </section>
 
-      <!-- Card 2: Date, Location & Venue Details (Compliments Removed) -->
+      <!-- Card 2: Date, Location & Venue Details -->
       <section class="glass-sheet">
         <div class="crest-mark">❦</div>
         <h2 class="sub-heading">Ceremony & Venue</h2>
