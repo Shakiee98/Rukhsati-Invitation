@@ -1,8 +1,9 @@
 :root {
-  --royal-navy: #13273a;
+  --royal-navy: #122538;
   --powder-blue: #6c91a8;
   --gold-accent: #d4af37;
-  --gold-sheen: #f3e5ab;
+  --gold-sheen: #fbf0cf;
+  --gold-dim: #9a7b2c;
   --text-dim: #32475b;
 }
 
@@ -28,12 +29,12 @@ body {
   max-width: 430px;
   min-height: 100vh;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
   background: #e6f0f5;
   box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
 }
 
-/* Background Looping Palace Video */
+/* Palace Video Background */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -48,91 +49,105 @@ body {
 }
 
 /* ========================================================
-   SCREEN 1: ROYAL ENVELOPE (IMG_9402.png)
+   SCREEN 1: AUTHENTIC 3D ENVELOPE OPENING CHOREOGRAPHY
    ======================================================== */
 .envelope-screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 16px;
+  padding: 18px;
   position: relative;
   z-index: 30;
   background: rgba(220, 233, 240, 0.35);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s ease;
 }
 
-.envelope-container {
+.envelope-scene {
   width: 100%;
-  max-width: 380px;
-  cursor: pointer;
+  max-width: 375px;
+  perspective: 1200px;
   text-align: center;
-  animation: floatEnvelope 3s ease-in-out infinite;
+}
+
+.envelope-3d-wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.48 / 1;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: floatEnvelope 3.2s ease-in-out infinite;
 }
 
 @keyframes floatEnvelope {
-  0%, 100% { transform: translateY(0px) scale(1); }
-  50% { transform: translateY(-6px) scale(1.015); }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-7px); }
 }
 
-.envelope-graphic-card {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1.55 / 1;
-  border-radius: 12px;
-  overflow: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.royal-envelope-bg {
+/* Base Pocket */
+.envelope-base {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  z-index: 1;
-  filter: drop-shadow(0 15px 30px rgba(14, 30, 48, 0.5));
+  z-index: 3;
 }
 
-.envelope-text-overlay {
-  position: relative;
-  z-index: 5;
-  padding: 8px 16px 0;
+.royal-envelope-bg {
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 36px rgba(14, 30, 48, 0.6));
+}
+
+/* Inner Back Liner */
+.envelope-back-wall {
+  position: absolute;
+  inset: 0;
+  background: #0d1e30;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+/* Realistic High-Contrast Calligraphy Plaque in Pocket */
+.envelope-content-zone {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 82%;
+  z-index: 5;
+  background: rgba(10, 24, 40, 0.88);
+  border: 1px solid rgba(212, 175, 55, 0.65);
+  border-radius: 8px;
+  padding: 10px 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(212, 175, 55, 0.2) inset;
 }
 
 .arabic-bismillah {
   font-family: 'Amiri', serif;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: var(--gold-sheen);
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.85), 0 0 10px rgba(212, 175, 55, 0.6);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(212, 175, 55, 0.8);
   line-height: 1.2;
 }
 
 .envelope-category {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.05rem;
-  letter-spacing: 2.5px;
-  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 2.8px;
+  font-weight: 700;
   color: #ffffff;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
-  margin: 1px 0 6px;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
+  margin: 3px 0 6px;
 }
 
 .envelope-guest-badge {
-  background: rgba(10, 25, 45, 0.7);
-  border: 1px solid rgba(212, 175, 55, 0.55);
-  border-radius: 6px;
-  padding: 4px 12px;
-  margin-bottom: 2px;
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(19, 39, 58, 0.9);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  border-radius: 5px;
+  padding: 4px 8px;
 }
 .envelope-guest-badge small {
   display: block;
@@ -144,41 +159,121 @@ body {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.15rem;
   color: #ffffff;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
 }
 
-.seal-slot {
-  width: 105px;
-  height: 105px;
-  margin-top: -6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+/* 3D Flap */
+.envelope-flap-3d {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 52%;
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 6;
+  pointer-events: none;
 }
-.seal-slot .seal-graphic {
+
+.flap-face {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  backface-visibility: hidden;
+}
+.flap-front {
+  background: transparent; /* Allows top of IMG_9402 to be visible */
+}
+.flap-back {
+  background: linear-gradient(180deg, #10253c 0%, #163250 100%);
+  border-bottom: 2px solid rgba(212, 175, 55, 0.6);
+  transform: rotateX(180deg);
+}
+
+/* Wax Seal Placement */
+.seal-anchor {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 110px;
+  height: 110px;
+  z-index: 10;
+  cursor: pointer;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.seal-anchor .seal-graphic {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.7));
-  animation: sealHover 2.6s infinite ease-in-out;
+  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.8));
+  animation: sealPulse 2.8s infinite ease-in-out;
 }
 
-@keyframes sealHover {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.6)); }
-  50% { transform: scale(1.06); filter: drop-shadow(0 8px 18px rgba(212, 175, 55, 0.6)); }
+@keyframes sealPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7)); }
+  50% { transform: scale(1.06); filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.7)); }
+}
+
+/* Rising Letter Sheet */
+.rising-letter {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 88%;
+  height: 80%;
+  background: #ffffff;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
+}
+.letter-preview-line {
+  font-family: 'Amiri', serif;
+  font-size: 1.1rem;
+  color: var(--gold-dim);
+}
+.letter-preview-names {
+  font-family: 'Great Vibes', cursive;
+  font-size: 2.2rem;
+  color: var(--royal-navy);
+}
+
+/* Envelope Opening Trigger Classes */
+.envelope-3d-wrapper.opening .seal-anchor {
+  transform: translate(-50%, -50%) scale(0.6);
+  opacity: 0;
+}
+.envelope-3d-wrapper.opening .envelope-flap-3d {
+  transform: rotateX(180deg);
+  z-index: 2;
+}
+.envelope-3d-wrapper.opening .rising-letter {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-140px);
+  z-index: 7;
 }
 
 .tap-hint {
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   letter-spacing: 2px;
   color: var(--royal-navy);
   font-weight: 600;
-  margin-top: 20px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.9);
+  margin-top: 22px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
+  transition: opacity 0.3s ease;
 }
 
 /* ========================================================
-   SCREEN 2: FLOATING INVITATION (Clear View of Palace)
+   SCREEN 2: FLOATING INVITATION (Crisp Dancers Architecture)
    ======================================================== */
 .invitation-flow {
   position: relative;
@@ -186,7 +281,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 24px;
-  padding: 26px 16px 140px;
+  padding: 24px 16px 130px;
 }
 .invitation-flow.locked {
   display: none;
@@ -194,20 +289,20 @@ body {
 
 .floating-section {
   text-align: center;
-  padding: 6px 0;
+  padding: 4px 0;
 }
 
 .gold-knot {
   color: var(--gold-accent);
   font-size: 0.9rem;
   letter-spacing: 4px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .salute-text {
   font-size: 0.8rem;
   color: var(--text-dim);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
 }
 .salute-text strong {
   color: var(--royal-navy);
@@ -219,8 +314,8 @@ body {
   font-weight: 600;
   color: var(--royal-navy);
   letter-spacing: 1.2px;
-  margin-top: 4px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 16px rgba(255, 255, 255, 0.9);
+  margin-top: 2px;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 14px rgba(255, 255, 255, 0.9);
 }
 
 .names-calligraphy {
@@ -228,8 +323,8 @@ body {
   font-size: 3.8rem;
   color: var(--royal-navy);
   line-height: 1;
-  margin: 6px 0 14px;
-  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 0.9);
+  margin: 6px 0 12px;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95), 0 0 16px rgba(255, 255, 255, 0.9);
 }
 .names-calligraphy .amp {
   font-family: 'Cormorant Garamond', serif;
@@ -244,8 +339,8 @@ body {
 .family-lineage {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  margin: 10px 0;
+  gap: 1px;
+  margin: 8px 0;
 }
 .person-title {
   font-family: 'Montserrat', sans-serif;
@@ -265,12 +360,12 @@ body {
 }
 
 .ayah-container {
-  margin: 16px 0;
+  margin: 14px 0;
 }
 .thin-rule {
   width: 65%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), transparent);
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.75), transparent);
   margin: 8px auto;
 }
 .ayah-container blockquote {
@@ -288,65 +383,74 @@ body {
 }
 
 /* ========================================================
-   3D METALLIC HEART SCRATCH CARD (IMG_9403.png)
+   HEART EMBLEM & SCRATCH ARCHITECTURE (Refined Aesthetics)
    ======================================================== */
 .heart-container {
   display: flex;
   justify-content: center;
-  margin: 18px 0 12px;
+  margin: 16px 0 10px;
 }
 
 .heart-frame-box {
   position: relative;
-  width: 280px;
-  height: 260px;
+  width: 275px;
+  height: 255px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Base PNG Heart Graphic */
 .heart-border-img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 12px 24px rgba(19, 39, 58, 0.35));
+  filter: drop-shadow(0 14px 28px rgba(19, 39, 58, 0.38));
   z-index: 1;
   pointer-events: none;
 }
 
-/* Revealed Date Layer (Positioned neatly inside the inner blue zone) */
+/* Opaque Porcelain Inner Heart Plate (Prevents underlying graphics from bleeding through) */
 .heart-revealed-date {
   position: absolute;
-  width: 155px;
-  height: 140px;
-  top: 55px;
+  top: 60px;
+  width: 145px;
+  height: 110px;
+  background: radial-gradient(circle at center, #ffffff 0%, #eaf1f6 100%);
+  clip-path: path("M 72,105 C 0,55 0,15 28,3 C 50,-8 72,12 72,12 C 72,12 94,-8 116,3 C 144,15 144,55 72,105 Z");
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   z-index: 2;
+  box-shadow: 0 0 12px rgba(19, 39, 58, 0.15) inset;
   pointer-events: none;
 }
+
 .date-label {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  color: var(--royal-navy);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 1.5px;
+  color: var(--gold-dim);
   font-weight: 600;
-  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 .date-val {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.35rem;
   color: var(--royal-navy);
   font-weight: 700;
-  margin-top: 2px;
+  line-height: 1.1;
+  margin: 2px 0;
+}
+.time-val {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  color: var(--text-dim);
 }
 
-/* Canvas Scratch Overlay Clipped Exactly to Heart Core */
 #scratchCanvas {
   position: absolute;
   inset: 0;
@@ -387,7 +491,7 @@ body {
   padding: 24px 16px;
   text-align: center;
   box-shadow: 0 8px 30px rgba(19, 39, 58, 0.08);
-  margin-top: 20px;
+  margin-top: 16px;
 }
 
 .sub-heading {
