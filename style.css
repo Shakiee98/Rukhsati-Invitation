@@ -3,7 +3,6 @@
   --powder-blue: #6c91a8;
   --gold-accent: #c5a059;
   --gold-sheen: #f6e6be;
-  --gold-foil: linear-gradient(135deg, #e5cf92 0%, #c5a059 50%, #95722c 100%);
   --parchment: #fcfbf7;
   --text-dim: #384e62;
 }
@@ -35,7 +34,6 @@ body {
   box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
 }
 
-/* Background Looping Video */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -82,7 +80,6 @@ body {
   padding: 10px;
 }
 
-/* Antique Gold Double Border Inset */
 .envelope-card-wrapper::before {
   content: "";
   position: absolute;
@@ -102,7 +99,6 @@ body {
   z-index: 5;
 }
 
-/* Corner Filigrees */
 .corner-filigree {
   position: absolute;
   font-size: 0.95rem;
@@ -116,7 +112,6 @@ body {
 .bottom-left { bottom: 12px; left: 14px; transform: scaleY(-1); }
 .bottom-right { bottom: 12px; right: 14px; transform: scale(-1); }
 
-/* Realistic 3D Triangular Flap Shading */
 .envelope-top-flap {
   position: absolute;
   top: 0;
@@ -140,32 +135,28 @@ body {
 .envelope-body-inner {
   position: relative;
   z-index: 4;
-  padding: 85px 16px 26px;
+  padding: 85px 16px 36px;
   text-align: center;
 }
 
-.gold-bismillah-crest {
-  font-size: 0.72rem;
-  letter-spacing: 3px;
-  color: var(--gold-accent);
-  margin-bottom: 4px;
-}
-
-.arabic-bismillah {
+/* Enlarged Royal Gold Bismillah Calligraphy */
+.gold-bismillah-large {
   font-family: 'Amiri', serif;
-  font-size: 1.45rem;
+  font-size: 2.35rem;
   font-weight: 700;
-  color: var(--royal-navy);
-  line-height: 1.2;
+  color: var(--gold-accent);
+  line-height: 1.1;
+  text-shadow: 0 1px 2px rgba(197, 160, 89, 0.3);
+  margin-bottom: 2px;
 }
 
 .envelope-tag {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   letter-spacing: 3px;
   font-weight: 600;
   color: var(--powder-blue);
-  margin: 4px 0 14px;
+  margin: 6px 0 16px;
 }
 
 .guest-emboss-box {
@@ -175,7 +166,7 @@ body {
   border-right: 2.5px solid var(--gold-accent);
   border-radius: 6px;
   padding: 10px 14px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 .guest-emboss-box small {
   display: block;
@@ -189,15 +180,12 @@ body {
   color: var(--royal-navy);
 }
 
-/* ========================================================
-   SEAL & ANIMATED POINTER ARROW
-   ======================================================== */
 .seal-interactive-zone {
   display: inline-flex;
   flex-direction: column;
   align-items: center;
   cursor: pointer;
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 .guide-arrow-wrapper {
@@ -227,8 +215,8 @@ body {
 }
 
 .seal-ring {
-  width: 130px;
-  height: 130px;
+  width: 135px;
+  height: 135px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,13 +232,6 @@ body {
 @keyframes sealPulse {
   0%, 100% { transform: scale(1); filter: drop-shadow(0 6px 14px rgba(108, 145, 168, 0.45)); }
   50% { transform: scale(1.05); filter: drop-shadow(0 10px 22px rgba(197, 160, 89, 0.7)); }
-}
-
-.bottom-date-hint {
-  font-size: 0.7rem;
-  color: var(--text-dim);
-  margin-top: 12px;
-  letter-spacing: 0.5px;
 }
 
 /* ========================================================
@@ -360,9 +341,7 @@ body {
   margin-top: 4px;
 }
 
-/* ========================================================
-   HEART SCRATCH CARD (Symmetrical Curved Geometry)
-   ======================================================== */
+/* Heart Scratch Box */
 .heart-scratch-wrapper {
   display: flex;
   justify-content: center;
@@ -508,23 +487,6 @@ body {
 }
 .navy-btn.share {
   margin-bottom: 12px;
-}
-
-.compliments-block {
-  margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(197, 160, 89, 0.35);
-}
-.compliments-block h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  color: var(--royal-navy);
-  margin-bottom: 6px;
-}
-.compliment-list {
-  font-size: 0.78rem;
-  line-height: 1.6;
-  color: var(--text-dim);
 }
 
 .footer-block {
