@@ -8,44 +8,40 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Looping Background Video with Full iOS Autoplay Support -->
+  <!-- Looping Background Video -->
   <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
 
-  <!-- Physical Particle Canvas for Gold Burst Physics -->
+  <!-- High-Z-Index FX Canvas for Golden Bursts and Stardust -->
   <canvas id="fxCanvas"></canvas>
 
   <main>
-    <!-- SCREEN 1: 3D Royal Stationery Envelope -->
+    <!-- SCREEN 1: Authentic Royal Stationery Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
       <div class="envelope-scene">
         
         <div class="envelope-card-wrapper" id="envelopeCard">
-          <!-- Dynamic Gold Shimmer Layer -->
-          <div class="foil-glimmer-layer"></div>
-
-          <!-- Ornate Gold Filigree Corner Accents -->
           <div class="corner-filigree top-left">❦</div>
           <div class="corner-filigree top-right">❦</div>
           <div class="corner-filigree bottom-left">❦</div>
           <div class="corner-filigree bottom-right">❦</div>
 
-          <!-- Top Folded Flap Effect -->
           <div class="envelope-top-flap">
             <div class="flap-bevel"></div>
           </div>
 
-          <!-- Envelope Content -->
           <div class="envelope-body-inner">
-            <!-- Illuminated Calligraphic Bismillah -->
-            <div class="gold-bismillah-large">﷽</div>
+            <div class="gold-bismillah-container">
+              <span class="gold-bismillah-large">﷽</span>
+            </div>
+            
             <p class="envelope-tag">RUKHSATI INVITATION</p>
 
             <div class="guest-emboss-box">
@@ -53,7 +49,7 @@
               <strong id="guestFront">Our Cherished Guest</strong>
             </div>
 
-            <!-- Interactive Seal Area with Themed Pulsing Guide Arrow -->
+            <!-- Interactive Seal Area -->
             <div class="seal-interactive-zone" id="sealButton" role="button" tabindex="0">
               <div class="guide-arrow-wrapper">
                 <span class="guide-label">TAP TO UNVEIL</span>
@@ -72,7 +68,7 @@
       </div>
     </section>
 
-    <!-- SCREEN 2: Seamless Floating Royal Invitation -->
+    <!-- SCREEN 2: Floating Royal Invitation -->
     <div id="invitationContent" class="invitation-flow locked">
       
       <!-- Card 1: Names, Ayah, Heart Scratch, Countdown -->
@@ -100,16 +96,14 @@
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Retina Heart Scratch Box -->
+        <!-- Heart Scratch Box -->
         <div class="heart-scratch-wrapper">
           <div class="heart-scratch-box" id="heartScratchBox">
-            <!-- Underneath Revealed Date Core -->
             <div class="scratch-reveal">
               <span class="reveal-tag">CEREMONY DATE</span>
               <strong class="reveal-date">19 October 2026</strong>
               <small class="reveal-time">8:00 PM Onwards</small>
             </div>
-            <!-- Canvas Scratch Layer -->
             <canvas id="scratchCanvas"></canvas>
           </div>
         </div>
