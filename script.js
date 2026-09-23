@@ -10,7 +10,7 @@ if (bgVideo) {
   }
 }
 
-// Particle Physics Engine for Wax Seal Burst & Scratch Stardust
+// Particle Physics Engine for Bursts & Stardust
 const fxCanvas = document.getElementById('fxCanvas');
 const fxCtx = fxCanvas.getContext('2d');
 let particles = [];
@@ -211,11 +211,11 @@ function initScratchCanvas() {
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, w, h);
 
-  // Centered Upper-Cavity Label
+  // Optical Center Label
   ctx.fillStyle = '#102235';
   ctx.font = '600 11px Montserrat';
   ctx.textAlign = 'center';
-  ctx.fillText('✦ SCRATCH TO REVEAL ✦', w / 2, 112);
+  ctx.fillText('✦ SCRATCH TO REVEAL ✦', w / 2, 114);
 
   let scratching = false;
   let scratchedPixels = 0;
@@ -262,7 +262,7 @@ function initScratchCanvas() {
   canvas.addEventListener('pointercancel', () => { scratching = false; });
 }
 
-// Calendar Download
+// Calendar (.ics) Download
 document.getElementById('calendarBtn').addEventListener('click', () => {
   const icsData = [
     'BEGIN:VCALENDAR',
