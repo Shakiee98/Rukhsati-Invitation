@@ -1,9 +1,8 @@
 :root {
-  --royal-navy: #122538;
+  --royal-navy: #112338;
   --powder-blue: #6c91a8;
-  --gold-accent: #d4af37;
-  --gold-sheen: #fbf0cf;
-  --gold-dim: #9a7b2c;
+  --gold-accent: #bfa15f;
+  --gold-sheen: #d8c289;
   --text-dim: #32475b;
 }
 
@@ -29,12 +28,12 @@ body {
   max-width: 430px;
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
+  overflow: hidden;
   background: #e6f0f5;
   box-shadow: 0 10px 40px rgba(18, 34, 48, 0.25);
 }
 
-/* Palace Video Background */
+/* Background Looping Video: Kept completely crisp with zero blurring */
 .courtyard-video {
   position: fixed;
   top: 0;
@@ -49,281 +48,201 @@ body {
 }
 
 /* ========================================================
-   SCREEN 1: AUTHENTIC 3D ENVELOPE OPENING CHOREOGRAPHY
+   SCREEN 1: AUTHENTIC ROYAL STATIONERY ENVELOPE
    ======================================================== */
 .envelope-screen {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 18px;
+  padding: 20px;
   position: relative;
   z-index: 30;
   background: rgba(220, 233, 240, 0.35);
-  transition: opacity 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.envelope-scene {
+.envelope-body {
   width: 100%;
-  max-width: 375px;
-  perspective: 1200px;
-  text-align: center;
-}
-
-.envelope-3d-wrapper {
   position: relative;
-  width: 100%;
-  aspect-ratio: 1.48 / 1;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  animation: floatEnvelope 3.2s ease-in-out infinite;
+  background: #fafbfd;
+  border-radius: 12px;
+  border: 1px solid rgba(191, 161, 95, 0.5);
+  box-shadow: 0 25px 50px rgba(17, 35, 56, 0.35), 0 0 0 6px rgba(255, 255, 255, 0.6) inset;
+  overflow: hidden;
 }
 
-@keyframes floatEnvelope {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-7px); }
-}
-
-/* Base Pocket */
-.envelope-base {
+/* Diagonal envelope pocket creases */
+.envelope-crease {
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
+  bottom: 0;
+  width: 50%;
+  height: 65%;
+  pointer-events: none;
+  z-index: 2;
+}
+.left-crease {
+  left: 0;
+  border-right: 1px solid rgba(155, 183, 202, 0.25);
+  background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(225,235,242,0.3) 100%);
+}
+.right-crease {
+  right: 0;
+  border-left: 1px solid rgba(155, 183, 202, 0.25);
+  background: linear-gradient(-135deg, rgba(255,255,255,0.05) 0%, rgba(225,235,242,0.3) 100%);
 }
 
-.royal-envelope-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 18px 36px rgba(14, 30, 48, 0.6));
-}
-
-/* Inner Back Liner */
-.envelope-back-wall {
-  position: absolute;
-  inset: 0;
-  background: #0d1e30;
-  border-radius: 8px;
-  z-index: 1;
-}
-
-/* Realistic High-Contrast Calligraphy Plaque in Pocket */
-.envelope-content-zone {
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 82%;
-  z-index: 5;
-  background: rgba(10, 24, 40, 0.88);
-  border: 1px solid rgba(212, 175, 55, 0.65);
-  border-radius: 8px;
-  padding: 10px 12px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(212, 175, 55, 0.2) inset;
-}
-
-.arabic-bismillah {
-  font-family: 'Amiri', serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--gold-sheen);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.95), 0 0 10px rgba(212, 175, 55, 0.8);
-  line-height: 1.2;
-}
-
-.envelope-category {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.95rem;
-  letter-spacing: 2.8px;
-  font-weight: 700;
-  color: #ffffff;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.9);
-  margin: 3px 0 6px;
-}
-
-.envelope-guest-badge {
-  background: rgba(19, 39, 58, 0.9);
-  border: 1px solid rgba(212, 175, 55, 0.45);
-  border-radius: 5px;
-  padding: 4px 8px;
-}
-.envelope-guest-badge small {
-  display: block;
-  font-size: 0.52rem;
-  letter-spacing: 1.6px;
-  color: var(--gold-sheen);
-}
-.envelope-guest-badge strong {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.15rem;
-  color: #ffffff;
-  letter-spacing: 0.5px;
-}
-
-/* 3D Flap */
-.envelope-flap-3d {
+/* Top Triangular Flap with Luxury Gold Inset */
+.envelope-flap {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 52%;
-  transform-origin: top center;
-  transform-style: preserve-3d;
-  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 6;
+  height: 120px;
+  background: linear-gradient(180deg, #f3f7fa 0%, #e2edf3 100%);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  box-shadow: 0 8px 20px rgba(17, 35, 56, 0.18);
+  border-bottom: 1.5px solid rgba(191, 161, 95, 0.45);
+  z-index: 3;
   pointer-events: none;
 }
 
-.flap-face {
-  position: absolute;
-  inset: 0;
-  clip-path: polygon(0 0, 100% 0, 50% 100%);
-  backface-visibility: hidden;
-}
-.flap-front {
-  background: transparent; /* Allows top of IMG_9402 to be visible */
-}
-.flap-back {
-  background: linear-gradient(180deg, #10253c 0%, #163250 100%);
-  border-bottom: 2px solid rgba(212, 175, 55, 0.6);
-  transform: rotateX(180deg);
+.envelope-inner {
+  padding: 110px 18px 36px;
+  text-align: center;
+  position: relative;
+  z-index: 4;
 }
 
-/* Wax Seal Placement */
-.seal-anchor {
-  position: absolute;
-  top: 48%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110px;
-  height: 110px;
-  z-index: 10;
-  cursor: pointer;
-  transition: transform 0.4s ease, opacity 0.4s ease;
+.gold-arch-crest {
+  font-size: 0.72rem;
+  letter-spacing: 4px;
+  color: var(--gold-accent);
+  margin-bottom: 4px;
 }
-.seal-anchor .seal-graphic {
+
+.bismillah-line {
+  font-family: serif;
+  font-size: 1.35rem;
+  color: var(--royal-navy);
+  margin-bottom: 6px;
+}
+
+.royal-title {
+  font-size: 0.72rem;
+  letter-spacing: 3.5px;
+  color: var(--powder-blue);
+  font-weight: 600;
+}
+
+.guest-banner {
+  margin: 18px 0 10px;
+  padding: 12px 10px;
+  background: rgba(155, 183, 202, 0.14);
+  border-radius: 6px;
+  border-left: 2px solid var(--gold-accent);
+  border-right: 2px solid var(--gold-accent);
+}
+.guest-banner small {
+  display: block;
+  font-size: 0.65rem;
+  letter-spacing: 2px;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+.guest-banner strong {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--royal-navy);
+}
+
+/* Prominent, Realistic Wax Seal */
+.seal-trigger {
+  width: 160px;
+  height: 160px;
+  margin: 10px auto 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: sealHover 2.6s infinite ease-in-out;
+}
+
+.seal-graphic {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  filter: drop-shadow(0 6px 16px rgba(0, 0, 0, 0.8));
-  animation: sealPulse 2.8s infinite ease-in-out;
+  filter: drop-shadow(0 8px 18px rgba(17, 35, 56, 0.32));
 }
 
-@keyframes sealPulse {
-  0%, 100% { transform: scale(1); filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.7)); }
-  50% { transform: scale(1.06); filter: drop-shadow(0 8px 20px rgba(212, 175, 55, 0.7)); }
-}
-
-/* Rising Letter Sheet */
-.rising-letter {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 88%;
-  height: 80%;
-  background: #ffffff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  opacity: 0;
-  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.4s ease;
-}
-.letter-preview-line {
-  font-family: 'Amiri', serif;
-  font-size: 1.1rem;
-  color: var(--gold-dim);
-}
-.letter-preview-names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  color: var(--royal-navy);
-}
-
-/* Envelope Opening Trigger Classes */
-.envelope-3d-wrapper.opening .seal-anchor {
-  transform: translate(-50%, -50%) scale(0.6);
-  opacity: 0;
-}
-.envelope-3d-wrapper.opening .envelope-flap-3d {
-  transform: rotateX(180deg);
-  z-index: 2;
-}
-.envelope-3d-wrapper.opening .rising-letter {
-  opacity: 1;
-  transform: translateX(-50%) translateY(-140px);
-  z-index: 7;
+@keyframes sealHover {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 6px 14px rgba(155, 183, 202, 0.5)); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 12px 26px rgba(191, 161, 95, 0.75)); }
 }
 
 .tap-hint {
-  font-size: 0.74rem;
-  letter-spacing: 2px;
+  font-size: 0.72rem;
+  letter-spacing: 2.5px;
   color: var(--royal-navy);
   font-weight: 600;
-  margin-top: 22px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
-  transition: opacity 0.3s ease;
+  margin-top: 6px;
 }
 
 /* ========================================================
-   SCREEN 2: FLOATING INVITATION (Crisp Dancers Architecture)
+   SCREEN 2: ELEGANT, CLEAR CARDS (Dancers 100% Visible)
    ======================================================== */
 .invitation-flow {
   position: relative;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  padding: 24px 16px 130px;
+  gap: 22px;
+  padding: 24px 14px 220px;
 }
 .invitation-flow.locked {
   display: none;
 }
 
-.floating-section {
+/* Ultra-light translucent glass to keep video sharp */
+.glass-sheet {
+  background: rgba(255, 255, 255, 0.32);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  border-radius: 14px;
+  padding: 26px 16px;
   text-align: center;
-  padding: 4px 0;
+  box-shadow: 0 10px 32px rgba(17, 35, 56, 0.08);
 }
 
-.gold-knot {
+.crest-mark {
   color: var(--gold-accent);
-  font-size: 0.9rem;
-  letter-spacing: 4px;
-  margin-bottom: 2px;
+  font-size: 1.1rem;
 }
 
 .salute-text {
   font-size: 0.8rem;
   color: var(--text-dim);
-  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.85);
 }
 .salute-text strong {
   color: var(--royal-navy);
 }
 
+/* Highlighted Typography with Crisp Glow */
 .main-event-name {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.85rem;
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--royal-navy);
-  letter-spacing: 1.2px;
-  margin-top: 2px;
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 14px rgba(255, 255, 255, 0.9);
+  letter-spacing: 1.5px;
+  margin: 6px 0;
+  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95), 0 0 12px rgba(255, 255, 255, 0.8);
 }
 
 .names-calligraphy {
   font-family: 'Great Vibes', cursive;
-  font-size: 3.8rem;
+  font-size: 3.6rem;
   color: var(--royal-navy);
-  line-height: 1;
-  margin: 6px 0 12px;
+  line-height: 1.05;
+  margin: 10px 0 14px;
   text-shadow: 0 1px 4px rgba(255, 255, 255, 0.95), 0 0 16px rgba(255, 255, 255, 0.9);
 }
 .names-calligraphy .amp {
@@ -337,145 +256,106 @@ body {
 }
 
 .family-lineage {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-  margin: 8px 0;
+  font-size: 0.84rem;
+  lineage-height: 1.5;
+  color: var(--text-dim);
 }
-.person-title {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
+.family-lineage strong {
+  color: var(--royal-navy);
   font-weight: 600;
+}
+.knot {
+  color: var(--gold-accent);
+  font-size: 0.75rem;
+  margin: 4px 0;
+}
+
+.short-ayah {
+  margin: 14px 0;
+  padding: 8px 4px;
+  border-top: 1px solid rgba(191, 161, 95, 0.45);
+  border-bottom: 1px solid rgba(191, 161, 95, 0.45);
+}
+.short-ayah blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.2rem;
   color: var(--royal-navy);
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
 }
-.parent-line {
-  font-size: 0.8rem;
-  color: var(--text-dim);
-}
-.family-lineage .knot {
-  color: var(--gold-accent);
-  font-size: 0.75rem;
-  margin: 2px 0;
-}
-
-.ayah-container {
-  margin: 14px 0;
-}
-.thin-rule {
-  width: 65%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.75), transparent);
-  margin: 8px auto;
-}
-.ayah-container blockquote {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.25rem;
-  color: var(--royal-navy);
-  text-shadow: 0 1px 3px rgba(255, 255, 255, 0.95);
-}
-.ayah-container cite {
+.short-ayah cite {
   display: block;
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
   margin-top: 4px;
 }
 
 /* ========================================================
-   HEART EMBLEM & SCRATCH ARCHITECTURE (Refined Aesthetics)
+   CLEAN HEART-SHAPED SCRATCH CARD
    ======================================================== */
-.heart-container {
+.heart-scratch-wrapper {
   display: flex;
   justify-content: center;
-  margin: 16px 0 10px;
+  margin: 18px 0;
 }
 
-.heart-frame-box {
+.heart-scratch-box {
   position: relative;
-  width: 275px;
-  height: 255px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 200px;
+  height: 185px;
+  clip-path: path("M 100,175 C 10,110 0,55 35,20 C 70,-15 100,22 100,22 C 100,22 130,-15 165,20 C 200,55 190,110 100,175 Z");
+  filter: drop-shadow(0 6px 16px rgba(17, 35, 56, 0.2));
 }
 
-.heart-border-img {
+.heart-scratch-box canvas {
   position: absolute;
   inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  filter: drop-shadow(0 14px 28px rgba(19, 39, 58, 0.38));
-  z-index: 1;
-  pointer-events: none;
+  z-index: 2;
+  touch-action: none;
 }
 
-/* Opaque Porcelain Inner Heart Plate (Prevents underlying graphics from bleeding through) */
-.heart-revealed-date {
+.heart-scratch-box .scratch-reveal {
   position: absolute;
-  top: 60px;
-  width: 145px;
-  height: 110px;
-  background: radial-gradient(circle at center, #ffffff 0%, #eaf1f6 100%);
-  clip-path: path("M 72,105 C 0,55 0,15 28,3 C 50,-8 72,12 72,12 C 72,12 94,-8 116,3 C 144,15 144,55 72,105 Z");
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: #ffffff;
+  padding: 0 10px;
   text-align: center;
-  z-index: 2;
-  box-shadow: 0 0 12px rgba(19, 39, 58, 0.15) inset;
-  pointer-events: none;
 }
-
-.date-label {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.68rem;
-  letter-spacing: 1.5px;
-  color: var(--gold-dim);
+.heart-scratch-box .scratch-reveal small {
+  font-size: 0.64rem;
+  letter-spacing: 2px;
+  color: var(--gold-accent);
   font-weight: 600;
   text-transform: uppercase;
 }
-.date-val {
+.heart-scratch-box .scratch-reveal strong {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   color: var(--royal-navy);
-  font-weight: 700;
-  line-height: 1.1;
-  margin: 2px 0;
-}
-.time-val {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.62rem;
-  color: var(--text-dim);
+  margin-top: 4px;
 }
 
-#scratchCanvas {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  touch-action: none;
-}
-
-/* Countdown & Venue Sections */
+/* Countdown */
 .countdown-bar {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 6px;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 .time-cell {
-  background: rgba(255, 255, 255, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.95);
-  border-radius: 8px;
-  padding: 10px 2px;
-  box-shadow: 0 4px 12px rgba(19, 39, 58, 0.06);
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(155, 183, 202, 0.45);
+  border-radius: 6px;
+  padding: 8px 2px;
 }
 .time-cell b {
   display: block;
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.35rem;
+  font-size: 1.28rem;
   color: var(--royal-navy);
 }
 .time-cell span {
@@ -484,22 +364,13 @@ body {
   color: var(--text-dim);
 }
 
-.venue-glass-card {
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 14px;
-  padding: 24px 16px;
-  text-align: center;
-  box-shadow: 0 8px 30px rgba(19, 39, 58, 0.08);
-  margin-top: 16px;
-}
-
+/* Venue Block */
 .sub-heading {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 1.4rem;
+  font-size: 1.35rem;
   color: var(--royal-navy);
   letter-spacing: 1px;
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .detail-cell {
@@ -507,28 +378,28 @@ body {
   align-items: center;
   gap: 12px;
   background: rgba(255, 255, 255, 0.65);
-  padding: 12px 14px;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 8px;
   text-align: left;
   border: 1px solid rgba(155, 183, 202, 0.35);
 }
 .detail-cell .icon {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--gold-accent);
 }
 .detail-cell small {
   display: block;
-  font-size: 0.62rem;
+  font-size: 0.6rem;
   letter-spacing: 1px;
   color: var(--text-dim);
 }
 .detail-cell strong {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--royal-navy);
 }
 .detail-cell span {
-  font-size: 0.78rem;
+  font-size: 0.75rem;
   color: var(--text-dim);
 }
 
@@ -542,7 +413,7 @@ body {
 .navy-btn {
   display: inline-block;
   width: 100%;
-  padding: 13px;
+  padding: 12px;
   background: var(--royal-navy);
   color: #ffffff;
   font-weight: 500;
@@ -553,7 +424,7 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(19, 39, 58, 0.25);
+  box-shadow: 0 4px 12px rgba(17, 35, 56, 0.25);
 }
 .navy-btn.outline {
   background: rgba(255, 255, 255, 0.55);
@@ -566,9 +437,9 @@ body {
 }
 
 .compliments-block {
-  margin-top: 18px;
+  margin-top: 16px;
   padding-top: 14px;
-  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  border-top: 1px solid rgba(191, 161, 95, 0.35);
 }
 .compliments-block h3 {
   font-family: 'Cormorant Garamond', serif;
@@ -577,8 +448,8 @@ body {
   margin-bottom: 6px;
 }
 .compliment-list {
-  font-size: 0.8rem;
-  line-height: 1.6;
+  font-size: 0.78rem;
+  lineage-height: 1.6;
   color: var(--text-dim);
 }
 
@@ -589,10 +460,10 @@ body {
   font-family: serif;
   font-size: 0.95rem;
   color: var(--royal-navy);
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 .personal-footer {
-  font-size: 0.74rem;
+  font-size: 0.72rem;
   color: var(--text-dim);
 }
 .personal-footer strong {
