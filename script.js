@@ -1,4 +1,4 @@
-// Ensure Safari Video Autoplay Without Play Button Overlay
+// Background Video Handler
 const bgVideo = document.getElementById('bgVideo');
 if (bgVideo) {
   bgVideo.muted = true;
@@ -10,46 +10,79 @@ if (bgVideo) {
   }
 }
 
-// Particle Physics Engine for Wax Seal Burst
+// Particle Physics Engine for Bursts & Stardust
 const fxCanvas = document.getElementById('fxCanvas');
 const fxCtx = fxCanvas.getContext('2d');
 let particles = [];
+let isLoopRunning = false;
 
 function resizeFx() {
-  fxCanvas.width = window.innerWidth;
-  fxCanvas.height = window.innerHeight;
+  const dpr = window.devicePixelRatio || 1;
+  fxCanvas.width = window.innerWidth * dpr;
+  fxCanvas.height = window.innerHeight * dpr;
+  fxCtx.scale(dpr, dpr);
 }
 window.addEventListener('resize', resizeFx);
+window.addEventListener('DOMContentLoaded', resizeFx);
 resizeFx();
+
+function startAnimationLoop() {
+  if (!isLoopRunning) {
+    isLoopRunning = true;
+    requestAnimationFrame(renderParticles);
+  }
+}
 
 function createGoldBurst(x, y) {
   const colors = ['#f5d77f', '#d4af37', '#e8c15a', '#ffffff', '#e3a857'];
-  for (let i = 0; i < 65; i++) {
+  for (let i = 0; i < 90; i++) {
     const angle = Math.random() * Math.PI * 2;
-    const speed = Math.random() * 8 + 3;
+    const speed = Math.random() * 9 + 4;
     particles.push({
       x: x,
       y: y,
       vx: Math.cos(angle) * speed,
-      vy: Math.sin(angle) * speed - 2,
+      vy: Math.sin(angle) * speed - 2.5,
       size: Math.random() * 5 + 2,
       color: colors[Math.floor(Math.random() * colors.length)],
       alpha: 1,
-      decay: Math.random() * 0.02 + 0.015,
+      decay: Math.random() * 0.018 + 0.012,
       rotation: Math.random() * Math.PI,
-      spin: (Math.random() - 0.5) * 0.2
+      spin: (Math.random() - 0.5) * 0.25
     });
   }
-  requestAnimationFrame(updateParticles);
+  startAnimationLoop();
 }
 
-function updateParticles() {
-  fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+function spawnScratchSparkles(x, y) {
+  const colors = ['#f5d77f', '#ffffff', '#ffd700'];
+  for (let i = 0; i < 5; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 2.5 + 1;
+    particles.push({
+      x: x,
+      y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      size: Math.random() * 3 + 1.5,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: 1,
+      decay: 0.045,
+      rotation: 0,
+      spin: 0
+    });
+  }
+  startAnimationLoop();
+}
+
+function renderParticles() {
+  fxCtx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  
   for (let i = particles.length - 1; i >= 0; i--) {
     const p = particles[i];
     p.x += p.vx;
     p.y += p.vy;
-    p.vy += 0.18; // gravity
+    p.vy += 0.16;
     p.alpha -= p.decay;
     p.rotation += p.spin;
 
@@ -66,8 +99,11 @@ function updateParticles() {
     fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
     fxCtx.restore();
   }
+
   if (particles.length > 0) {
-    requestAnimationFrame(updateParticles);
+    requestAnimationFrame(renderParticles);
+  } else {
+    isLoopRunning = false;
   }
 }
 
@@ -92,12 +128,12 @@ function openInvitation(e) {
   if (unveiled) return;
   unveiled = true;
 
-  // Haptic pulse on mobile
-  if (navigator.vibrate) navigator.vibrate([40, 50, 40]);
+  if (navigator.vibrate) navigator.vibrate([45, 60, 45]);
 
-  // Launch gold burst from seal center
   const rect = sealImg.getBoundingClientRect();
-  createGoldBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+  const burstX = rect.left + rect.width / 2;
+  const burstY = rect.top + rect.height / 2;
+  createGoldBurst(burstX, burstY);
 
   if (bgVideo) bgVideo.play().catch(() => {});
 
@@ -108,14 +144,14 @@ function openInvitation(e) {
 
   setTimeout(() => {
     envelopeScreen.style.opacity = '0';
-  }, 450);
+    invitationContent.classList.remove('locked');
+    initScratchCanvas();
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, 600);
 
   setTimeout(() => {
     envelopeScreen.style.display = 'none';
-    invitationContent.classList.remove('locked');
-    initScratchCanvas(); // Initialize canvas once container is mounted and visible
-    window.scrollTo({ top: 0, behavior: 'instant' });
-  }, 850);
+  }, 900);
 }
 
 sealButton.addEventListener('click', openInvitation);
@@ -126,7 +162,7 @@ sealButton.addEventListener('keydown', (e) => {
   }
 });
 
-// Countdown (19 October 2026, 20:00 IST)
+// Live Event Countdown (19 October 2026, 20:00 IST)
 const eventTimestamp = new Date('2026-10-19T20:00:00+05:30').getTime();
 
 function updateCountdown() {
@@ -158,7 +194,6 @@ function initScratchCanvas() {
   const box = document.getElementById('heartScratchBox');
   const ctx = canvas.getContext('2d');
 
-  // Scale canvas resolution to device pixel ratio (crisp on iPhone 15 Pro)
   const dpr = window.devicePixelRatio || 1;
   const w = box.clientWidth;
   const h = box.clientHeight;
@@ -167,7 +202,6 @@ function initScratchCanvas() {
   canvas.height = h * dpr;
   ctx.scale(dpr, dpr);
 
-  // Draw Powder-Blue Brushed Foil Fill
   const grad = ctx.createLinearGradient(0, 0, w, h);
   grad.addColorStop(0, '#98b8cb');
   grad.addColorStop(0.3, '#d8e7ef');
@@ -176,20 +210,21 @@ function initScratchCanvas() {
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, w, h);
 
-  // Position Scratch Prompt within Upper Cavity
   ctx.fillStyle = '#102235';
   ctx.font = '600 11px Montserrat';
   ctx.textAlign = 'center';
-  ctx.fillText('SCRATCH HERE', w / 2, 94);
+  ctx.fillText('SCRATCH HERE', w / 2, 115);
 
   let scratching = false;
-  let scratchedCount = 0;
+  let scratchedPixels = 0;
 
   function getPoint(e) {
     const rect = canvas.getBoundingClientRect();
     return {
       x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      y: e.clientY - rect.top,
+      screenX: e.clientX,
+      screenY: e.clientY
     };
   }
 
@@ -197,16 +232,18 @@ function initScratchCanvas() {
     if (!scratching) return;
     const pt = getPoint(e);
 
+    spawnScratchSparkles(pt.screenX, pt.screenY);
+
     ctx.globalCompositeOperation = 'destination-out';
     ctx.beginPath();
     ctx.arc(pt.x, pt.y, 22, 0, Math.PI * 2);
     ctx.fill();
-    scratchedCount++;
+    scratchedPixels++;
 
-    if (scratchedCount > 35) {
+    if (scratchedPixels > 45) {
       canvas.style.opacity = '0';
-      canvas.style.transition = 'opacity 0.4s ease';
-      setTimeout(() => { canvas.style.display = 'none'; }, 400);
+      canvas.style.transition = 'opacity 0.6s ease';
+      setTimeout(() => { canvas.style.display = 'none'; }, 600);
     }
   }
 
@@ -223,7 +260,7 @@ function initScratchCanvas() {
   canvas.addEventListener('pointercancel', () => { scratching = false; });
 }
 
-// Calendar (.ics) Download
+// Calendar Download
 document.getElementById('calendarBtn').addEventListener('click', () => {
   const icsData = [
     'BEGIN:VCALENDAR',
