@@ -3,56 +3,73 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#dbe7ee" />
+  <meta name="theme-color" content="#13273a" />
   <title>Sakiruddin & Runa — Rukhsati Ceremony</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Looping Watercolor Palace Video -->
-  <video class="courtyard-video" autoplay loop muted playsinline>
+  <!-- Looping Palace Courtyard Background Video -->
+  <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
 
   <main>
-    <!-- SCREEN 1: Royal Midnight-Blue Envelope with Gold Filigree -->
+    <!-- SCREEN 1: 3D Animated Royal Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
-      <div class="envelope-container" id="sealButton" role="button" tabindex="0">
-        
-        <div class="envelope-graphic-card">
-          <!-- Your Real PNG Envelope Image -->
-          <img src="assets/IMG_9402.png" alt="Royal Wedding Envelope" class="royal-envelope-bg">
+      <div class="envelope-scene" id="envelopeScene">
+        <div class="envelope-3d-wrapper" id="envelopeWrapper">
           
-          <!-- Overlaid Typography on Top of Envelope -->
-          <div class="envelope-text-overlay">
-            <div class="arabic-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-            <p class="envelope-category">RUKHSATI INVITATION</p>
-            
-            <div class="envelope-guest-badge">
-              <small>EXCLUSIVELY PREPARED FOR</small>
-              <strong id="guestFront">Our Cherished Guest</strong>
-            </div>
+          <!-- Back Interior Lining of Envelope -->
+          <div class="envelope-back-wall"></div>
+          
+          <!-- Rising Letter Sheet (Animates out of envelope) -->
+          <div class="rising-letter" id="risingLetter">
+            <div class="letter-preview-line">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <div class="letter-preview-names">Sakiruddin & Runa</div>
+          </div>
 
-            <!-- Wax Seal Anchored Right at the Flap Tip -->
-            <div class="seal-slot">
-              <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+          <!-- Base Envelope Image (Parchment Pocket) -->
+          <div class="envelope-base">
+            <img src="assets/IMG_9402.png" alt="Royal Wedding Envelope" class="royal-envelope-bg">
+            
+            <!-- High-Contrast Framed Parchment Plaque -->
+            <div class="envelope-content-zone">
+              <div class="arabic-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+              <p class="envelope-category">RUKHSATI INVITATION</p>
+              
+              <div class="envelope-guest-badge">
+                <small>EXCLUSIVELY PREPARED FOR</small>
+                <strong id="guestFront">Our Cherished Guest</strong>
+              </div>
             </div>
           </div>
-        </div>
 
-        <p class="tap-hint">TAP THE WAX SEAL TO UNVEIL</p>
+          <!-- 3D Opening Flap -->
+          <div class="envelope-flap-3d" id="envelopeFlap">
+            <div class="flap-face flap-front"></div>
+            <div class="flap-face flap-back"></div>
+          </div>
+
+          <!-- Wax Seal Resting Over The Flap Tip -->
+          <div class="seal-anchor" id="sealButton" role="button" tabindex="0">
+            <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+          </div>
+
+        </div>
+        <p class="tap-hint" id="tapHint">TAP THE WAX SEAL TO UNVEIL</p>
       </div>
     </section>
 
-    <!-- SCREEN 2: Seamless Floating Invitation (Clear View of Courtyard Dancers) -->
+    <!-- SCREEN 2: Floating Royal Invitation -->
     <div id="invitationContent" class="invitation-flow locked">
       
-      <!-- Top Names & Ayah Floating Section -->
+      <!-- Top Names & Sacred Union Section -->
       <section class="floating-section">
         <div class="gold-knot">✦ &nbsp; ❦ &nbsp; ✦</div>
         <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
@@ -80,24 +97,25 @@
           <div class="thin-rule"></div>
         </div>
 
-        <!-- 3D Metallic Heart Scratch Card Using IMG_9403.png -->
+        <!-- 3D Heart Medallion with Refined Scratch Architecture -->
         <div class="heart-container">
           <div class="heart-frame-box">
-            <!-- Metallic 3D Heart Frame Base -->
+            <!-- 3D Heart Frame Base Image -->
             <img src="assets/IMG_9403.png" alt="Royal Heart Emblem" class="heart-border-img">
             
-            <!-- Revealed Ceremony Date Layer -->
+            <!-- Completely Isolated Revealed Date Layer -->
             <div class="heart-revealed-date">
-              <span class="date-label">Ceremony Date:</span>
+              <span class="date-label">Ceremony Date</span>
               <strong class="date-val">19 October 2026</strong>
+              <small class="time-val">8:00 PM Onwards</small>
             </div>
             
-            <!-- Interactive Scratch Canvas -->
+            <!-- Canvas Overlay (Clipped perfectly to inner core) -->
             <canvas id="scratchCanvas" width="280" height="260"></canvas>
           </div>
         </div>
 
-        <!-- Live Countdown Pill Bar -->
+        <!-- Live Countdown -->
         <div class="countdown-bar">
           <div class="time-cell"><b id="cdDays">00</b><span>DAYS</span></div>
           <div class="time-cell"><b id="cdHours">00</b><span>HOURS</span></div>
@@ -106,7 +124,7 @@
         </div>
       </section>
 
-      <!-- Venue & Action Glass Card -->
+      <!-- Venue & Action Section -->
       <section class="venue-glass-card">
         <div class="gold-knot">❦</div>
         <h2 class="sub-heading">Ceremony & Venue</h2>
