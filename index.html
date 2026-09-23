@@ -14,16 +14,16 @@
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Looping Background Video -->
+  <!-- Looping Background Courtyard Video -->
   <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
 
-  <!-- High-Z-Index FX Canvas for Golden Bursts and Stardust -->
+  <!-- Particle FX Canvas -->
   <canvas id="fxCanvas"></canvas>
 
   <main>
-    <!-- SCREEN 1: Authentic Royal Stationery Envelope -->
+    <!-- SCREEN 1: Stationery Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
       <div class="envelope-scene">
         
@@ -38,8 +38,9 @@
           </div>
 
           <div class="envelope-body-inner">
+            <!-- Contained Bismillah -->
             <div class="gold-bismillah-container">
-              <span class="gold-bismillah-large">﷽</span>
+              <span class="gold-bismillah-text">﷽</span>
             </div>
             
             <p class="envelope-tag">RUKHSATI INVITATION</p>
@@ -49,7 +50,7 @@
               <strong id="guestFront">Our Cherished Guest</strong>
             </div>
 
-            <!-- Interactive Seal Area -->
+            <!-- Interactive Seal Area with Pointer Arrow -->
             <div class="seal-interactive-zone" id="sealButton" role="button" tabindex="0">
               <div class="guide-arrow-wrapper">
                 <span class="guide-label">TAP TO UNVEIL</span>
@@ -96,15 +97,26 @@
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Heart Scratch Box -->
+        <!-- Decorated Dual-State Heart Container -->
         <div class="heart-scratch-wrapper">
-          <div class="heart-scratch-box" id="heartScratchBox">
-            <div class="scratch-reveal">
-              <span class="reveal-tag">CEREMONY DATE</span>
-              <strong class="reveal-date">19 October 2026</strong>
-              <small class="reveal-time">8:00 PM Onwards</small>
+          <div class="heart-frame-ornament" id="heartContainer">
+            <!-- Corner Filigree Accents on Heart Curves -->
+            <span class="heart-accent left-accent">❦</span>
+            <span class="heart-accent right-accent">❦</span>
+
+            <div class="heart-scratch-box" id="heartScratchBox">
+              <!-- State B: Revealed Plate -->
+              <div class="scratch-reveal">
+                <div class="reveal-inner-border">
+                  <span class="reveal-tag">✦ CEREMONY DATE ✦</span>
+                  <strong class="reveal-date">19 October 2026</strong>
+                  <small class="reveal-time">Monday • 8:00 PM Onwards</small>
+                </div>
+              </div>
+
+              <!-- State A: Brushed Metallic Scratch Canvas -->
+              <canvas id="scratchCanvas"></canvas>
             </div>
-            <canvas id="scratchCanvas"></canvas>
           </div>
         </div>
 
