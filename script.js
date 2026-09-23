@@ -1,4 +1,4 @@
-// Background Video Handler (Suppresses Safari Media Overlays)
+// Ensure Safari Video Autoplay Without Play Button Overlay
 const bgVideo = document.getElementById('bgVideo');
 if (bgVideo) {
   bgVideo.muted = true;
@@ -10,61 +10,123 @@ if (bgVideo) {
   }
 }
 
-// Dynamic Guest Name Resolution from URL Query Parameters
-const guestDatabase = {
-  'nawaz-selection': 'Nawaz Selection',
-  'maulana-yahya': 'Maulana Yahya (Shaikh Sahab)',
-  'shabina-lashkar': 'Shabina Lashkar',
-  'ashiana-munshi': 'Ashiana Munshi',
-  'kutubuddin-shaikh': 'Kutubuddin Shaikh',
-  'shamsuddin-shaikh': 'Shamsuddin Shaikh'
-};
+// Particle Physics Engine for Wax Seal Burst
+const fxCanvas = document.getElementById('fxCanvas');
+const fxCtx = fxCanvas.getContext('2d');
+let particles = [];
 
+function resizeFx() {
+  fxCanvas.width = window.innerWidth;
+  fxCanvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeFx);
+resizeFx();
+
+function createGoldBurst(x, y) {
+  const colors = ['#f5d77f', '#d4af37', '#e8c15a', '#ffffff', '#e3a857'];
+  for (let i = 0; i < 65; i++) {
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 8 + 3;
+    particles.push({
+      x: x,
+      y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed - 2,
+      size: Math.random() * 5 + 2,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      alpha: 1,
+      decay: Math.random() * 0.02 + 0.015,
+      rotation: Math.random() * Math.PI,
+      spin: (Math.random() - 0.5) * 0.2
+    });
+  }
+  requestAnimationFrame(updateParticles);
+}
+
+function updateParticles() {
+  fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+  for (let i = particles.length - 1; i >= 0; i--) {
+    const p = particles[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.18; // gravity
+    p.alpha -= p.decay;
+    p.rotation += p.spin;
+
+    if (p.alpha <= 0) {
+      particles.splice(i, 1);
+      continue;
+    }
+
+    fxCtx.save();
+    fxCtx.globalAlpha = p.alpha;
+    fxCtx.translate(p.x, p.y);
+    fxCtx.rotate(p.rotation);
+    fxCtx.fillStyle = p.color;
+    fxCtx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+    fxCtx.restore();
+  }
+  if (particles.length > 0) {
+    requestAnimationFrame(updateParticles);
+  }
+}
+
+// Guest Parameter Resolution
 const queryParams = new URLSearchParams(window.location.search);
-const guestKey = (queryParams.get('guest') || '').toLowerCase().trim();
-const guestResolved = guestDatabase[guestKey] || (queryParams.get('guest') || '').trim() || 'Our Cherished Guest';
+const rawGuest = queryParams.get('guest');
+const guestResolved = rawGuest ? decodeURIComponent(rawGuest).trim() : 'Our Cherished Guest';
 
 document.getElementById('guestFront').textContent = guestResolved;
 document.getElementById('guestInside').textContent = guestResolved;
 document.getElementById('guestFooter').textContent = guestResolved;
 
-// Unveil Opening Sequence
+// Wax Seal Break & Unveil Sequence
 const sealButton = document.getElementById('sealButton');
+const sealImg = document.getElementById('sealImg');
 const envelopeScreen = document.getElementById('envelopeScreen');
 const envelopeCard = document.getElementById('envelopeCard');
 const invitationContent = document.getElementById('invitationContent');
 
 let unveiled = false;
-function openInvitation() {
+function openInvitation(e) {
   if (unveiled) return;
   unveiled = true;
 
+  // Haptic pulse on mobile
+  if (navigator.vibrate) navigator.vibrate([40, 50, 40]);
+
+  // Launch gold burst from seal center
+  const rect = sealImg.getBoundingClientRect();
+  createGoldBurst(rect.left + rect.width / 2, rect.top + rect.height / 2);
+
   if (bgVideo) bgVideo.play().catch(() => {});
 
-  envelopeCard.style.transition = 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.7s ease';
-  envelopeCard.style.transform = 'scale(1.08) translateY(-10px)';
+  sealImg.style.transform = 'scale(0.85)';
+  envelopeCard.style.transition = 'transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s ease';
+  envelopeCard.style.transform = 'scale(1.08) translateY(-14px)';
   envelopeCard.style.opacity = '0';
 
   setTimeout(() => {
     envelopeScreen.style.opacity = '0';
-  }, 400);
+  }, 450);
 
   setTimeout(() => {
     envelopeScreen.style.display = 'none';
     invitationContent.classList.remove('locked');
+    initScratchCanvas(); // Initialize canvas once container is mounted and visible
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, 800);
+  }, 850);
 }
 
 sealButton.addEventListener('click', openInvitation);
 sealButton.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
     e.preventDefault();
-    openInvitation();
+    openInvitation(e);
   }
 });
 
-// Live Event Countdown (19 October 2026, 20:00 IST)
+// Countdown (19 October 2026, 20:00 IST)
 const eventTimestamp = new Date('2026-10-19T20:00:00+05:30').getTime();
 
 function updateCountdown() {
@@ -86,63 +148,80 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Heart Canvas Scratch Layer (Calibrated to Center Upper Cavity)
-const canvas = document.getElementById('scratchCanvas');
-const ctx = canvas.getContext('2d');
+// Retina-Calibrated Heart Scratch Canvas
+let scratchInitialized = false;
+function initScratchCanvas() {
+  if (scratchInitialized) return;
+  scratchInitialized = true;
 
-function initHeartCanvas() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const canvas = document.getElementById('scratchCanvas');
+  const box = document.getElementById('heartScratchBox');
+  const ctx = canvas.getContext('2d');
 
-  // Brushed Powder-Blue Metallic Gradient
-  const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+  // Scale canvas resolution to device pixel ratio (crisp on iPhone 15 Pro)
+  const dpr = window.devicePixelRatio || 1;
+  const w = box.clientWidth;
+  const h = box.clientHeight;
+
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  ctx.scale(dpr, dpr);
+
+  // Draw Powder-Blue Brushed Foil Fill
+  const grad = ctx.createLinearGradient(0, 0, w, h);
   grad.addColorStop(0, '#98b8cb');
   grad.addColorStop(0.3, '#d8e7ef');
   grad.addColorStop(0.7, '#8caec3');
   grad.addColorStop(1, '#6f94ab');
   ctx.fillStyle = grad;
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillRect(0, 0, w, h);
 
-  // Centered Scratch Prompt (Placed at y = 92px to sit between heart lobes)
-  ctx.fillStyle = '#122538';
+  // Position Scratch Prompt within Upper Cavity
+  ctx.fillStyle = '#102235';
   ctx.font = '600 11px Montserrat';
   ctx.textAlign = 'center';
-  ctx.fillText('SCRATCH HERE', canvas.width / 2, 92);
-}
-initHeartCanvas();
+  ctx.fillText('SCRATCH HERE', w / 2, 94);
 
-let scratching = false;
-let scratchedCount = 0;
+  let scratching = false;
+  let scratchedCount = 0;
 
-function getPoint(e) {
-  const rect = canvas.getBoundingClientRect();
-  const cx = e.touches ? e.touches[0].clientX : e.clientX;
-  const cy = e.touches ? e.touches[0].clientY : e.clientY;
-  return {
-    x: (cx - rect.left) * (canvas.width / rect.width),
-    y: (cy - rect.top) * (canvas.height / rect.height)
-  };
-}
-
-function erase(e) {
-  if (!scratching) return;
-  const pt = getPoint(e);
-  ctx.globalCompositeOperation = 'destination-out';
-  
-  ctx.beginPath();
-  ctx.arc(pt.x, pt.y, 22, 0, Math.PI * 2);
-  ctx.fill();
-  scratchedCount++;
-
-  if (scratchedCount > 35) {
-    canvas.style.opacity = '0';
-    canvas.style.transition = 'opacity 0.4s ease';
-    setTimeout(() => { canvas.style.display = 'none'; }, 400);
+  function getPoint(e) {
+    const rect = canvas.getBoundingClientRect();
+    return {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
   }
-}
 
-canvas.addEventListener('pointerdown', (e) => { scratching = true; erase(e); });
-canvas.addEventListener('pointermove', erase);
-window.addEventListener('pointerup', () => { scratching = false; });
+  function erase(e) {
+    if (!scratching) return;
+    const pt = getPoint(e);
+
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.beginPath();
+    ctx.arc(pt.x, pt.y, 22, 0, Math.PI * 2);
+    ctx.fill();
+    scratchedCount++;
+
+    if (scratchedCount > 35) {
+      canvas.style.opacity = '0';
+      canvas.style.transition = 'opacity 0.4s ease';
+      setTimeout(() => { canvas.style.display = 'none'; }, 400);
+    }
+  }
+
+  canvas.addEventListener('pointerdown', (e) => {
+    canvas.setPointerCapture(e.pointerId);
+    scratching = true;
+    erase(e);
+  });
+  canvas.addEventListener('pointermove', erase);
+  canvas.addEventListener('pointerup', (e) => {
+    try { canvas.releasePointerCapture(e.pointerId); } catch(err) {}
+    scratching = false;
+  });
+  canvas.addEventListener('pointercancel', () => { scratching = false; });
+}
 
 // Calendar (.ics) Download
 document.getElementById('calendarBtn').addEventListener('click', () => {
@@ -170,7 +249,7 @@ document.getElementById('calendarBtn').addEventListener('click', () => {
   URL.revokeObjectURL(a.href);
 });
 
-// Native Share API with Clipboard Fallback
+// Share Invite
 document.getElementById('shareBtn').addEventListener('click', async () => {
   if (navigator.share) {
     try {
