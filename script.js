@@ -1,3 +1,16 @@
+// Ensure Background Video Plays Without Pause Button on Safari
+const bgVideo = document.getElementById('bgVideo');
+if (bgVideo) {
+  bgVideo.muted = true;
+  const playPromise = bgVideo.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(() => {
+      // Autoplay fallback for touch interaction
+      document.addEventListener('touchstart', () => bgVideo.play(), { once: true });
+    });
+  }
+}
+
 // Personalized Guest Parameter Handling
 const guestDatabase = {
   'nawaz-selection': 'Nawaz Selection',
@@ -16,27 +29,42 @@ document.getElementById('guestFront').textContent = guestResolved;
 document.getElementById('guestInside').textContent = guestResolved;
 document.getElementById('guestFooter').textContent = guestResolved;
 
-// Unveil Animation
+// Authentic Multi-Stage Envelope Opening Animation
 const sealButton = document.getElementById('sealButton');
+const envelopeWrapper = document.getElementById('envelopeWrapper');
 const envelopeScreen = document.getElementById('envelopeScreen');
 const invitationContent = document.getElementById('invitationContent');
+const tapHint = document.getElementById('tapHint');
 
-function openInvitation() {
-  envelopeScreen.style.opacity = '0';
-  envelopeScreen.style.transform = 'scale(1.06)';
+let opened = false;
+function openEnvelope() {
+  if (opened) return;
+  opened = true;
+
+  if (tapHint) tapHint.style.opacity = '0';
+  if (bgVideo) bgVideo.play().catch(() => {});
+
+  // Step 1 & 2: Crack seal and flip flap in 3D perspective
+  envelopeWrapper.classList.add('opening');
+
+  // Step 3: Transition to full floating invitation
+  setTimeout(() => {
+    envelopeScreen.style.opacity = '0';
+    envelopeScreen.style.transform = 'scale(1.04)';
+  }, 1050);
 
   setTimeout(() => {
     envelopeScreen.style.display = 'none';
     invitationContent.classList.remove('locked');
     window.scrollTo({ top: 0, behavior: 'instant' });
-  }, 750);
+  }, 1600);
 }
 
-sealButton.addEventListener('click', openInvitation);
+sealButton.addEventListener('click', openEnvelope);
 sealButton.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' || e.key === ' ') {
     e.preventDefault();
-    openInvitation();
+    openEnvelope();
   }
 });
 
@@ -62,29 +90,28 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// Scratch Card Inner Region Mapping
+// Precise Heart-Shaped Scratch Canvas Overlay
 const canvas = document.getElementById('scratchCanvas');
 const ctx = canvas.getContext('2d');
 
 function initHeartCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   
-  // Define inner heart path to cover the center enamel only
   ctx.save();
   ctx.beginPath();
-  // Mathematical heart curve tailored to fit inside the rim of IMG_9403.png
-  const cx = 140;
-  const cy = 125;
-  ctx.moveTo(cx, cy + 65);
-  ctx.bezierCurveTo(cx - 75, cy + 20, cx - 80, cy - 35, cx - 40, cy - 55);
-  ctx.bezierCurveTo(cx - 15, cy - 65, cx, cy - 40, cx, cy - 30);
-  ctx.bezierCurveTo(cx, cy - 40, cx + 15, cy - 65, cx + 40, cy - 55);
-  ctx.bezierCurveTo(cx + 80, cy - 35, cx + 75, cy + 20, cx, cy + 65);
+  // Calibrated heart curve matching the center cavity of IMG_9403.png
+  const cx = 138;
+  const cy = 115;
+  ctx.moveTo(cx, cy + 62);
+  ctx.bezierCurveTo(cx - 70, cy + 22, cx - 74, cy - 34, cx - 36, cy - 50);
+  ctx.bezierCurveTo(cx - 14, cy - 60, cx, cy - 38, cx, cy - 28);
+  ctx.bezierCurveTo(cx, cy - 38, cx + 14, cy - 60, cx + 36, cy - 50);
+  ctx.bezierCurveTo(cx + 74, cy - 34, cx + 70, cy + 22, cx, cy + 62);
   ctx.closePath();
   ctx.clip();
 
-  // Draw Powder-Blue Brushed Metallic Foil Fill
-  const grad = ctx.createLinearGradient(60, 60, 220, 200);
+  // Powder-Blue Brushed Foil Surface
+  const grad = ctx.createLinearGradient(cx - 60, cy - 50, cx + 60, cy + 50);
   grad.addColorStop(0, '#8eb0c4');
   grad.addColorStop(0.3, '#d8e7ef');
   grad.addColorStop(0.6, '#a4c2d3');
@@ -92,9 +119,9 @@ function initHeartCanvas() {
   ctx.fillStyle = grad;
   ctx.fill();
 
-  // Center Foil Label
-  ctx.fillStyle = '#13273a';
-  ctx.font = '600 11px Montserrat';
+  // Subtle Metallic Scratch Prompt
+  ctx.fillStyle = '#122538';
+  ctx.font = '600 10px Montserrat';
   ctx.textAlign = 'center';
   ctx.fillText('SCRATCH TO REVEAL', cx, cy + 4);
   ctx.restore();
@@ -124,7 +151,7 @@ function erase(e) {
   ctx.fill();
   scratchedCount++;
 
-  if (scratchedCount > 38) {
+  if (scratchedCount > 35) {
     canvas.style.opacity = '0';
     canvas.style.transition = 'opacity 0.4s ease';
     setTimeout(() => { canvas.style.display = 'none'; }, 400);
