@@ -3,52 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no" />
-  <meta name="theme-color" content="#dbe7ee" />
+  <meta name="theme-color" content="#122538" />
   <title>Sakiruddin & Runa — Rukhsati Ceremony</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Looping Watercolor Palace Video -->
-  <video class="courtyard-video" autoplay loop muted playsinline>
+  <!-- Looping Background Video with Native iOS Flags -->
+  <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
 
   <main>
-    <!-- SCREEN 1: Authentic Royal Parchment Envelope -->
+    <!-- SCREEN 1: Authentic Royal Stationery Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
-      <div class="envelope-body">
-        <!-- Fold Shading & Border Accents -->
-        <div class="envelope-crease left-crease"></div>
-        <div class="envelope-crease right-crease"></div>
-        <div class="envelope-flap"></div>
+      <div class="envelope-scene">
         
-        <div class="envelope-inner">
-          <div class="gold-arch-crest">✦ &nbsp; ﷽ &nbsp; ✦</div>
-          <div class="bismillah-line">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
-          <p class="royal-title">ROYAL INVITATION</p>
-          
-          <div class="guest-banner">
-            <small>Exclusively Prepared For</small>
-            <strong id="guestFront">Our Cherished Guest</strong>
+        <div class="envelope-card-wrapper" id="envelopeCard">
+          <!-- Ornate Gold Filigree Corner Accents -->
+          <div class="corner-filigree top-left">❦</div>
+          <div class="corner-filigree top-right">❦</div>
+          <div class="corner-filigree bottom-left">❦</div>
+          <div class="corner-filigree bottom-right">❦</div>
+
+          <!-- Top Folded Flap Effect -->
+          <div class="envelope-top-flap">
+            <div class="flap-bevel"></div>
           </div>
 
-          <!-- Prominent Large Wax Seal Resting on Flap Junction -->
-          <div class="seal-trigger" id="sealButton" role="button" tabindex="0">
-            <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-graphic">
+          <!-- Envelope Content -->
+          <div class="envelope-body-inner">
+            <div class="gold-bismillah-crest">✦ &nbsp; ﷽ &nbsp; ✦</div>
+            <div class="arabic-bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+            <p class="envelope-tag">RUKHSATI INVITATION</p>
+
+            <div class="guest-emboss-box">
+              <small>EXCLUSIVELY PREPARED FOR</small>
+              <strong id="guestFront">Our Cherished Guest</strong>
+            </div>
+
+            <!-- Interactive Seal Area with Themed Pulsing Guide Arrow -->
+            <div class="seal-interactive-zone" id="sealButton" role="button" tabindex="0">
+              <div class="guide-arrow-wrapper">
+                <span class="guide-label">TAP TO UNVEIL</span>
+                <svg class="gold-guide-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                  <path d="M12 4v14m0 0l-5-5m5 5l5-5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+
+              <div class="seal-ring">
+                <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-image">
+              </div>
+            </div>
+
+            <p class="bottom-date-hint">Monday, 19 October 2026</p>
           </div>
-          
-          <p class="tap-hint">TAP WAX SEAL TO UNVEIL</p>
         </div>
+
       </div>
     </section>
 
-    <!-- SCREEN 2: Invitation Content Layered Over Palace -->
+    <!-- SCREEN 2: Floating Royal Invitation -->
     <div id="invitationContent" class="invitation-flow locked">
       
       <!-- Card 1: Names, Ayah, Heart Scratch, Countdown -->
@@ -64,25 +84,29 @@
         </div>
 
         <div class="family-lineage">
-          <strong>Sakiruddin Shaikh</strong><br><small>Son of Nuruddin Shaikh</small>
+          <strong class="person-title">Sakiruddin Shaikh</strong>
+          <span class="parent-line">Son of Nuruddin Shaikh</span>
           <div class="knot">✦</div>
-          <strong>Runa Shaikh</strong><br><small>Daughter of Saidul Shaikh</small>
+          <strong class="person-title">Runa Shaikh</strong>
+          <span class="parent-line">Daughter of Saidul Shaikh</span>
         </div>
 
-        <!-- Short Quranic Blessing -->
         <div class="short-ayah">
           <blockquote>“And We created you in pairs.”</blockquote>
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Clean Heart Scratch Box (Ceremony Date Only) -->
+        <!-- Heart Scratch Box with Symmetrical Geometry -->
         <div class="heart-scratch-wrapper">
           <div class="heart-scratch-box">
-            <canvas id="scratchCanvas" width="220" height="200"></canvas>
+            <!-- Underneath Revealed Text -->
             <div class="scratch-reveal">
-              <small>CEREMONY DATE</small>
-              <strong>19 October 2026</strong>
+              <span class="reveal-tag">CEREMONY DATE</span>
+              <strong class="reveal-date">19 October 2026</strong>
+              <small class="reveal-time">8:00 PM Onwards</small>
             </div>
+            <!-- Canvas Scratch Layer -->
+            <canvas id="scratchCanvas" width="240" height="220"></canvas>
           </div>
         </div>
 
