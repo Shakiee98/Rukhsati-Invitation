@@ -14,40 +14,30 @@
 <body>
 
 <div class="mobile-wrapper">
-  <!-- Courtyard Palace Video -->
+  <!-- Courtyard Video -->
   <video class="courtyard-video" id="bgVideo" autoplay loop muted playsinline webkit-playsinline preload="auto">
     <source src="assets/Miniature_couples_performing_tra…_20260922194230.mp4" type="video/mp4">
   </video>
 
-  <!-- Particle FX Canvas -->
+  <!-- Particle Canvas -->
   <canvas id="fxCanvas"></canvas>
 
   <main>
-    <!-- SCREEN 1: Embellished Stationery Envelope -->
+    <!-- SCREEN 1: Envelope -->
     <section class="envelope-screen" id="envelopeScreen">
       <div class="envelope-scene">
-        
         <div class="envelope-card-wrapper" id="envelopeCard">
-          <!-- Multi-Layer Royal Filigrees -->
           <div class="corner-filigree top-left">❦</div>
           <div class="corner-filigree top-right">❦</div>
           <div class="corner-filigree bottom-left">❦</div>
           <div class="corner-filigree bottom-right">❦</div>
 
-          <!-- Realistic Diagonal Crease Folds -->
-          <div class="envelope-side-fold fold-left"></div>
-          <div class="envelope-side-fold fold-right"></div>
-
           <div class="envelope-top-flap">
             <div class="flap-bevel"></div>
-            <div class="flap-gold-trim"></div>
           </div>
 
           <div class="envelope-body-inner">
-            <!-- Royal Arch Header -->
             <div class="gold-top-crest">✦ &nbsp; ❦ &nbsp; ✦</div>
-
-            <!-- Optically Balanced Bismillah (Shifted to Left) -->
             <div class="gold-bismillah-container">
               <span class="gold-bismillah-text">﷽</span>
             </div>
@@ -59,7 +49,6 @@
               <strong id="guestFront">Our Cherished Guest</strong>
             </div>
 
-            <!-- Interactive Seal Area with Pointer Arrow -->
             <div class="seal-interactive-zone" id="sealButton" role="button" tabindex="0">
               <div class="guide-arrow-wrapper">
                 <span class="guide-label">TAP TO UNVEIL</span>
@@ -68,21 +57,17 @@
                 </svg>
               </div>
 
-              <!-- Enlarged Prominent Wax Seal -->
               <div class="seal-ring">
                 <img src="assets/IMG_9366.png" alt="S & R Wax Seal" class="seal-image" id="sealImg">
               </div>
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
-    <!-- SCREEN 2: Floating Royal Invitation -->
+    <!-- SCREEN 2: Invitation -->
     <div id="invitationContent" class="invitation-flow locked">
-      
-      <!-- Card 1: Sacred Union & Countdown -->
       <section class="glass-sheet">
         <div class="crest-mark">❦</div>
         <p class="salute-text">With warm regards to <strong id="guestInside">Our Cherished Guest</strong></p>
@@ -107,14 +92,13 @@
           <cite>Surah An-Naba (78:8) • وَخَلَقْنَاكُمْ أَزْوَاجًا</cite>
         </div>
 
-        <!-- Perfectly Centered Heart Scratch Box -->
+        <!-- Heart Scratch Box -->
         <div class="heart-scratch-wrapper">
           <div class="heart-frame-ornament" id="heartContainer">
             <span class="heart-accent left-accent">❦</span>
             <span class="heart-accent right-accent">❦</span>
 
             <div class="heart-scratch-box" id="heartScratchBox">
-              <!-- Revealed Plate with Contoured Dashed Border -->
               <div class="scratch-reveal">
                 <div class="reveal-inner-border">
                   <span class="reveal-tag">✦ CEREMONY DATE ✦</span>
@@ -122,14 +106,12 @@
                   <small class="reveal-time">Monday • 8:00 PM Onwards</small>
                 </div>
               </div>
-
-              <!-- Scratch Canvas -->
               <canvas id="scratchCanvas"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Live Countdown -->
+        <!-- Countdown -->
         <div class="countdown-bar">
           <div class="time-cell"><b id="cdDays">00</b><span>DAYS</span></div>
           <div class="time-cell"><b id="cdHours">00</b><span>HOURS</span></div>
@@ -138,7 +120,7 @@
         </div>
       </section>
 
-      <!-- Card 2: Date, Location & Venue Details -->
+      <!-- Venue & Action -->
       <section class="glass-sheet">
         <div class="crest-mark">❦</div>
         <h2 class="sub-heading">Ceremony & Venue</h2>
@@ -176,7 +158,6 @@
           <small class="personal-footer">Honored Guest: <strong id="guestFooter">Our Cherished Guest</strong></small>
         </div>
       </section>
-
     </div>
   </main>
 </div>
